@@ -1,13 +1,16 @@
-import React from 'react';
+import React from 'react'
+
 import DefaultLayout from 'layouts/DefaultLayout';
+import ShowBudgetClub from 'components/ShowBudgetClub';
+import ClubName from 'components/ClubName';
 import Sidebar from 'components/Sidebar';
 
-const Index = () => {
-    return (
-        <DefaultLayout sidebar={<Sidebar />}>
-            <p>something</p>
-        </DefaultLayout>
-    );
-};
+const Index = () => (
+    <DefaultLayout
+        left={<Sidebar />}
+        middle={<ClubName />}
+        right={<ShowBudgetClub />}
+    />
+)
 
 export default Index;
