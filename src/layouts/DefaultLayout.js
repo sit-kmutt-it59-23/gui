@@ -1,75 +1,23 @@
-import React, {Component} from 'react';
-import styled from 'styled-components';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
-import Main from 'components/Main';
+import React, { Component, Fragment } from 'react'
+import { Row, Col, Container } from 'reactstrap'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Navbar from '../components/NavbarCustom'
 
-const UserInfoText = styled.div`
-    line-height: 1rem;
-`;
-
-export default class DefaultLayout extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-          isOpen: false
-        };
-      }
-      toggle() {
-        this.setState({
-          isOpen: !this.state.isOpen
-        });
-    }
+class DefaultLayout extends Component {
     render() {
         return (
-            <React.Fragment>
-                <Navbar color="primary" dark expand="md">
-                    <NavbarBrand href="/">IT59-23</NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret className="d-flex align-items-center flex-row">
-                                    <img className="rounded-circle" src="https://loremflickr.com/g/32/32/cat" />
-                                    <UserInfoText className="mx-2">
-                                        <p className="m-0">สยาม แย้มแสงสังข์</p>
-                                        <p className="m-0"><small>ชมรมนาฏยโขนละคร</small></p>
-                                    </UserInfoText>
-                                </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem>
-                                        ดูโปรไฟล์
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        การตั้งค่า
-                                    </DropdownItem>
-                                    <DropdownItem divider />
-                                    <DropdownItem>
-                                        ออกจากระบบ
-                                    </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-                <Main sidebar={this.props.sidebar}>
-                    {this.props.children}
-                </Main>
-            </React.Fragment>
-        );
+            <Fragment>
+                <Navbar />
+                <Container className="mt-3 mb-3">
+                    <Row>
+                        <Col sm="12" md="3">{this.props.left}</Col>
+                        <Col sm="12" md="6">{this.props.middle}</Col>
+                        <Col sm="12" md="3">{this.props.right}</Col>
+                    </Row>
+                </Container>
+            </Fragment>
+        )
     }
-};
+}
+
+export default DefaultLayout
