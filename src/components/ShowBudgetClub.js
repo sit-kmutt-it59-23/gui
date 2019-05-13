@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 
 
-export default class ShowBudgetClub extends Component {
+class ShowBudgetClub extends Component {
     render() {
         return (
             <Table responsive>
@@ -32,3 +32,5 @@ export default class ShowBudgetClub extends Component {
         );
     }
 }
+
+export default ShowBudgetClub

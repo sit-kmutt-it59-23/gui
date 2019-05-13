@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 const MarginTopBottom100 = styled.div`
    margin: 120px 0 120px 0;
-    
-`;
+`
 
-export default class ClubName extends Component {
+class ClubName extends Component {
     render() {
         return (
             <MarginTopBottom100>
@@ -15,3 +14,5 @@ export default class ClubName extends Component {
         );
     }
 }
+
+export default ClubName

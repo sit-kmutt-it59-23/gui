@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
-export default class Sidebar extends Component {
+class Sidebar extends Component {
     render() {
         return (
             <ListGroup>
@@ -22,3 +21,5 @@ export default class Sidebar extends Component {
         );
     } 
 }
+
+export default Sidebar

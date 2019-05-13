@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
-} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, UncontrolledDropdown
+    , DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const UserInfoText = styled.div`
     line-height: 1rem;
 `;
 
-export default class NavbarCustom extends Component {
+class NavbarCustom extends Component {
     constructor(props) {
         super(props);
 
@@ -61,6 +52,8 @@ export default class NavbarCustom extends Component {
                     </Nav>
                 </Collapse>
             </Navbar>
-        );
+        )
     }
-};
+}
+
+export default NavbarCustom

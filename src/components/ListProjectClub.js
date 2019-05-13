@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 
-
-
-export default class ListProjectClub extends Component {
+class ListProjectClub extends Component {
     render() {
         return (
             <Table responsive>
@@ -25,6 +23,8 @@ export default class ListProjectClub extends Component {
 
                 </tbody>
             </Table>
-        );
+        )
     }
 }
+
+export default ListProjectClub
