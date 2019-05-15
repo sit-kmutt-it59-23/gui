@@ -2,15 +2,21 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import GlobalStyles from 'scripts/GlobalStyles';
 
 import Index from 'pages/Index';
 import Project from './pages/Project'
 
 const App = () => (
-    <Router>
-        <Route path="/" exact component={Index} />
-        <Route path="/projects" exact component={Project} />
-    </Router>
-)
+    <Fragment>
+        <GlobalStyles />
+        <Router>
+            <Switch>
+                <Route exact path="/" component={Index} />
+                <Route exact path="/projects" component={Project} />
+            </Switch>
+        </Router>
+    </Fragment>
+);
 
 export default App;
