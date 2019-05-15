@@ -6,6 +6,7 @@ import GlobalStyles from 'scripts/GlobalStyles';
 
 import Index from 'pages/Index';
 import Project from 'pages/Project';
+import HttpNotFound from 'pages/error/HttpNotFound';
 
 const App = () => (
     <Fragment>
@@ -14,6 +15,7 @@ const App = () => (
             <Switch>
                 <Route exact path="/" component={Index} />
                 <Route exact path="/projects" component={Project} />
+                <Route component={HttpNotFound} />
             </Switch>
         </Router>
     </Fragment>
