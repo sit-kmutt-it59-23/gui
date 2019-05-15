@@ -1,11 +1,11 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalStyles from 'scripts/GlobalStyles';
 
 import Index from 'pages/Index';
-import Project from './pages/Project'
+import Project from 'pages/Project';
 
 const App = () => (
     <Fragment>
