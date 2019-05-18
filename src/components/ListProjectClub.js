@@ -15,12 +15,11 @@ class ListProjectClub extends Component {
                 </thead>
                 <tbody>
                     <tr>
-                        <th>...</th>
-                        <th>..ใช้ลูปเดะมาต่อ...</th>
-                        <th>...</th>
-                        <th>.....</th>
+                        <td>...</td>
+                        <td>..ใช้ลูปเดะมาต่อ...</td>
+                        <td>...</td>
+                        <td>.....</td>
                     </tr>
-
                 </tbody>
             </Table>
         )
