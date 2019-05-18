@@ -9,15 +9,16 @@ const InputCustom = styled.input`
     width:60px;
 `
 const ListForm = (props) =>  {
+    const {number,description,type} = props
     return (
         <FormGroup>
             <Row>
                 <Col md="6" className="col-form-label">
-                    {props.number ? `${props.number}. ` : '' }{props.description}
+                    {number ? `${number}. ` : '' }{description}
                 </Col>
                 <Col md="1" className="col-form-label">จำนวน</Col>
                 <Col md={{size:1,offset:1}}><InputCustom className="form-control" min="0" type="number" /></Col>
-                <Col md={{size:1,offset:1}} className="col-form-label">{props.type}</Col>
+                <Col md={{size:1,offset:1}} className="col-form-label">{type}</Col>
             </Row>
         </FormGroup>
     )
