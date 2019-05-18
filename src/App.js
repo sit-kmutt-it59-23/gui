@@ -6,6 +6,8 @@ import GlobalStyles from 'scripts/GlobalStyles';
 
 import Index from 'pages/Index';
 import Project from 'pages/Project';
+import FormPage from 'pages/FormPage';
+import SelectProject from 'pages/SelectProject';
 import HttpNotFound from 'pages/error/HttpNotFound';
 
 const App = () => (
@@ -15,6 +17,8 @@ const App = () => (
             <Switch>
                 <Route exact path="/" component={Index} />
                 <Route exact path="/projects" component={Project} />
+                <Route exact path="/selectProject" component={SelectProject} />
+                <Route exact path="/form" component={FormPage} />
                 <Route component={HttpNotFound} />
             </Switch>
         </Router>

@@ -7,7 +7,7 @@ class Sidebar extends Component {
             <ListGroup>
                 <ListGroupItem disabled>เสนอโครงการ</ListGroupItem>
                 <Link to="/projects"><ListGroupItem>โครงการที่ผ่านการพิจารณางบ</ListGroupItem></Link>
-                <Link to="#"><ListGroupItem>กรอกแบบฟอร์มโครงการ</ListGroupItem></Link>
+                <Link to="/selectProject"><ListGroupItem>กรอกแบบฟอร์มโครงการ</ListGroupItem></Link>
                 <Link to="#"><ListGroupItem>ติดตามโครงการ</ListGroupItem></Link>
                 <Link to="#"><ListGroupItem>แบบเสนอโครงการที่อนุมัติ</ListGroupItem></Link>
 
