@@ -1,27 +1,110 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Table } from 'reactstrap';
+import styled from 'styled-components';
+import moment from 'moment';
+import 'moment/locale/th';
+
+import axiosInstance from 'scripts/Api';
+
+
+const MonospaceFont = styled.span`
+    font-family: monospace;
+    font-size: 1.225rem;
+`
 
 class ListProjectClub extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: true,
+            data: [],
+            error: null
+        }
+    }
+    
+    componentDidMount() {
+        this.getData();
+    }
+
+    getData() {
+        axiosInstance.get('/organizations/7/projects').then(response => {
+            this.setState({
+                data: response.data,
+                isLoading: false
+            });
+        }).catch(error => {
+            this.setState({
+                error,
+                isLoading: false
+            });
+        });
+    }
+
     render() {
+        const {data, isLoading, error} = this.state;
+        let tbodyContent;
+
+        if (isLoading) {
+            tbodyContent = (
+                <tr>
+                    <td className="text-center" colSpan="4">
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="sr-only">กำลังโหลด...</span>
+                        </div>
+                        <span className="ml-2">กำลังโหลด...</span>
+                    </td>
+                </tr>   
+            );
+        }
+        else if (error) {
+            tbodyContent = (
+                <tr>
+                    <td className="text-center text-muted" colSpan="4">
+                        เกิดข้อผิดพลาดขณะที่กำลังโหลดข้อมูล โปรดลองอีกครั้งในภายหลัง
+                    </td>
+                </tr>
+            )
+        }
+        else if (data.length > 0) {
+            tbodyContent = data.map((datum, idx) => {
+                const {id, name, budget_amount, start_at, end_at} = datum;
+                return (
+                    <tr key={id}>
+                        <td>{idx + 1}</td>
+                        <td>{name}</td>
+                        <td className="text-right"><MonospaceFont>฿ {budget_amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</MonospaceFont></td>
+                        <td>{moment(start_at).locale('th').format('D MMM Y H:mm น.')}&ndash;{moment(end_at).locale('th').format('D MMM Y H:mm น.')} </td>
+                    </tr>
+                );
+            });
+        }
+        else {
+            tbodyContent = (
+                <tr>
+                    <td className="text-center text-muted" colSpan="4">
+                        ไม่พบโครงการที่พิจารณางบแล้ว
+                    </td>
+                </tr>
+                
+            );
+        }
+
         return (
-            <Table responsive>
-                <thead>
-                    <tr>
-                        <th>ลำดับ</th>
-                        <th>ชื่อโครงการที่ผ่านการพิจารณางบ</th>
-                        <th>งบประมาณที่ขอไว้</th>
-                        <th>ช่วงเวลาดำเนินโครงการ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>...</td>
-                        <td>..ใช้ลูปเดะมาต่อ...</td>
-                        <td>...</td>
-                        <td>.....</td>
-                    </tr>
-                </tbody>
-            </Table>
+            <Fragment>
+                <Table responsive>
+                    <thead>
+                        <tr>
+                            <th>ลำดับ</th>
+                            <th>ชื่อโครงการ</th>
+                            <th>งบประมาณ</th>
+                            <th>ช่วงเวลาดำเนินโครงการ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tbodyContent}
+                    </tbody>
+                </Table>
+            </Fragment>
         )
     }
 }
