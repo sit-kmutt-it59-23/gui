@@ -32,8 +32,8 @@ class NavbarCustom extends Component {
                             <DropdownToggle nav caret className="d-flex align-items-center flex-row">
                                 <img className="rounded-circle" src="https://loremflickr.com/g/32/32/cat" />
                                 <UserInfoText className="mx-2">
-                                    <p className="m-0">สยาม แย้มแสงสังข์</p>
-                                    <p className="m-0"><small>ชมรมนาฏยโขนละคร</small></p>
+                                    <TextTruncated className="m-0">มดน้อย ในไร่ส้ม</TextTruncated>
+                                    <TextTruncated className="m-0"><small>สโมสรนักศึกษาคณะเทคโนโลยีสารสนเทศ</small></TextTruncated>
                                 </UserInfoText>
                             </DropdownToggle>
                             <DropdownMenu right>
