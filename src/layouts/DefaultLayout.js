@@ -10,9 +10,9 @@ class DefaultLayout extends Component {
                 <Navbar />
                 <Container fluid className="mt-3 mb-3">
                     <Row>
-                        <Col sm="12" md="3">{this.props.left}</Col>
-                        <Col sm="12" md="6">{this.props.middle}</Col>
-                        <Col sm="12" md="3">{this.props.right}</Col>
+                        <Col sm="12" md="2">{this.props.left}</Col>
+                        <Col sm="12" md="8">{this.props.middle}</Col>
+                        <Col sm="12" md="2">{this.props.right}</Col>
                     </Row>
                 </Container>
             </Fragment>
