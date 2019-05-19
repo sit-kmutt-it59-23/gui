@@ -9,7 +9,7 @@ class ClubName extends Component {
     render() {
         return (
             <MarginTopBottom100>
-                <h3 className="text-center">ชมรมบันเทิงเเละดนตรีสากล</h3>
+                <h3 className="text-center">สโมสรนักศึกษาคณะเทคโนโลยีสารสนเทศ</h3>
             </MarginTopBottom100>
         );
     }
