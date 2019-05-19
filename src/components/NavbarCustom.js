@@ -7,6 +7,13 @@ const UserInfoText = styled.div`
     line-height: 1rem;
 `;
 
+const TextTruncated = styled.p`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+`;
+
 class NavbarCustom extends Component {
     constructor(props) {
         super(props);
