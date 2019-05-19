@@ -24,7 +24,7 @@ class NavbarCustom extends Component {
     render() {
         return (
             <Navbar color="primary" dark expand="md">
-                <NavbarBrand href="/">IT59-23</NavbarBrand>
+                <NavbarBrand href="/">KMUTT Actxis</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
