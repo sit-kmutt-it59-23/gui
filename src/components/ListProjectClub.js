@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Children, Component, Fragment } from 'react';
 import { Table } from 'reactstrap';
 import styled from 'styled-components';
 import moment from 'moment';
 import 'moment/locale/th';
 
+import ProjectActionButton from 'components/ProjectActionButton';
 import axiosInstance from 'scripts/Api';
 
 
@@ -42,12 +43,22 @@ class ListProjectClub extends Component {
 
     render() {
         const {data, isLoading, error} = this.state;
+        const theadContent = (
+            <Fragment>
+                <th>ลำดับ</th>
+                <th>ชื่อโครงการ</th>
+                <th>งบประมาณ</th>
+                <th>ระยะดำเนินการ</th>
+                {this.props.showAction ? <th>การดำเนินการ</th> : null}
+            </Fragment>
+        )
+        const theadContentCount = Children.toArray(theadContent)[0].props.children.length;
         let tbodyContent;
 
         if (isLoading) {
             tbodyContent = (
                 <tr>
-                    <td className="text-center" colSpan="4">
+                    <td className="text-center" colSpan={theadContentCount}>
                         <div className="spinner-border text-primary" role="status">
                             <span className="sr-only">กำลังโหลด...</span>
                         </div>
@@ -59,7 +70,7 @@ class ListProjectClub extends Component {
         else if (error) {
             tbodyContent = (
                 <tr>
-                    <td className="text-center text-muted" colSpan="4">
+                    <td className="text-center text-muted" colSpan={theadContentCount}>
                         เกิดข้อผิดพลาดขณะที่กำลังโหลดข้อมูล โปรดลองอีกครั้งในภายหลัง
                     </td>
                 </tr>
@@ -74,6 +85,7 @@ class ListProjectClub extends Component {
                         <td>{name}</td>
                         <td className="text-right"><MonospaceFont>฿ {budget_amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</MonospaceFont></td>
                         <td>{moment(start_at).locale('th').format('ll')}&ndash;{moment(end_at).locale('th').format('ll')}</td>
+                        {this.props.showAction ? (<td><ProjectActionButton /></td>) : ''}
                     </tr>
                 );
             });
@@ -81,7 +93,7 @@ class ListProjectClub extends Component {
         else {
             tbodyContent = (
                 <tr>
-                    <td className="text-center text-muted" colSpan="4">
+                    <td className="text-center text-muted" colSpan={theadContentCount}>
                         ไม่พบโครงการที่พิจารณางบแล้ว
                     </td>
                 </tr>
@@ -91,13 +103,10 @@ class ListProjectClub extends Component {
 
         return (
             <Fragment>
-                <Table responsive>
+                <Table responsive striped>
                     <thead>
                         <tr>
-                            <th>ลำดับ</th>
-                            <th>ชื่อโครงการ</th>
-                            <th>งบประมาณ</th>
-                            <th>ช่วงเวลาดำเนินโครงการ</th>
+                            {theadContent}  
                         </tr>
                     </thead>
                     <tbody>
