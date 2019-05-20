@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, UncontrolledDropdown
     , DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
@@ -31,7 +32,7 @@ class NavbarCustom extends Component {
     render() {
         return (
             <Navbar color="primary" dark expand="md">
-                <NavbarBrand href="/">KMUTT Actxis</NavbarBrand>
+                <NavbarBrand tag={Link} to="/">KMUTT Actxis</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
