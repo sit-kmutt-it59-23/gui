@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem, Collapse } from 'reactstrap';
+import { ListGroup, } from 'reactstrap';
 import styled from 'styled-components';
 
 import NavbarPart from '../sections/NavbarPart'

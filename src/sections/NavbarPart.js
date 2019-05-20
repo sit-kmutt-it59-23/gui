@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { ListGroup, ListGroupItem, Collapse } from 'reactstrap';
+import { ListGroupItem, Collapse } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components';
