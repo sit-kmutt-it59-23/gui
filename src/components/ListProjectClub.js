@@ -85,7 +85,7 @@ class ListProjectClub extends Component {
                         <td>{name}</td>
                         <td className="text-right"><MonospaceFont>฿ {budget_amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</MonospaceFont></td>
                         <td>{moment(start_at).locale('th').format('ll')}&ndash;{moment(end_at).locale('th').format('ll')}</td>
-                        {this.props.showAction ? (<td><ProjectActionButton /></td>) : ''}
+                        {this.props.showAction ? (<td><ProjectActionButton identifier={id} /></td>) : ''}
                     </tr>
                 );
             });

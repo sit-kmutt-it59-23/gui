@@ -18,7 +18,7 @@ const App = () => (
                 <Route exact path="/" component={Index} />
                 <Route exact path="/projects" component={Project} />
                 <Route exact path="/selectProject" component={SelectProject} />
-                <Route exact path="/form" component={FormPage} />
+                <Route exact path="/projects/:project_id/docs/:doctype_id/create" component={FormPage} />
                 <Route component={HttpNotFound} />
             </Switch>
         </Router>
