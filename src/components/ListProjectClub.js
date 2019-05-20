@@ -73,7 +73,7 @@ class ListProjectClub extends Component {
                         <td>{idx + 1}</td>
                         <td>{name}</td>
                         <td className="text-right"><MonospaceFont>฿ {budget_amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</MonospaceFont></td>
-                        <td>{moment(start_at).locale('th').format('D MMM Y H:mm น.')}&ndash;{moment(end_at).locale('th').format('D MMM Y H:mm น.')} </td>
+                        <td>{moment(start_at).locale('th').format('ll')}&ndash;{moment(end_at).locale('th').format('ll')}</td>
                     </tr>
                 );
             });
