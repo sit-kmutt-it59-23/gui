@@ -3,12 +3,12 @@ import React from 'react'
 import DefaultLayout from 'layouts/DefaultLayout';
 import Sidebar from 'components/Sidebar';
 import ShowBudgetClub from 'components/ShowBudgetClub';
-import ListMyProjectClub from 'components/ListMyProjectClub';
+import ListProjectClub from 'components/ListProjectClub';
 
 const SelectProject = () => (
     <DefaultLayout
         left={<Sidebar />}
-        middle={<ListMyProjectClub />}
+        middle={<ListProjectClub showAction />}
         right={<ShowBudgetClub />}
     />
 )
