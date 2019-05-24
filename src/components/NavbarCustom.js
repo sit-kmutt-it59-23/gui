@@ -1,37 +1,42 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, UncontrolledDropdown
-    , DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import {
+    Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, UncontrolledDropdown
+    , DropdownToggle, DropdownMenu, DropdownItem
+} from 'reactstrap';
+
+import MenuPushLeft from '../sections/MenuPushLeft'
 
 const UserInfoText = styled.div`
     line-height: 1rem;
-`;
+`
 
 const TextTruncated = styled.p`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 200px;
-`;
+`
 
 class NavbarCustom extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false
-        };
+        }
     }
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
-        });
+        })
     }
     render() {
         return (
-            <Navbar color="primary" dark expand="md">
+            <Navbar color="primary" dark expand="md" className="d-flex justify-content-between">
+                <MenuPushLeft />
                 <NavbarBrand tag={Link} to="/">KMUTT Actxis</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
