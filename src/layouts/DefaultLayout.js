@@ -8,7 +8,7 @@ class DefaultLayout extends Component {
         return (
             <Fragment>
                 <Navbar />
-                <Container className="mt-3 mb-3">
+                <Container fluid className="mt-3 mb-3">
                     <Row>
                         <Col sm="12" md="2">{this.props.left}</Col>
                         <Col sm="12" md="8">{this.props.middle}</Col>
