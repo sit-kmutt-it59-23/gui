@@ -53,13 +53,13 @@ class NavbarPart extends Component {
         let subMenu;
 
         if (menu.sub == 0) {
-            topic = <StyledLink to={menu.topic_path}>
-                        <StyledListGroupItemTopic action color="dark">{menu.topic}}</StyledListGroupItemTopic>
+            topic = <StyledLink to={menu.topic_path} className="d-none d-md-block">
+                        <StyledListGroupItemTopic action color="dark">{menu.topic}</StyledListGroupItemTopic>
                     </StyledLink>
         } else {
-            topic = <StyledListGroupItemTopic onClick={this.toggle} action className="list-group-item-dark">
+            topic = <StyledListGroupItemTopic onClick={this.toggle} action className="d-none d-md-block list-group-item-dark">
                         <span className="float-left">{menu.topic}</span>
-                        <FontAwesomeIcon icon="sort-down" className="float-right" />
+                        <FontAwesomeIcon icon="sort-down"  className="float-right d-none d-lg-block" />
                     </StyledListGroupItemTopic>
         }
       
