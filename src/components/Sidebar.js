@@ -11,10 +11,6 @@ const StyledListGroup = styled(ListGroup)`
 `
 
 class Sidebar extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const infer = {
             topic: "เสนอโครงการ",

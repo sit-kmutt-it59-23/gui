@@ -43,7 +43,7 @@ class NavbarCustom extends Component {
                     <Nav className="ml-auto" navbar>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret className="d-flex align-items-center flex-row">
-                                <img className="rounded-circle" src="https://loremflickr.com/g/32/32/cat" />
+                                <img className="rounded-circle"  alt="Profile Pictrue" src="https://loremflickr.com/g/32/32/cat" />
                                 <UserInfoText className="mx-2">
                                     <TextTruncated className="m-0">มดน้อย ในไร่ส้ม</TextTruncated>
                                     <TextTruncated className="m-0"><small>สโมสรนักศึกษาคณะเทคโนโลยีสารสนเทศ</small></TextTruncated>

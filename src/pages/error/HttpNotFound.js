@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Card as ReactstrapCard,
-         Button,
-         CardTitle,
-         CardText } from 'reactstrap';
+import { Card as ReactstrapCard, CardTitle, CardText } from 'reactstrap';
 
 import FullScreenLayout from 'layouts/FullScreenLayout';
 

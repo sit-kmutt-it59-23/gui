@@ -52,7 +52,7 @@ class NavbarPart extends Component {
         let topic;
         let subMenu;
 
-        if (menu.sub == 0) {
+        if (menu.sub === 0) {
             topic = <StyledLink to={menu.topic_path} className="d-none d-md-block">
                         <StyledListGroupItemTopic action color="dark">{menu.topic}</StyledListGroupItemTopic>
                     </StyledLink>
@@ -64,7 +64,7 @@ class NavbarPart extends Component {
         }
       
 
-        if (menu.sub == 0) {
+        if (menu.sub === 0) {
 
         } else {
             subMenu =
