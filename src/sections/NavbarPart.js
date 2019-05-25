@@ -7,6 +7,9 @@ import styled from 'styled-components';
 const StyledListGroupItemTopic = styled(ListGroupItem)`
     border:none;
 
+    &:hover{
+        cursor: pointer;
+    } 
     &:last-child{
         border:none;
         border-top-right-radius:0px;
@@ -52,7 +55,8 @@ class NavbarPart extends Component {
         let topic;
         let subMenu;
 
-        if (menu.sub === 0) {
+        if (menu.sub.length === 0) {
+
             topic = <StyledLink to={menu.topic_path} className="d-none d-md-block">
                         <StyledListGroupItemTopic action color="dark">{menu.topic}</StyledListGroupItemTopic>
                     </StyledLink>
@@ -64,9 +68,7 @@ class NavbarPart extends Component {
         }
       
 
-        if (menu.sub === 0) {
-
-        } else {
+        if (menu.sub.length !== 0) {
             subMenu =
             menu.sub.map((value, idx) => {
                 const { name, path } = value
