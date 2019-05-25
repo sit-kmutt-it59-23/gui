@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { Infer, Offer, AboutClub } from '../scripts/DataNavbar'
 import Topic from './MenuPushLeftPart'
-import Logo from '../images/Logo.png'
+import Logo from '../assets/images/Logo.png'
 
 const Menu = styled.div`
     width: 45vw;
