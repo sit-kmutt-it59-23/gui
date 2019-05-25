@@ -1,11 +1,15 @@
-import React, { Fragment, Component } from 'react';
-import { NavbarToggler } from 'reactstrap';
-import styled from 'styled-components';
+import React, { Fragment, Component } from 'react'
+import { NavbarToggler } from 'reactstrap'
+import styled from 'styled-components'
+
+import { Infer, Offer, AboutClub } from '../scripts/DataNavbar'
+import Topic from './MenuPushLeftPart'
+import Logo from '../images/Logo.png'
 
 const Menu = styled.div`
-    width: 50vw;
+    width: 45vw;
     height: 100vh;
-    background-color: #FFE600;
+    background-color: #FFF;
     position: fixed;
     top: 0;
     left: 0;
@@ -63,8 +67,14 @@ class MenuPushLeft extends Component {
         return (
             <Fragment>
                 <NavbarToggler onClick={this.toggleMenu} />
-                <Menu className={visibility} onMouseDown={this.handleMouseDown}>
-                    
+                <Menu className={visibility}>
+                    <div className="text-center mt-4 mb-4">
+                        <img alt="Logo KMUTT Actxis" 
+                            src={Logo} width="75%" />
+                    </div>
+                    <Topic menu={Infer}/>
+                    <Topic menu={Offer}/>
+                    <Topic menu={AboutClub}/>
                 </Menu>
                 <ShadowBackground className={visibility} onMouseDown={this.handleMouseDown}/>
             </Fragment>
