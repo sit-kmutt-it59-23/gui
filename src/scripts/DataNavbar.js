@@ -1,5 +1,3 @@
-import React, { Fragment, Component } from 'react'
-
 export const Infer = {
     topic: "เสนอโครงการ",
     topic_path: "#",
