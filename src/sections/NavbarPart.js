@@ -74,7 +74,7 @@ class NavbarPart extends Component {
                 const { name, path } = value
                 return (
                     <StyledLink to={path} key={idx}>
-                        <StyledListGroupItem color="secondary" action>{name}</StyledListGroupItem>
+                        <StyledListGroupItem color="secondary" className="d-none d-md-block" action>{name}</StyledListGroupItem>
                     </StyledLink>
                 )
             })

@@ -63,7 +63,7 @@ class MenuPushLeft extends Component {
         })
     }
     render() {
-        let visibility = this.state.visible ? 'show' : 'hide';
+        let visibility = this.state.visible ? 'show d-md-none' : 'hide';
         return (
             <Fragment>
                 <NavbarToggler onClick={this.toggleMenu} />
