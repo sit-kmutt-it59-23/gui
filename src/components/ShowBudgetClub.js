@@ -14,7 +14,7 @@ const ListGroupItemCustom = styled(ListGroupItem)`
 class ShowBudgetClub extends Component {
     render() {
         return (
-            <ListGroup>
+            <ListGroup className="d-none d-md-block">
                 <ListGroupItemCustom color="dark" className="text-center" >งบประมาณปี 2562</ListGroupItemCustom>
                 <ListGroupItemCustom color="secondary" className="clearfix">
                     <span className="float-left">ทั้งหมด</span>
