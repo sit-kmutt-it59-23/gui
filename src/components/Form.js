@@ -209,7 +209,7 @@ class FormCustom extends Component {
 
                 <Row>
                     <Col xs="12" sm={{size:3,offset:9}} md={{size:3,offset:9}} className="text-center">
-                        <Button color="success">บันทึกฟอร์ม</Button>
+                        <Button color="success">ส่งแบบฟอร์ม</Button>
                     </Col>
                 </Row>
             </Form>
