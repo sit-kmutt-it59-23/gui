@@ -12,13 +12,13 @@ const TextAreaSize = styled.textarea`
 `
 
 const TextArea = (props) => {
-    const {header,description} = props
+    const {header,description,name} = props
     return (
         <Fragment>
             <TextBold>{header}</TextBold>
             <span> {description ? `(${description})` : ''}</span>
             <TextBold> : </TextBold>
-            <TextAreaSize className="form-control mt-1 mb-4" />
+            <TextAreaSize name={name} className="form-control mt-1 mb-4" />
         </Fragment>
     )
 }
