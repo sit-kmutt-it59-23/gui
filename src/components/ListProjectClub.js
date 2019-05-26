@@ -13,6 +13,10 @@ const MonospaceFont = styled.span`
     font-size: 1.225rem;
 `
 
+const TableCustom = styled(Table)`
+    font-size:12px;
+`
+
 class ListProjectClub extends Component {
     constructor(props) {
         super(props);
@@ -47,7 +51,7 @@ class ListProjectClub extends Component {
             <Fragment>
                 <th>ลำดับ</th>
                 <th>ชื่อโครงการ</th>
-                <th>งบประมาณ</th>
+                <th>งบประมาณ (บาท)</th>
                 <th>ระยะดำเนินการ</th>
                 {this.props.showAction ? <th>การดำเนินการ</th> : null}
             </Fragment>
@@ -81,11 +85,11 @@ class ListProjectClub extends Component {
                 const {id, name, budget_amount, start_at, end_at} = datum;
                 return (
                     <tr key={id}>
-                        <td>{idx + 1}</td>
+                        <td className="text-center">{idx + 1}</td>
                         <td>{name}</td>
-                        <td className="text-right"><MonospaceFont>฿ {budget_amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</MonospaceFont></td>
-                        <td>{moment(start_at).locale('th').format('ll')}&ndash;{moment(end_at).locale('th').format('ll')}</td>
-                        {this.props.showAction ? (<td><ProjectActionButton identifier={id} /></td>) : ''}
+                        <td className="text-center"> {budget_amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                        <td>{moment(start_at).locale('th').format('ll')}&nbsp;&ndash;&nbsp;{moment(end_at).locale('th').format('ll')}</td>
+                        {this.props.showAction ? (<td className="text-center"><ProjectActionButton identifier={id} /></td>) : ''}
                     </tr>
                 );
             });
@@ -103,16 +107,16 @@ class ListProjectClub extends Component {
 
         return (
             <Fragment>
-                <Table responsive striped>
+                <TableCustom responsive>
                     <thead>
-                        <tr>
+                        <tr className="text-center">
                             {theadContent}  
                         </tr>
                     </thead>
                     <tbody>
                         {tbodyContent}
                     </tbody>
-                </Table>
+                </TableCustom>
             </Fragment>
         )
     }
