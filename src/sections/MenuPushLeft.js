@@ -15,7 +15,6 @@ const Menu = styled.div`
     left: 0;
     transition: transform .5s
                 cubic-bezier(0, .52, 0, 1);
-    overflow: scroll;
     z-index: 100;
     &.hide {
         transform: translate3d(-100vw, 0, 0);
@@ -69,8 +68,7 @@ class MenuPushLeft extends Component {
                 <NavbarToggler onClick={this.toggleMenu} />
                 <Menu className={visibility}>
                     <div className="text-center mt-4 mb-4">
-                        <img alt="Logo KMUTT Actxis" 
-                            src={Logo} width="75%" />
+                        <img alt="Logo KMUTT Actxis" src={Logo} width="120px" />
                     </div>
                     <Topic menu={Infer}/>
                     <Topic menu={Offer}/>
