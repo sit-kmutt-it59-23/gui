@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types'
+
 
 const TextBold = styled.p`
     font-weight : bold;
@@ -12,15 +14,20 @@ const TextAreaSize = styled.textarea`
 `
 
 const TextArea = (props) => {
-    const {header,description,name} = props
     return (
         <Fragment>
-            <TextBold>{header}</TextBold>
-            <span> {description ? `(${description})` : ''}</span>
+            <TextBold>{props.header}</TextBold>
+            <span> {props.description ? `(${props.description})` : ''}</span>
             <TextBold> : </TextBold>
-            <TextAreaSize name={name} className="form-control mt-1 mb-4" />
+            <TextAreaSize name={props.name} className="form-control mt-1 mb-4" />
         </Fragment>
     )
+}
+
+TextArea.propTypes = {
+    header: PropTypes.string,
+    description: PropTypes.string,
+    name: PropTypes.string
 }
 
 export default TextArea

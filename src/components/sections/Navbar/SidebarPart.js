@@ -3,6 +3,8 @@ import { ListGroupItem, Collapse } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components';
+import PropTypes from 'prop-types'
+
 
 const StyledListGroupItemTopic = styled(ListGroupItem)`
     border:none;
@@ -33,7 +35,7 @@ const StyledLink = styled(Link)`
     }
 `
 
-class NavbarPart extends Component {
+class SidebarPart extends Component {
     constructor(props) {
         super(props)
 
@@ -51,26 +53,25 @@ class NavbarPart extends Component {
     }
 
     render() {
-        const { menu } = this.props
         let topic;
         let subMenu;
 
-        if (menu.sub.length === 0) {
+        if (this.props.menu.sub.length === 0) {
 
-            topic = <StyledLink to={menu.topic_path} className="d-none d-md-block">
-                        <StyledListGroupItemTopic action color="dark">{menu.topic}</StyledListGroupItemTopic>
+            topic = <StyledLink to={this.props.menu.topic_path} className="d-none d-md-block">
+                        <StyledListGroupItemTopic action color="dark">{this.props.menu.topic}</StyledListGroupItemTopic>
                     </StyledLink>
         } else {
             topic = <StyledListGroupItemTopic onClick={this.toggle} action className="d-none d-md-block list-group-item-dark">
-                        <span className="float-left">{menu.topic}</span>
+                        <span className="float-left">{this.props.menu.topic}</span>
                         <FontAwesomeIcon icon="sort-down"  className="float-right d-none d-lg-block" />
                     </StyledListGroupItemTopic>
         }
       
 
-        if (menu.sub.length !== 0) {
+        if (this.props.menu.sub.length !== 0) {
             subMenu =
-            menu.sub.map((value, idx) => {
+            this.props.menu.sub.map((value, idx) => {
                 const { name, path } = value
                 return (
                     <StyledLink to={path} key={idx}>
@@ -91,4 +92,8 @@ class NavbarPart extends Component {
     }
 }
 
-export default NavbarPart
+SidebarPart.propTypes = {
+    menu: PropTypes.object
+}
+
+export default SidebarPart

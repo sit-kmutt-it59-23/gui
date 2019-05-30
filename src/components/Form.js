@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Row, Col, Form, FormGroup, Label, Input,Button} from 'reactstrap';
 
-import ListForm from '../sections/ListForm'
-import TextArea from '../sections/TextArea'
+import ListForm from './sections/Form/ListForm'
+import TextArea from './sections/Form/TextArea'
 
 const TextBold = styled.p`
     font-weight : bold;

@@ -1,17 +1,12 @@
-import React, { Children, Component, Fragment } from 'react';
-import { Table } from 'reactstrap';
-import styled from 'styled-components';
-import moment from 'moment';
-import 'moment/locale/th';
+import React, { Children, Component, Fragment } from 'react'
+import { Table } from 'reactstrap'
+import styled from 'styled-components'
+import moment from 'moment'
+import 'moment/locale/th'
+import PropTypes from 'prop-types'
 
-import ProjectActionButton from 'components/ProjectActionButton';
-import axiosInstance from 'scripts/Api';
-
-
-const MonospaceFont = styled.span`
-    font-family: monospace;
-    font-size: 1.225rem;
-`
+import ProjectActionButton from 'components/ProjectActionButton'
+import axiosInstance from 'scripts/Api'
 
 const TableCustom = styled(Table)`
     font-size:12px;
@@ -46,7 +41,6 @@ class ListProjectClub extends Component {
     }
 
     render() {
-        const {data, isLoading, error} = this.state;
         const theadContent = (
             <Fragment>
                 <th>ลำดับ</th>
@@ -59,7 +53,7 @@ class ListProjectClub extends Component {
         const theadContentCount = Children.toArray(theadContent)[0].props.children.length;
         let tbodyContent;
 
-        if (isLoading) {
+        if (this.state.isLoading) {
             tbodyContent = (
                 <tr>
                     <td className="text-center" colSpan={theadContentCount}>
@@ -71,7 +65,7 @@ class ListProjectClub extends Component {
                 </tr>   
             );
         }
-        else if (error) {
+        else if (this.state.error) {
             tbodyContent = (
                 <tr>
                     <td className="text-center text-muted" colSpan={theadContentCount}>
@@ -80,8 +74,8 @@ class ListProjectClub extends Component {
                 </tr>
             )
         }
-        else if (data.length > 0) {
-            tbodyContent = data.map((datum, idx) => {
+        else if (this.state.data.length > 0) {
+            tbodyContent = this.state.data.map((datum, idx) => {
                 const {id, name, budget_amount, start_at, end_at} = datum;
                 return (
                     <tr key={id}>
@@ -89,7 +83,7 @@ class ListProjectClub extends Component {
                         <td>{name}</td>
                         <td className="text-center"> {budget_amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
                         <td>{moment(start_at).locale('th').format('ll')}&nbsp;&ndash;&nbsp;{moment(end_at).locale('th').format('ll')}</td>
-                        {this.props.showAction ? (<td className="text-center"><ProjectActionButton identifier={id} /></td>) : ''}
+                        {this.props.showAction ? (<td className="text-right"><ProjectActionButton identifier={id} /></td>) : ''}
                     </tr>
                 );
             });
@@ -121,5 +115,10 @@ class ListProjectClub extends Component {
         )
     }
 }
+
+ListProjectClub.propTypes = {
+    showAction: PropTypes.bool
+}
+
 
 export default ListProjectClub

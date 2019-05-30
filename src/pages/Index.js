@@ -8,7 +8,7 @@ import Sidebar from 'components/Sidebar';
 const Index = () => (
     <DefaultLayout
         left={<Sidebar />}
-        middle={<ClubName />}
+        middle={<ClubName name="สโมสรนักศึกษาคณะเทคโนโลยีสารสนเทศ" />}
         right={<ShowBudgetClub />}
     />
 )

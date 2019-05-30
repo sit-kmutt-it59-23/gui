@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { ListGroup, } from 'reactstrap';
 import styled from 'styled-components';
 
-import NavbarPart from '../sections/NavbarPart'
-import { Infer, Offer, AboutClub } from '../scripts/DataNavbar'
+import NavbarPart from './sections/Navbar/SidebarPart'
+import { Infer, Offer, AboutClub } from './sections/Navbar/DataNavbar'
 
 const StyledListGroup = styled(ListGroup)`
     font-size : 12px;

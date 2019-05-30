@@ -1,10 +1,11 @@
 import React, { Fragment, Component } from 'react'
 import { NavbarToggler } from 'reactstrap'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-import { Infer, Offer, AboutClub } from '../scripts/DataNavbar'
-import Topic from './MenuPushLeftPart'
-import Logo from '../assets/images/Logo.png'
+import { Infer, Offer, AboutClub } from './DataNavbar'
+import Topic from './PartSidebarOnMobile'
+import Logo from '../../../assets/images/Logo.png'
 
 const Menu = styled.div`
     width: 45vw;
@@ -42,7 +43,7 @@ const ShadowBackground = styled.div`
     }
 `
 
-class MenuPushLeft extends Component {
+class SidebarOnMobile extends Component {
     constructor(props) {
         super(props)
 
@@ -80,4 +81,9 @@ class MenuPushLeft extends Component {
     }
 }
 
-export default MenuPushLeft
+SidebarOnMobile.propTypes = {
+    menu: PropTypes.object
+}
+
+
+export default SidebarOnMobile

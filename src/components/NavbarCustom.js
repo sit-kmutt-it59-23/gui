@@ -6,7 +6,7 @@ import {
 } from 'reactstrap';
 
 
-import MenuPushLeft from '../sections/MenuPushLeft'
+import MenuPushLeft from './sections/Navbar/SidebarOnMobile'
 import Logo from '../assets/images/LogoNon-Content.png'
 
 const UserInfoText = styled.div`

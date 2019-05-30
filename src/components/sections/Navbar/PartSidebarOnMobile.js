@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Collapse } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PropTypes from 'prop-types'
 
 const PartMenu = styled.div`
     wifth:100%;
@@ -25,7 +26,7 @@ const StyledLink = styled(Link)`
     }
 `
 
-class MenuPushLeftPart extends Component {
+class PartSidebarOnMobile extends Component {
     constructor(props) {
         super(props)
 
@@ -42,30 +43,29 @@ class MenuPushLeftPart extends Component {
         })
     }
     render() {
-        const { menu } = this.props
         let topic;
         let subMenu;
 
-        if (menu.sub.length !== 0) { // have sub menu
+        if (this.props.menu.sub.length !== 0) { // have sub menu
             topic = <div className="d-flex justify-content-between">
                         <span >
-                            {menu.topic}
+                            {this.props.menu.topic}
                         </span>
                         <FontAwesomeIconInline icon="sort-down" />
                     </div>
         } else { // not have sub menu
-            topic = <StyledLink to={menu.topic_path}>
+            topic = <StyledLink to={this.props.menu.topic_path}>
                         <div className="d-flex justify-content-between">
                             <span >
-                                {menu.topic}
+                                {this.props.menu.topic}
                             </span>
                         </div>
                     </StyledLink>
         }
     
-        if (menu.sub.length !== 0) { // have sub menu
+        if (this.props.menu.sub.length !== 0) { // have sub menu
             subMenu =
-            menu.sub.map((value, idx) => {
+            this.props.menu.sub.map((value, idx) => {
                 const { name, path } = value
                 return (
                     <StyledLink to={path} key={idx}>
@@ -89,4 +89,10 @@ class MenuPushLeftPart extends Component {
     }
 }
 
-export default MenuPushLeftPart
+PartSidebarOnMobile.propTypes = {
+    menu: PropTypes.object
+}
+
+
+
+export default PartSidebarOnMobile
