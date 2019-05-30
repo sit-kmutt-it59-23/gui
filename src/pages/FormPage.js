@@ -9,7 +9,7 @@ const FormPage = () => (
     <DefaultLayout
         left={<Sidebar />}
         middle={<Form />}
-        right={<ShowBudgetClub />}
+        right=" "
     />
 )
 
