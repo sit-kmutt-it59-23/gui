@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { ListGroup, } from 'reactstrap';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import { ListGroup, } from 'reactstrap'
+import styled from 'styled-components'
 
 import NavbarPart from './sections/Navbar/SidebarPart'
 import { Infer, Offer, AboutClub } from './sections/Navbar/DataNavbar'

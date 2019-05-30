@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { Card as ReactstrapCard, CardTitle, CardText } from 'reactstrap';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { Card as ReactstrapCard, CardTitle, CardText } from 'reactstrap'
 
-import FullScreenLayout from 'layouts/FullScreenLayout';
+import FullScreenLayout from 'layouts/FullScreenLayout'
 
 
 class HttpNotFound extends Component {
@@ -19,7 +19,7 @@ class HttpNotFound extends Component {
                 <CardText>หน้าที่คุณกำลังมองหาอาจถูกลบ เปลี่ยนชื่อ หรือไม่สามารถเข้าถึงได้ชั่วคราว</CardText>
                 <Link to="/" className="btn btn-light">กลับสู่หน้าหลัก</Link>
             </Card>
-        );
+        )
 
         return <FullScreenLayout main={main} middlePosition />
     }

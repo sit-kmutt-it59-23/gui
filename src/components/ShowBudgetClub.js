@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { ListGroup, ListGroupItem} from 'reactstrap';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import { ListGroup, ListGroupItem} from 'reactstrap'
+import styled from 'styled-components'
 
 const ListGroupItemCustom = styled(ListGroupItem)`
     font-size:12px;
@@ -30,7 +30,7 @@ class ShowBudgetClub extends Component {
                 </ListGroupItemCustom>
                 
           </ListGroup>
-        );
+        )
     }
 }
 

@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
 
 class ProjectActionButton extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false
-    };
+    }
   }
 
   toggle() {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen
-    }));
+    }))
   }
 
   render() {
@@ -33,7 +33,7 @@ class ProjectActionButton extends Component {
           <DropdownItem disabled>แบบสรุปโครงการ</DropdownItem>
         </DropdownMenu>
       </ButtonDropdown>
-    );
+    )
   }
 }
 
@@ -41,4 +41,4 @@ ProjectActionButton.propTypes = {
   identifier: PropTypes.number
 }
 
-export default ProjectActionButton;
+export default ProjectActionButton

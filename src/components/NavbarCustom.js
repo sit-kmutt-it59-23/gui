@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import {
-     Navbar, NavbarBrand, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem
-} from 'reactstrap';
-
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { Navbar, NavbarBrand, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 
 import MenuPushLeft from './sections/Navbar/SidebarOnMobile'
 import Logo from '../assets/images/LogoNon-Content.png'

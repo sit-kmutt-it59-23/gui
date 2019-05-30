@@ -23,7 +23,7 @@ class ListProjectClub extends Component {
     }
     
     componentDidMount() {
-        this.getData();
+        this.getData()
     }
 
     getData() {
@@ -31,13 +31,13 @@ class ListProjectClub extends Component {
             this.setState({
                 data: response.data,
                 isLoading: false
-            });
+            })
         }).catch(error => {
             this.setState({
                 error,
                 isLoading: false
-            });
-        });
+            })
+        })
     }
 
     render() {
@@ -63,7 +63,7 @@ class ListProjectClub extends Component {
                         <span className="ml-2">กำลังโหลด...</span>
                     </td>
                 </tr>   
-            );
+            )
         }
         else if (this.state.error) {
             tbodyContent = (
@@ -76,7 +76,7 @@ class ListProjectClub extends Component {
         }
         else if (this.state.data.length > 0) {
             tbodyContent = this.state.data.map((datum, idx) => {
-                const {id, name, budget_amount, start_at, end_at} = datum;
+                const {id, name, budget_amount, start_at, end_at} = datum
                 return (
                     <tr key={id}>
                         <td className="text-center">{idx + 1}</td>
@@ -85,8 +85,8 @@ class ListProjectClub extends Component {
                         <td>{moment(start_at).locale('th').format('ll')}&nbsp;&ndash;&nbsp;{moment(end_at).locale('th').format('ll')}</td>
                         {this.props.showAction ? (<td className="text-right"><ProjectActionButton identifier={id} /></td>) : ''}
                     </tr>
-                );
-            });
+                )
+            })
         }
         else {
             tbodyContent = (
@@ -96,7 +96,7 @@ class ListProjectClub extends Component {
                     </td>
                 </tr>
                 
-            );
+            )
         }
 
         return (
