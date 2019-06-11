@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import 'app.scss';
 import GlobalStyles from 'scripts/GlobalStyles';
 
 import Index from 'pages/Index';
