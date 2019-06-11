@@ -9,11 +9,6 @@ import FormPage from 'pages/FormPage';
 import SelectProject from 'pages/SelectProject';
 import HttpNotFound from 'pages/error/HttpNotFound';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSortDown } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faSortDown)
-
 const App = () => (
     <Fragment>
         <GlobalStyles />
