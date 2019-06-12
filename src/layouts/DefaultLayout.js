@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileInvoiceDollar, faFileAlt, faSitemap, faSlidersH, faUsers } from '@fortawesome/free-solid-svg-icons'
 
-import LogoImg from 'assets/images/LogoNon-Content.png';
+import LogoImg from 'assets/images/actxis-logo-solid-white-transparent.svg';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -58,8 +58,10 @@ class DefaultLayout extends Component {
             <Layout>
                 <CustomHeader>
                     <LogoWrapper>
-                        <Logo src={LogoImg} />
-                        <span><strong>KMUTT Actxis</strong></span>
+                        <Link to="/">
+                            <Logo src={LogoImg} />
+                            <span><strong>KMUTT Actxis</strong></span>
+                        </Link>
                     </LogoWrapper>
                     <CustomMenu theme="dark" mode="horizontal">
                         <Menu.Item key="profile">โปรไฟล์</Menu.Item>
