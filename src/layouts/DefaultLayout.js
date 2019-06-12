@@ -41,6 +41,10 @@ const LogoWrapper = styled.div`
     display: 'flex';
     flex-direction: 'row';
     align-items: 'center';
+
+    a {
+        color: #ffffff !important;
+    }
 `
 
 const Logo = styled.img`
