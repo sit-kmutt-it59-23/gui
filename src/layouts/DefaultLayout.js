@@ -58,6 +58,23 @@ const CustomFaIcon = styled(FontAwesomeIcon)`
 
 class DefaultLayout extends Component {
     render() {
+        let breadcrumb;
+        if (this.props.breadcrumb) {
+            breadcrumb = this.props.breadcrumb.map((item, idx) => {
+                return (
+                    <Breadcrumb.Item>
+                        {
+                            item.link || !item.active
+                            ? <Link to={item.link}>{item.text}</Link>
+                            : item.text
+                        }
+                    </Breadcrumb.Item>
+                )
+            })
+        }
+        else {
+            breadcrumb = <Breadcrumb.Item><Link to="/">หน้าแรก</Link></Breadcrumb.Item>
+        }
         return (
             <Layout>
                 <CustomHeader>
@@ -115,9 +132,8 @@ class DefaultLayout extends Component {
                         </Menu>
                     </Sider>
                     <Layout style={{ padding: '0 24px 24px' }}>
-                        <Breadcrumb style={{ margin: '16px 0' }}>
-                            <Breadcrumb.Item>หน้าแรก</Breadcrumb.Item>
-                            <Breadcrumb.Item>โครงการ</Breadcrumb.Item>
+                        <Breadcrumb separator=">" style={{ margin: '16px 0' }}>
+                            {breadcrumb}
                         </Breadcrumb>
                         <Content
                             style={{
