@@ -5,7 +5,7 @@ import Sidebar from 'components/Sidebar'
 import ShowBudgetClub from 'components/ShowBudgetClub'
 import ListProjectClub from 'components/ListProjectClub'
 
-const Project = () => (
+const Projects = () => (
     <DefaultLayout
         left={<Sidebar />}
         middle={<ListProjectClub />}
@@ -13,4 +13,4 @@ const Project = () => (
     />
 )
 
-export default Project
+export default Projects
