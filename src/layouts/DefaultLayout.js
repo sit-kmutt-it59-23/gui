@@ -5,51 +5,13 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileInvoiceDollar, faFileAlt, faSitemap, faSlidersH, faUsers } from '@fortawesome/free-solid-svg-icons'
 
-import LogoImg from 'assets/images/actxis-logo-solid-white-transparent.svg';
+import Navbar from '../components/NavbarCustom'
 
-const { Header, Sider, Content } = Layout;
-const { SubMenu } = Menu;
+const {  Sider, Content } = Layout
+const { SubMenu } = Menu
 
-const Trigger = styled(Icon)`
-    font-size: 18px;
-    line-height: 64px;
-    padding: 0 24px;
-    cursor: pointer;
-    transition: color 0.3s;
-
-    &:hover {
-        color: #1890ff;
-    }
-`
-
-const CustomHeader = styled(Header)`
-    padding: 0 16px !important;
-    color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-`
-
-const CustomMenu = styled(Menu)`
-    margin-left: auto;
-    line-height: '64px';
-`
 const CustomContentLayout = styled(Layout)`
     min-height: calc(100vh - 64px) !important;
-`
-
-const LogoWrapper = styled.div`
-    display: 'flex';
-    flex-direction: 'row';
-    align-items: 'center';
-
-    a {
-        color: #ffffff !important;
-    }
-`
-
-const Logo = styled.img`
-    height: 32px;
-    margin-right: 16px;
 `
 
 const CustomFaIcon = styled(FontAwesomeIcon)`
@@ -77,17 +39,7 @@ class DefaultLayout extends Component {
         }
         return (
             <Layout>
-                <CustomHeader>
-                    <LogoWrapper>
-                        <Link to="/">
-                            <Logo src={LogoImg} />
-                            <span><strong>KMUTT Actxis</strong></span>
-                        </Link>
-                    </LogoWrapper>
-                    <CustomMenu theme="dark" mode="horizontal">
-                        <Menu.Item key="profile">โปรไฟล์</Menu.Item>
-                    </CustomMenu>
-                </CustomHeader>
+                <Navbar />
                 <CustomContentLayout>
                     <Sider width={256} breakpoint="md" collapsedWidth="0"
                         onBreakpoint={broken => {
