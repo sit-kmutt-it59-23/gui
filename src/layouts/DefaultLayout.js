@@ -89,14 +89,7 @@ class DefaultLayout extends Component {
                     </CustomMenu>
                 </CustomHeader>
                 <CustomContentLayout>
-                    <Sider width={256} breakpoint="md" collapsedWidth="0"
-                        onBreakpoint={broken => {
-                            console.log(broken);
-                        }}
-                        onCollapse={(collapsed, type) => {
-                            console.log(collapsed, type);
-                        }}
-                    >
+                    <Sider width={256} breakpoint="md" collapsedWidth="0">
                         <Menu
                             mode="inline"
                             style={{ height: '100%', borderRight: 0 }}
