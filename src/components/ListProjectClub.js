@@ -61,28 +61,28 @@ class ListProjectClub extends Component {
                 title: 'ชื่อโครงการ',
                 dataIndex: 'name',
                 key: 'name',
-                sorter: (a, b) => b.name.localeCompare(a.name),
+                sorter: (a, b) => a.name.localeCompare(b.name),
                 render: (val, item) => <Link to={`/projects/${item.id}`}>{val}</Link>
             },
             {
                 title: 'งบประมาณที่ขอ',
                 dataIndex: 'budget_amount',
                 key: 'budget_amount',
-                sorter: (a, b) => b.budget_amount - a.budget_amount,
+                sorter: (a, b) => a.budget_amount - b.budget_amount,
                 render: (val) => val.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
             },
             {
                 title: 'วันที่ดำเนินโครงการ',
                 dataIndex: 'start_at',
                 key: 'start_at',
-                sorter: (a, b) => moment(b.start_at).unix() - moment(a.start_at).unix(),
+                sorter: (a, b) => moment(a.start_at).unix() - moment(b.start_at).unix(),
                 render: (val) => moment(val).locale('th').format('ll')
             },
             {
                 title: 'วันที่สิ้นสุดโครงการ',
                 dataIndex: 'end_at',
                 key: 'end_at',
-                sorter: (a, b) => moment(b.end_at).unix() - moment(a.end_at).unix(),
+                sorter: (a, b) => moment(a.end_at).unix() - moment(b.end_at).unix(),
                 defaultSortOrder: 'ascend',
                 render: (val) => moment(val).locale('th').format('ll')
             },
