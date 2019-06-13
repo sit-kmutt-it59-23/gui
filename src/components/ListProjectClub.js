@@ -1,16 +1,13 @@
 import React, { Children, Component, Fragment } from 'react'
-import { Table } from 'reactstrap'
+import { Link } from 'react-router-dom'
+import { Dropdown, Empty, Icon, Menu, Table } from 'antd'
 import styled from 'styled-components'
 import moment from 'moment'
 import 'moment/locale/th'
 import PropTypes from 'prop-types'
-
-import ProjectActionButton from 'components/ProjectActionButton'
 import axiosInstance from 'scripts/Api'
 
-const TableCustom = styled(Table)`
-    font-size:12px;
-`
+const { SubMenu } = Menu
 
 class ListProjectClub extends Component {
     constructor(props) {
@@ -41,76 +38,70 @@ class ListProjectClub extends Component {
     }
 
     render() {
-        const theadContent = (
-            <Fragment>
-                <th>ลำดับ</th>
-                <th>ชื่อโครงการ</th>
-                <th>งบประมาณ (บาท)</th>
-                <th>ระยะดำเนินการ</th>
-                {this.props.showAction ? <th>การดำเนินการ</th> : null}
-            </Fragment>
-        )
-        const theadContentCount = Children.toArray(theadContent)[0].props.children.length;
-        let tbodyContent;
+        const tableLocale = {
+            emptyText: () => {
+                if (this.state.error) {
+                    return <Empty image={Empty.PRESENTED_IMAGE_DEFAULT} description="เกิดข้อผิดพลาดขณะกำลังโหลดข้อมูล โปรดลองอีกครั้งในภายหลัง" />
+                }
+                return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="ไม่มีข้อมูล" />
+            }
+        }
 
-        if (this.state.isLoading) {
-            tbodyContent = (
-                <tr>
-                    <td className="text-center" colSpan={theadContentCount}>
-                        <div className="spinner-border text-primary" role="status">
-                            <span className="sr-only">กำลังโหลด...</span>
-                        </div>
-                        <span className="ml-2">กำลังโหลด...</span>
-                    </td>
-                </tr>   
-            )
-        }
-        else if (this.state.error) {
-            tbodyContent = (
-                <tr>
-                    <td className="text-center text-muted" colSpan={theadContentCount}>
-                        เกิดข้อผิดพลาดขณะที่กำลังโหลดข้อมูล โปรดลองอีกครั้งในภายหลัง
-                    </td>
-                </tr>
-            )
-        }
-        else if (this.state.data.length > 0) {
-            tbodyContent = this.state.data.map((datum, idx) => {
-                const {id, name, budget_amount, start_at, end_at} = datum
-                return (
-                    <tr key={id}>
-                        <td className="text-center">{idx + 1}</td>
-                        <td>{name}</td>
-                        <td className="text-center"> {budget_amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-                        <td>{moment(start_at).locale('th').format('ll')}&nbsp;&ndash;&nbsp;{moment(end_at).locale('th').format('ll')}</td>
-                        {this.props.showAction ? (<td className="text-right"><ProjectActionButton identifier={id} /></td>) : ''}
-                    </tr>
+        const actionMenu = (project_id) => (
+            <Menu>
+                <SubMenu title="สร้าง">
+                    <Menu.Item><Link to={`/projects/${project_id}/docs/1/create`}>การเสนอโครงการ</Link></Menu.Item>
+                    <Menu.Item><Link to={`/projects/${project_id}/docs/2/create`}>การสรุปโครงการ</Link></Menu.Item>
+                </SubMenu>
+            </Menu>
+        )
+
+        const columns = [
+            {
+                title: 'ชื่อโครงการ',
+                dataIndex: 'name',
+                key: 'name',
+                sorter: (a, b) => b.name.localeCompare(a.name),
+                render: (val, item) => <Link to={`/projects/${item.id}`}>{val}</Link>
+            },
+            {
+                title: 'งบประมาณที่ขอ',
+                dataIndex: 'budget_amount',
+                key: 'budget_amount',
+                sorter: (a, b) => b.budget_amount - a.budget_amount,
+                render: (val) => val.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            },
+            {
+                title: 'วันที่ดำเนินโครงการ',
+                dataIndex: 'start_at',
+                key: 'start_at',
+                sorter: (a, b) => moment(b.start_at).unix() - moment(a.start_at).unix(),
+                render: (val) => moment(val).locale('th').format('ll')
+            },
+            {
+                title: 'วันที่สิ้นสุดโครงการ',
+                dataIndex: 'end_at',
+                key: 'end_at',
+                sorter: (a, b) => moment(b.end_at).unix() - moment(a.end_at).unix(),
+                defaultSortOrder: 'ascend',
+                render: (val) => moment(val).locale('th').format('ll')
+            },
+            {
+                title: "การดำเนินการ",
+                key: 'action',
+                render: (val, item) => (
+                    <Dropdown overlay={actionMenu(item.id)}>
+                        <a className="ant-dropdown-link" href="#">
+                            เมนู <Icon type="down" />
+                        </a>
+                    </Dropdown>
                 )
-            })
-        }
-        else {
-            tbodyContent = (
-                <tr>
-                    <td className="text-center text-muted" colSpan={theadContentCount}>
-                        ไม่พบโครงการที่พิจารณางบแล้ว
-                    </td>
-                </tr>
-                
-            )
-        }
+            }
+        ]
 
         return (
             <Fragment>
-                <TableCustom responsive>
-                    <thead>
-                        <tr className="text-center">
-                            {theadContent}  
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tbodyContent}
-                    </tbody>
-                </TableCustom>
+                <Table dataSource={this.state.data} columns={columns} locale={tableLocale} loading={this.state.isLoading} />
             </Fragment>
         )
     }
