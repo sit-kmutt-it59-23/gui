@@ -55,6 +55,7 @@ const menu = (
                 การตั้งค่า
             </a>
         </Menu.Item>
+        <Menu.Divider />
         <Menu.Item>
             <a href="#">
                 ออกจากระบบ
