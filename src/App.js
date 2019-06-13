@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import GlobalStyles from 'scripts/GlobalStyles';
-
 import Index from 'pages/Index';
 import Projects from 'pages/Projects';
 import FormPage from 'pages/FormPage';
@@ -11,7 +9,6 @@ import HttpNotFound from 'pages/error/HttpNotFound';
 
 const App = () => (
     <Fragment>
-        <GlobalStyles />
         <Router>
             <Switch>
                 <Route exact path="/" component={Index} />
