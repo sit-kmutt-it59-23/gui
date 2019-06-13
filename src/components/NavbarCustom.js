@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, Dropdown, Button, Icon } from 'antd'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import LogoImg from 'assets/images/actxis-logo-solid-white-transparent.svg';
 
@@ -12,7 +13,7 @@ const Nav = styled.div`
     padding: 10px 16px !important;
     color: #ffffff;
     width: 100%;
-    background-color: ${props => props.inputColor || "#e88044"};
+    background-color: ${props => props.inputBgColor || "#e88044"};
 `
 
 const LinkStyleNone = styled(Link)`
@@ -67,7 +68,7 @@ const menu = (
 class NavbarCustom extends Component {
     render() {
         return (
-            <Nav>
+            <Nav inputBgColor={this.props.BgColor}>
                 <LinkStyleNone to="/">
                     <Logo src={LogoImg} />
                     <span><strong>KMUTT Actxis</strong></span>
@@ -83,5 +84,10 @@ class NavbarCustom extends Component {
         )
     }
 }
+
+NavbarCustom.propTypes = {
+    BgColor: PropTypes.string
+}
+
 
 export default NavbarCustom
