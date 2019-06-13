@@ -24,7 +24,7 @@ class DefaultLayout extends Component {
         if (this.props.breadcrumb) {
             breadcrumb = this.props.breadcrumb.map((item, idx) => {
                 return (
-                    <Breadcrumb.Item>
+                    <Breadcrumb.Item key={idx}>
                         {
                             item.link || !item.active
                             ? <Link to={item.link}>{item.text}</Link>
@@ -41,14 +41,7 @@ class DefaultLayout extends Component {
             <Layout>
                 <Navbar />
                 <CustomContentLayout>
-                    <Sider width={256} breakpoint="md" collapsedWidth="0"
-                        onBreakpoint={broken => {
-                            console.log(broken);
-                        }}
-                        onCollapse={(collapsed, type) => {
-                            console.log(collapsed, type);
-                        }}
-                    >
+                    <Sider width={256} breakpoint="md" collapsedWidth="0">
                         <Menu
                             mode="inline"
                             style={{ height: '100%', borderRight: 0 }}
