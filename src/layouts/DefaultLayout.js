@@ -1,21 +1,15 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Layout, Menu, Icon, Breadcrumb } from 'antd'
+import { Layout, Breadcrumb } from 'antd'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileInvoiceDollar, faFileAlt, faSitemap, faSlidersH, faUsers } from '@fortawesome/free-solid-svg-icons'
 
 import Navbar from '../components/NavbarCustom'
+import Sidebar from '../components/Sidebar'
 
-const {  Sider, Content } = Layout
-const { SubMenu } = Menu
+const { Content } = Layout
 
 const CustomContentLayout = styled(Layout)`
     min-height: calc(100vh - 64px) !important;
-`
-
-const CustomFaIcon = styled(FontAwesomeIcon)`
-    margin-right: 8px;
 `
 
 class DefaultLayout extends Component {
@@ -41,41 +35,7 @@ class DefaultLayout extends Component {
             <Layout>
                 <Navbar />
                 <CustomContentLayout>
-                    <Sider width={256} breakpoint="md" collapsedWidth="0">
-                        <Menu
-                            mode="inline"
-                            style={{ height: '100%', borderRight: 0 }}
-                        >
-                            <Menu.Item key="organization">
-                                <CustomFaIcon icon={faSitemap} />
-                                <span>องค์กร</span>
-                            </Menu.Item>
-                            <Menu.Item key="project">
-                                <CustomFaIcon icon={faFileAlt} />
-                                <span>โครงการ</span>
-                                <Link to="/projects" />
-                            </Menu.Item>
-                            <Menu.Item key="budget">
-                                <CustomFaIcon icon={faFileInvoiceDollar} />
-                                <span>งบประมาณ</span>
-                            </Menu.Item>
-                            <SubMenu
-                                key="sub2"
-                                title={
-                                    <span>
-                                        <CustomFaIcon icon={faSlidersH} />
-                                        <span>แผงตวบคุม</span>
-                                    </span>
-                                }
-                            >
-                                <Menu.Item key="user">
-                                    <CustomFaIcon icon={faUsers} />
-                                    ผู้ใช้
-                                </Menu.Item>
-                            </SubMenu>
-
-                        </Menu>
-                    </Sider>
+                    <Sidebar />
                     <Layout style={{ padding: '0 24px 24px' }}>
                         <Breadcrumb separator=">" style={{ margin: '16px 0' }}>
                             {breadcrumb}
