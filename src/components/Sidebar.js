@@ -1,99 +1,92 @@
-import React, { Component , Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
+import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileInvoiceDollar, faFileAlt, faSitemap, faSlidersH, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faInfoCircle, faFolderOpen, faMapMarkerAlt, faCoins } from '@fortawesome/free-solid-svg-icons'
 
-const {  Sider } = Layout
+import { inferToggle, offerToggle, aboutClubToggle } from '../redux/sidebar'
+
+const { Sider } = Layout
 const { SubMenu } = Menu
 
 const CustomFaIcon = styled(FontAwesomeIcon)`
-    margin-right: 8px;
+    margin-right: 14px;
+    font-size:20px;
 `
 
 class Sidebar extends Component {
     render() {
         return (
             <Sider width={256} breakpoint="md" collapsedWidth="0">
-                <Menu mode="inline" style={{ height: '100%', borderRight: 0 }} defaultOpenKeys={[]} defaultSelectedKeys={[]}> 
-                    <Menu.Item key="budget">
-                        <CustomFaIcon icon={faFileInvoiceDollar} />
-                        <span>Dashboard</span>
-                    </Menu.Item>
-                    {/* ----------------- เเบบเสนอโครงการ -----------------  */}
-                    <SubMenu
-                        key="infer"
+                <Menu mode="inline" style={{ height: '100%', borderRight: 0 }} defaultOpenKeys={[]} defaultSelectedKeys={[]}>
+                    <SubMenu key="Documents"
                         title={
                             <span>
-                                <CustomFaIcon icon={faFileAlt} />
-                                <span>เสนอโครงการ</span>
+                                <CustomFaIcon icon={faFolderOpen} />
+                                <span><strong>เอกสารโครงการ</strong></span>
+                            </span>
+                        }
+                    >
+                        <Menu.ItemGroup key="g1"
+                            title={
+                                <span>
+                                    <Link to="/projects" style={{ color: '#464545' }}>
+                                        แบบเสนอโครงการ
+                                     </Link>
+                                </span>
+                            }
+                        >
+                            <Menu.Item key="g1_1">โครงการทำบุญชมรม</Menu.Item>
+                            <Menu.Item key="g1_2">โครงการนาฏยโขนละครอาสา</Menu.Item>
+                            <Menu.Item key="g1_3">โครงการสอนชาวต่างชาติ</Menu.Item>
+                        </Menu.ItemGroup>
+                        {/* ต้องรอให้กิจกรรมจบเเล้ว เเละกองกิจอนุญาตให้เริ่มเขียนสรุปโครงการ Menu.Item ถึงจะขึน */}
+                        <Menu.ItemGroup key="g2"
+                            title={
+                                <span>
+                                    <Link to="#" style={{ color: '#464545' }}>
+                                        แบบสรุปโครงการ
+                                    </Link>
+                                </span>
+                            }
+                        >
+                            <Menu.Item key="g2_1">โครงการทำบุญชมรม</Menu.Item>
+                        </Menu.ItemGroup>
+                    </SubMenu>
+                    <Menu.Item key="tracking">
+                        <CustomFaIcon icon={faMapMarkerAlt} />
+                        <span><strong>ติดตามโครงการ</strong></span>
+                        <Link to="/tracking" />
+                    </Menu.Item>
+                    <Menu.Item key="budget">
+                        <CustomFaIcon icon={faCoins} />
+                        <span><strong>งบประมาณ</strong></span>
+                    </Menu.Item>
+                    <SubMenu key="etc"
+                        title={
+                            <span>
+                                <CustomFaIcon icon={faInfoCircle} />
+                                <span><strong>ข้อมูลเพิ่มเติม</strong></span>
                                 
                             </span>
                         }
                     >
-                        <Menu.Item key="test" >
-                            <CustomFaIcon icon={faUsers} />
-                            โครงการที่ผ่านการพิจารณางบ
-                        </Menu.Item>
-                        <Menu.Item >
-                            <CustomFaIcon icon={faUsers} />
-                            กรอกแบบฟอร์มโครงการ
-                            <Link to="/projects" />
-                        </Menu.Item>
-                        <Menu.Item >
-                            <CustomFaIcon icon={faUsers} />
-                            ติดตามโครงการ
-                        </Menu.Item>
-                        <Menu.Item >
-                            <CustomFaIcon icon={faUsers} />
-                            แบบเสนอโครงการที่อนุมัติ
-                        </Menu.Item>
+                        <Menu.Item key="information_organize">ข้อมูลหน่วยงาน</Menu.Item>
                     </SubMenu>
-                    {/* ----------------- เเบบสรุปโครงการ -----------------  */}
-                    <SubMenu 
-                        key="offer"
-                        title={
-                            <span>
-                                <CustomFaIcon icon={faFileAlt} />
-                                <span>สรุปโครงการ</span>
-                                
-                            </span>
-                        }
-                    >
-                        <Menu.Item >
-                            <CustomFaIcon icon={faUsers} />
-                            โครงการที่รอสรุปผล
-                        </Menu.Item>
-                        <Menu.Item >
-                            <CustomFaIcon icon={faUsers} />
-                            โครงการที่กำลังสรุปผล
-                            <Link to="/projects" />
-                        </Menu.Item>
-                        <Menu.Item >
-                            <CustomFaIcon icon={faUsers} />
-                            ติดตามโครงการ
-                        </Menu.Item>
-                        <Menu.Item >
-                            <CustomFaIcon icon={faUsers} />
-                            โครงการที่สรุปผลแล้ว
-                        </Menu.Item>
-                    </SubMenu>
-                    {/* ----------------- อื่นๆ -----------------  */}
-                    <Menu.Item key="budget">
-                        <CustomFaIcon icon={faFileInvoiceDollar} />
-                        <span>งบประมาณ</span>
-                    </Menu.Item>
-                    <Menu.Item key="club">
-                        <CustomFaIcon icon={faUsers} />
-                        <span>ข้อมูลชมรม</span>
-                    </Menu.Item>
-            </Menu>
-        </Sider>
+
+                </Menu>
+            </Sider>
         )
     }
 }
 
+const mapStateToProps = state => ({
+    infer: state.sidebar.infer,
+    offer: state.sidebar.offer,
+    aboutclub: state.sidebar.aboutclub
+})
 
 
-export default Sidebar
+export default connect(mapStateToProps)(Sidebar)

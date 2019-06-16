@@ -1,5 +1,5 @@
 body {
-    font-family: 'Prompt', sans-serif;
+    font-family: 'Sarabun', sans-serif;
 }
 
 .text-center{
@@ -12,4 +12,14 @@ body {
 
 .text-right{
     text-align: right;
+}
+
+.ant-menu-item-group-title{
+    color: #464545;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.ant-menu{
+    color: #464545;
 }
