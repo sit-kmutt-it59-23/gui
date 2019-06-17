@@ -15,6 +15,10 @@
     tr.visible-xs    { display: table-row !important; }
     th.visible-xs,
     td.visible-xs    { display: table-cell !important; }
+    /* ------- override ant design size xs------- */
+    .ant-table-thead th{
+        min-width: 140px;
+    }
 }
 @media (min-width: 48em) and (max-width: 62em) {
     .visible-sm      { display: block !important; }
@@ -27,6 +31,10 @@
     tr.visible-sm    { display: table-row !important; }
     th.visible-sm,
     td.visible-sm    { display: table-cell !important; }
+    /* ------- override ant design size sm ------- */
+    .ant-table-thead th{
+        min-width: 140px;
+    }
 }
 @media (min-width: 62em) and (max-width: 75em) {
     .visible-md      { display: block !important; }

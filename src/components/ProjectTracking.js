@@ -9,14 +9,17 @@ class ProjectTacking extends Component {
     render() {
         return (
             <Tabs type="card" >
-                <TabPane tab="Test" key="1" >
+                <TabPane tab="โครงการทำบุญชมรม" key="1" >
+                    <br />
                     <ContentTab />
                 </TabPane>
-                <TabPane tab="Tab 2" key="2">
-                    Content of Tab Pane 2
+                <TabPane tab="โครงการนาฏยโขนละครอาสา" key="2">
+                    <br />
+                    <ContentTab />
                 </TabPane>
-                <TabPane tab="Tab 3" key="3">
-                    Content of Tab Pane 3
+                <TabPane tab="โครงการสอนชาวต่างชาติ" key="3">
+                    <br />
+                    <ContentTab />
                 </TabPane>
             </Tabs>
         )

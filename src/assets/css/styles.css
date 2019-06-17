@@ -14,6 +14,8 @@ body {
     text-align: right;
 }
 
+/* ------- override ant design ------- */
+
 .ant-menu-item-group-title{
     color: #464545;
     font-size: 14px;
@@ -22,4 +24,25 @@ body {
 
 .ant-menu{
     color: #464545;
+}
+
+.ant-steps-item #tracking-tail{
+  height:80px ;
+}
+
+.ant-table{
+    overflow-x: auto;
+}
+
+.ant-table .ant-table-thead th{
+    background-color: #E88044;
+    color: #ffffff;
+}
+
+.ant-table-thead > tr > th.ant-table-column-has-actions.ant-table-column-has-sorters:hover {
+    background: #e88044;
+}
+
+.ant-table-thead > tr > th.ant-table-column-sort {
+    background: #e88044;
 }
