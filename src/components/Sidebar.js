@@ -20,7 +20,7 @@ class Sidebar extends Component {
     render() {
         return (
             <Sider width={256} breakpoint="md" collapsedWidth="0">
-                <Menu mode="inline" style={{ height: '100%', borderRight: 0 }} defaultOpenKeys={[]} defaultSelectedKeys={[]}>
+                <Menu mode="inline" style={{ height: '100%', borderRight: 0 ,paddingTop: '10px'}} defaultOpenKeys={[]} defaultSelectedKeys={[]}>
                     <SubMenu key="Documents"
                         title={
                             <span>
