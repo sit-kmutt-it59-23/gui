@@ -65,7 +65,7 @@ class ContentTab extends Component {
         return (
             <Row>
                 <Col xs={{ span: 20, offset: 2 }}  md={{ span: 6, offset: 1 }}>
-                    <Steps direction="vertical" current={1} >
+                    <Steps direction="vertical" current={1} status="process">
                         <Step title="ชมรมนาฏยโขนละคร"
                             description={
                                 <div id="tracking-tail">
@@ -78,7 +78,7 @@ class ContentTab extends Component {
                         <Step title="อาจารย์ที่ปรึกษา"
                             description={
                                 <div id="tracking-tail">
-                                    ส่งเเบบเสนอโครงการเเล้ว<br/>
+                                    รอตรวจสอบ<br/>
                                     17/06/2562<br/>
                                     18:00
                                 </div>
@@ -113,7 +113,7 @@ class ContentTab extends Component {
                         />
                     </Steps>
                 </Col>
-                <Col xs={{ span: 22, offset: 1 }} md={{ span: 15, offset: 1 }}>
+                <Col xs={{ span: 22, offset: 1 }} md={{ span: 15, offset: 1 }} >
                     <Table columns={columns} dataSource={data} size="middle"/>
                 </Col>
             </Row>
