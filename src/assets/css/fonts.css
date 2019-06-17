@@ -2,6 +2,5 @@
     font-family: 'Sarabun';
     font-style: normal;
     font-weight: 300;
-    src: local('Sarabun-Regular'), url('../fonts/Sarabun-Regular.ttf') format('truetype');
+    src: local('Sarabun-Medium'), url('../fonts/Sarabun-Medium.ttf') format('truetype');
 }
-
