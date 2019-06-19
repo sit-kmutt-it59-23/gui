@@ -1,7 +1,5 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Steps, Table, Row, Col } from 'antd'
-import styled from 'styled-components'
-
 
 const { Step } = Steps;
 
