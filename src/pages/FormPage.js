@@ -2,12 +2,12 @@ import React from 'react'
 
 import DefaultLayout from 'layouts/DefaultLayout'
 import Sidebar from 'components/Sidebar'
-import Form from 'components/Form'
+import WrappedProjectProposalForm from 'components/Form'
 
 const FormPage = () => (
     <DefaultLayout
         left={<Sidebar />}
-        middle={<Form />}
+        middle={<WrappedProjectProposalForm />}
         right=" "
     />
 )
