@@ -24,7 +24,7 @@ class ListProjectClub extends Component {
     }
 
     getData() {
-        axiosInstance.get('/organizations/7/projects').then(response => {
+        axiosInstance.get('/organizations/ea8a1820-8f2a-4011-8a9d-be8205d18bae/projects').then(response => {
             this.setState({
                 data: response.data,
                 isLoading: false
@@ -62,21 +62,23 @@ class ListProjectClub extends Component {
                 dataIndex: 'name',
                 key: 'name',
                 sorter: (a, b) => a.name.localeCompare(b.name),
-                render: (val, item) => <Link to={`/projects/${item.id}`}>{val}</Link>
+                render: (val, item) => <Link to={`/projects/${item.id}`}>{val}</Link>,
             },
             {
                 title: 'งบประมาณที่ขอ',
                 dataIndex: 'budget_amount',
                 key: 'budget_amount',
                 sorter: (a, b) => a.budget_amount - b.budget_amount,
-                render: (val) => val.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+                render: (val) => val.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
+                align: 'right'
             },
             {
                 title: 'วันที่ดำเนินโครงการ',
                 dataIndex: 'start_at',
                 key: 'start_at',
                 sorter: (a, b) => moment(a.start_at).unix() - moment(b.start_at).unix(),
-                render: (val) => moment(val).locale('th').format('ll')
+                render: (val) => moment(val).locale('th').format('ll'),
+                align: 'center'
             },
             {
                 title: 'วันที่สิ้นสุดโครงการ',
@@ -84,7 +86,8 @@ class ListProjectClub extends Component {
                 key: 'end_at',
                 sorter: (a, b) => moment(a.end_at).unix() - moment(b.end_at).unix(),
                 defaultSortOrder: 'ascend',
-                render: (val) => moment(val).locale('th').format('ll')
+                render: (val) => moment(val).locale('th').format('ll'),
+                align: 'center'
             },
             {
                 title: "การดำเนินการ",
@@ -95,7 +98,8 @@ class ListProjectClub extends Component {
                             เมนู <Icon type="down" />
                         </a>
                     </Dropdown>
-                )
+                ),
+                align: 'center'
             }
         ]
 

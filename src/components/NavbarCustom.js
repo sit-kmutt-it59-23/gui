@@ -1,47 +1,52 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Dropdown, Button, Icon } from 'antd'
+import { Menu, Dropdown, Icon } from 'antd'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
-import LogoImg from 'assets/images/actxis-logo-solid-white-transparent.svg';
+import LogoImg from 'assets/images/LogoNon-Content.png';
 
 const Nav = styled.div`
     display:flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 16px !important;
-    color: #ffffff;
     width: 100%;
-    background-color: ${props => props.inputBgColor || "#e88044"};
+    background-color: #ffffff;
+    z-index:1;
+    box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 
 const LinkStyleNone = styled(Link)`
-    color: #ffffff !important;
+    color: #464545 !important;
 `
 
 const Logo = styled.img`
-    height: 35px;
+    height: 30px;
     margin-right: 8px;
 `
 
-const ButtonNavbar = styled(Button)`
-    font-size: 14px;
-    background: none;
-    border: none;
-    color: #fff;
+const ProfileImg = styled.img`
+    border-radius: 100%;
+    margin-right: 10px;
+`
+const LinkMenu = styled(Link)`
+    display: flex;
+    align-items: center;
+    color: #464545;
     &:hover,&:active,&:visited, &:link,&:focus{
-        background: #ef6413;
+        color: #464545;
         border: none;
     }
 `
 
-const ProfileImg = styled.img`
-    border-radius:100%;
-`
-
-const ProfileName = styled.span`
-    margin-left:10px;
+const ProfileName = styled.div`
+    font-size:12px;
+    margin-right:10px;
+    hr{
+        margin: 0;
+        padding: 0;
+        border:0.2px #464545 solid;
+    }
 `
 
 const menu = (
@@ -68,25 +73,27 @@ const menu = (
 class NavbarCustom extends Component {
     render() {
         return (
-            <Nav inputBgColor={this.props.BgColor}>
+            <Nav>
                 <LinkStyleNone to="/">
                     <Logo src={LogoImg} />
-                    <span><strong>KMUTT Actxis</strong></span>
+                    <span>
+                        <strong>KMUTT Act<span style={{ color: '#E88044' }}>x</span>is</strong>
+                    </span>
                 </LinkStyleNone>
                 <Dropdown overlay={menu} trigger={['click']}>
-                    <ButtonNavbar size="large">
+                    <LinkMenu to="#">
                         <ProfileImg alt="Profile Pictrue" src="https://loremflickr.com/g/32/32/cat" />
-                        <ProfileName className="hidden-xs">มดน้อย ในไร่ส้ม</ProfileName>
+                        <ProfileName className="hidden-xs">
+                            59130500062
+                            <hr />
+                            ชมรมนาฏยโขนละคร
+                        </ProfileName>
                         <Icon type="down" />
-                    </ButtonNavbar>
+                    </LinkMenu>
                 </Dropdown>
-            </Nav>
+            </Nav >
         )
     }
-}
-
-NavbarCustom.propTypes = {
-    BgColor: PropTypes.string
 }
 
 
