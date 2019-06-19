@@ -19,6 +19,9 @@
     .ant-table-thead th{
         min-width: 140px;
     }
+    .ant-layout-sider-collapsed{
+        display: none;
+    }
 }
 @media (min-width: 48em) and (max-width: 62em) {
     .visible-sm      { display: block !important; }

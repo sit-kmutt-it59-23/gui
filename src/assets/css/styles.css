@@ -46,3 +46,12 @@ body {
 .ant-table-thead > tr > th.ant-table-column-sort {
     background: #e88044;
 }
+
+.ant-menu-submenu-title .anticon, .ant-menu-item .anticon {
+    font-size: 18px;
+}
+.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title .anticon, 
+.ant-menu-inline-collapsed > .ant-menu-item .anticon {
+    font-size: 18px;
+
+}

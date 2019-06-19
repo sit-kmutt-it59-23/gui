@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, Dropdown, Icon } from 'antd'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 
+import { sidebarToggle, changeSelectedKey } from '../redux/sidebar'
 import LogoImg from 'assets/images/LogoNon-Content.png';
 
 const Nav = styled.div`
     display:flex;
     justify-content: space-between;
     align-items: center;
+    user-select: none;
     padding: 10px 16px !important;
     width: 100%;
     background-color: #ffffff;
@@ -28,6 +31,8 @@ const Logo = styled.img`
 const ProfileImg = styled.img`
     border-radius: 100%;
     margin-right: 10px;
+    height:42px;
+    width:42px;
 `
 const LinkMenu = styled(Link)`
     display: flex;
@@ -48,41 +53,69 @@ const ProfileName = styled.div`
         border:0.2px #464545 solid;
     }
 `
+const FlexCenterItem = styled.div`
+    display: flex;
+    align-items: center;
+`
 
 const menu = (
     <Menu>
         <Menu.Item>
-            <a href="#">
+            <Link to="#">
                 ดูโปรไฟล์
-            </a>
+            </Link>
         </Menu.Item>
         <Menu.Item>
-            <a href="#">
+            <Link to="#">
                 การตั้งค่า
-            </a>
+            </Link>
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item>
-            <a href="#">
+            <Link to="#">
                 ออกจากระบบ
-            </a>
+            </Link>
         </Menu.Item>
     </Menu>
 )
 
 class NavbarCustom extends Component {
+    constructor(props) {
+        super(props)
+        this.toggle = this.toggle.bind(this)
+        this.changeSelectedKey = this.changeSelectedKey.bind(this)
+    }
+
+    toggle() {
+        const { dispatch } = this.props
+        dispatch(sidebarToggle())
+    }
+
+    changeSelectedKey() {
+        const { dispatch } = this.props
+        dispatch(changeSelectedKey(""))
+    }
+
     render() {
         return (
             <Nav>
-                <LinkStyleNone to="/">
-                    <Logo src={LogoImg} />
-                    <span>
-                        <strong>KMUTT Act<span style={{ color: '#E88044' }}>x</span>is</strong>
-                    </span>
-                </LinkStyleNone>
+                <FlexCenterItem>
+                    <Icon
+                        className="trigger"
+                        type={this.props.sidebar ? 'menu-unfold' : 'bars'}
+                        onClick={this.toggle}
+                        style={{ marginRight: '15px', fontSize: '18px' }}
+                    />
+                    <LinkStyleNone to="/" onClick={this.changeSelectedKey}>
+                        <Logo src={LogoImg} />
+                        <span>
+                            <strong>KMUTT Act<span style={{ color: '#E88044' }}>x</span>is</strong>
+                        </span>
+                    </LinkStyleNone>
+                </FlexCenterItem>
                 <Dropdown overlay={menu} trigger={['click']}>
                     <LinkMenu to="#">
-                        <ProfileImg alt="Profile Pictrue" src="https://loremflickr.com/g/32/32/cat" />
+                        <ProfileImg alt="Profile Pictrue" src="https://pbs.twimg.com/profile_images/1000002686677209088/D1d8M7jA_400x400.jpg" />
                         <ProfileName className="hidden-xs">
                             59130500062
                             <hr />
@@ -96,5 +129,8 @@ class NavbarCustom extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    sidebar: state.sidebar.sidebar,
+})
 
-export default NavbarCustom
+export default connect(mapStateToProps)(NavbarCustom)

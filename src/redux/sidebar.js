@@ -1,62 +1,63 @@
-const INFER_TOGGLE = 'INFER_TOGGLE'
-const OFFER_TOGGLE = 'OFFER_TOGGLE'
-const ABOUTCLUB_TOGGLE = 'ABOUTCLUB_TOGGLE'
-const LINK_ACTIVE = 'LINK_ACTIVE'
+const SIDEBAR_TOGGLE = 'SIDEBAR_TOGGLE'
+const SUBMENU_KEYS = 'SUBMENU_KEYS'
+const SELECT_KEY = 'SELECT_KEYS'
 
 const initState = {
-  infer: false,
-  offer: false,
-  aboutclub: false,
-  link_active:"",
+  sidebar: true,
+  submenukeys: [],
+  selectedkey: []
 }
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
-    case INFER_TOGGLE:
+    case SIDEBAR_TOGGLE:
       return {
         ...state,
-        infer: !state.infer,
+        sidebar: !state.sidebar,
       }
-    case OFFER_TOGGLE:
-      return {
+    case SELECT_KEY:
+      return  {
         ...state,
-        offer: !state.offer,
+        selectedkey: action.key
       }
-    case ABOUTCLUB_TOGGLE:
-      return {
-        ...state,
-        aboutclub: !state.aboutclub,
-      }
-    case LINK_ACTIVE:
-        return {
-        ...state,
-        link_active: action.id,
+    case SUBMENU_KEYS:
+        let result = []
+        let check = false
+        if(state.submenukeys.length === 0){
+          result.push(action.key)
+        }else{
+          state.submenukeys.forEach((key, idx, array) => {
+            if(key !== action.key){
+              result.push(key)
+              if (idx === array.length - 1){ 
+                check = true
+              }
+            }
+          })
+          if(check){
+            result.push(action.key)
+          }
         }
+      return {
+        ...state,
+        submenukeys : result
+      }
     default:
       return state
   }
 }
 
-const inferToggle = () => ({
-  type: INFER_TOGGLE,
+const sidebarToggle = () => ({
+  type: SIDEBAR_TOGGLE,
 })
 
-const offerToggle = () => ({
-    type: OFFER_TOGGLE,
+const changeSubMenuKeys = (key) => ({
+  type: SUBMENU_KEYS, key
 })
 
-const aboutClubToggle = () => ({
-    type: ABOUTCLUB_TOGGLE,
-})
-
-const linkActive = (id) => ({
-    type: LINK_ACTIVE, id
+const changeSelectedKey = (key) => ({
+    type: SELECT_KEY, key
 })
 
 export default reducer
-export {
-  inferToggle,
-  offerToggle,
-  aboutClubToggle,
-  linkActive
-}
+export { sidebarToggle, changeSelectedKey, changeSubMenuKeys }
