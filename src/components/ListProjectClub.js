@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { Dropdown, Empty, Icon, Menu, Table } from 'antd'
 import moment from 'moment'
 import 'moment/locale/th'
-import PropTypes from 'prop-types'
 import axiosInstance from 'scripts/Api'
 
 const { SubMenu } = Menu
