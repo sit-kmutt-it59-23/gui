@@ -102,7 +102,7 @@ class NavbarCustom extends Component {
                 <FlexCenterItem>
                     <Icon
                         className="trigger"
-                        type={this.props.sidebar ? 'menu-unfold' : 'bars'}
+                        type={this.props.sidebar ? 'menu-unfold' : 'menu-fold'}
                         onClick={this.toggle}
                         style={{ marginRight: '15px', fontSize: '18px' }}
                     />
