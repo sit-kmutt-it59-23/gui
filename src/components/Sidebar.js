@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Layout, Menu, Icon } from 'antd'
 import { connect } from 'react-redux'
@@ -26,7 +26,7 @@ class Sidebar extends Component {
 
     render() {
         return (
-            <Sider width={256} trigger={null} collapsible collapsed={this.props.sidebar} >
+            <Sider width={248} trigger={null} collapsible collapsed={this.props.sidebar} >
                 <Menu mode="inline"
                     style={{ height: '100%', borderRight: 0, paddingTop: '10px' }}
                     defaultOpenKeys={this.props.submenukeys}
