@@ -110,9 +110,4 @@ class ListProjectClub extends Component {
     }
 }
 
-ListProjectClub.propTypes = {
-    showAction: PropTypes.bool
-}
-
-
 export default ListProjectClub
