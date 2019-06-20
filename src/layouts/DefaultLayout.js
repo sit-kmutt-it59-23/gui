@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Layout, Breadcrumb } from 'antd'
+import { Layout } from 'antd'
 import styled from 'styled-components'
 
 import Navbar from '../components/NavbarCustom'
