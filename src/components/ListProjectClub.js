@@ -22,7 +22,7 @@ class ListProjectClub extends Component {
     }
 
     getData() {
-        axiosInstance.get('/organizations/ea8a1820-8f2a-4011-8a9d-be8205d18bae/projects').then(response => {
+        axiosInstance.get('/organizations/81da0ec0-aa4b-404d-9d7a-b1cf9033c798/projects').then(response => {
             this.setState({
                 data: response.data,
                 isLoading: false
@@ -60,7 +60,7 @@ class ListProjectClub extends Component {
                 dataIndex: 'name',
                 key: 'name',
                 sorter: (a, b) => a.name.localeCompare(b.name),
-                render: (val, item) => <Link to={`/projects/${item.id}`}>{val}</Link>,
+                render: (val) => val,
             },
             {
                 title: 'งบประมาณที่ขอ',
@@ -92,9 +92,9 @@ class ListProjectClub extends Component {
                 key: 'action',
                 render: (val, item) => (
                     <Dropdown overlay={actionMenu(item.id)}>
-                        <a className="ant-dropdown-link" href="#">
-                            เมนู <Icon type="down" />
-                        </a>
+                       <Link to="#"> 
+                            เมนู <Icon type="right" />
+                       </Link>
                     </Dropdown>
                 ),
                 align: 'center'
