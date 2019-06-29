@@ -103,7 +103,7 @@ class ListProjectClub extends Component {
 
         return (
             <Fragment>
-                <Table dataSource={this.state.data} columns={columns} locale={tableLocale} loading={this.state.isLoading} />
+                <Table dataSource={this.state.data} columns={columns} rowKey={item => item.id} locale={tableLocale} loading={this.state.isLoading} />
             </Fragment>
         )
     }
