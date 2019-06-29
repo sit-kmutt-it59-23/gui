@@ -22,7 +22,7 @@ class ListProjectClub extends Component {
     }
 
     getData() {
-        axiosInstance.get('/organizations/81da0ec0-aa4b-404d-9d7a-b1cf9033c798/projects').then(response => {
+        axiosInstance.get('/organizations/2d648fc3-10aa-4c9b-8e2d-f4d27b1b9caa/projects').then(response => {
             this.setState({
                 data: response.data,
                 isLoading: false
@@ -103,7 +103,7 @@ class ListProjectClub extends Component {
 
         return (
             <Fragment>
-                <Table dataSource={this.state.data} columns={columns} locale={tableLocale} loading={this.state.isLoading} />
+                <Table dataSource={this.state.data} columns={columns} rowKey={item => item.id} locale={tableLocale} loading={this.state.isLoading} />
             </Fragment>
         )
     }
