@@ -22,7 +22,7 @@ class ListProjectClub extends Component {
     }
 
     getData() {
-        axiosInstance.get('/organizations/ea8a1820-8f2a-4011-8a9d-be8205d18bae/projects').then(response => {
+        axiosInstance.get('/organizations/2d648fc3-10aa-4c9b-8e2d-f4d27b1b9caa/projects').then(response => {
             this.setState({
                 data: response.data,
                 isLoading: false
