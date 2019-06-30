@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Empty, Spin, Tabs } from 'antd'
 
-import ContentTab from './sections/Tracking/ContentTab'
+import ContentTab from './sections/tracking/ContentTab'
 import axiosInstance from 'scripts/Api';
 import Item from 'antd/lib/list/Item';
 
