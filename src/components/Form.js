@@ -52,7 +52,7 @@ class ProjectProposalForm extends Component {
                     ))}
                 </Steps>
                 <div className="steps-content">{steps[current].content}</div>
-                <div className="steps-action text-right" style={{ paddingRight: 50 }}>
+                <div className="steps-action text-right" >
                     {current > 0 && (
                         <Button style={{ marginRight: 8 }} onClick={() => this.prev()}>
                             Previous
