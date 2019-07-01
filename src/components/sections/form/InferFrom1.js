@@ -55,14 +55,14 @@ class InferFrom extends Component {
         const NumberLayout = {
             labelAlign: 'left',
             labelCol: {
-                xs: { span: 14 },
-                sm: { span: 13, offset: 2  },
-                md: { span: 12, offset: 4 },
+                xs: { span: 24, offset: 0 },
+                sm: { span: 12, offset: 2 },
+                md: { span: 10, offset: 4 },
             },
             wrapperCol: {
-                xs: { offset: 10 },
-                sm: { offset: 0 },
-                md: { offset: 0 },
+                xs: { span:18, offset: 6 },
+                sm: { span:10, offset: 0 },
+                md: { span:10, offset: 0 },
 
             },
             colon: false
