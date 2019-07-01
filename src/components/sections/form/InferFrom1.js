@@ -6,7 +6,7 @@ const FormItem = Form.Item
 const { TextArea } = Input
 
 const SpanMarginLeft = styled.span`
-    padding-left: ${props => props.size || '20px' };
+    padding-left: 20px;
 `
 
 class InferFrom extends Component {
@@ -22,7 +22,7 @@ class InferFrom extends Component {
             wrapperCol: {
                 xs: { span: 24 },
                 sm: { span: 16 },
-                md: { span: 13, offset: 1  },
+                md: { span: 13, offset: 1 },
 
             }
         }
@@ -60,9 +60,9 @@ class InferFrom extends Component {
                 md: { span: 10, offset: 4 },
             },
             wrapperCol: {
-                xs: { span:18, offset: 6 },
-                sm: { span:10, offset: 0 },
-                md: { span:10, offset: 0 },
+                xs: { span: 18, offset: 6 },
+                sm: { span: 10, offset: 0 },
+                md: { span: 10, offset: 0 },
 
             },
             colon: false
@@ -85,14 +85,14 @@ class InferFrom extends Component {
 
         const ListTextField = {
             labelCol: {
-                xs: { span: 2 },
-                sm: { span: 1, offset: 1 },
-                md: { span: 1, offset: 3 },
+                xs: { span: 2, offset: 0 },
+                sm: { span: 1, offset: 2 },
+                md: { span: 1, offset: 4 },
             },
             wrapperCol: {
-                xs: { span: 22 },
-                sm: { span: 20 },
-                md: { span: 14 },
+                xs: { span: 10 },
+                sm: { span: 19 },
+                md: { span: 13 },
             },
             colon: false
         }
@@ -100,9 +100,12 @@ class InferFrom extends Component {
         const CountLayout = {
             labelAlign: 'left',
             labelCol: {
-                xs: { span: 10, offset: 1 },
-                sm: { span: 8, offset: 3 },
-                md: { span: 5, offset: 6 },
+                xs: { offset: 4 },
+                sm: { span: 7, offset: 2 },
+                md: { span: 6, offset: 4 },
+            },
+            wrapperCol: {
+                xs: { offset: 4 },
             },
             colon: false
         }
@@ -183,32 +186,33 @@ class InferFrom extends Component {
                 <FormItem label="ย่อหน้าที่ 3 (กล่าวถึงประโยชน์ที่ได้รับจากการดำเนินโครงการ)" {...TextAreaLayout}>
                     {getFieldDecorator('rational_criterion_3')(<TextArea rows={5} />)}
                 </FormItem>
-                <FormItem label="วัตถุประสงค์ (ไม่เกิน 3 ข้อ)" {...TopicLayout} />
-                <FormItem label="1." {...ListTextField}>
-                    {getFieldDecorator('objective_1')(<Input />)}
-                </FormItem>
-                <FormItem label="2." {...ListTextField}>
-                    {getFieldDecorator('objective_2')(<Input />)}
-                </FormItem>
-                <FormItem label="3." {...ListTextField}>
-                    {getFieldDecorator('objective_3')(<Input />)}
+                <FormItem label="วัตถุประสงค์ (ไม่เกิน 3 ข้อ)" {...TopicLayout}>
+                    <FormItem label="1." {...ListTextField}>
+                        {getFieldDecorator('objective_1')(<Input />)}
+                    </FormItem>
+                    <FormItem label="2." {...ListTextField}>
+                        {getFieldDecorator('objective_2')(<Input />)}
+                    </FormItem>
+                    <FormItem label="3." {...ListTextField}>
+                        {getFieldDecorator('objective_3')(<Input />)}
+                    </FormItem>
                 </FormItem>
                 <FormItem label="ผู้เข้าร่วมโครงการ" {...TopicLayout} />
-                <FormItem label="นักศึกษา" {...CountLayout}>
+                <FormItem label="1. นักศึกษา" {...CountLayout}>
                     {getFieldDecorator('attendee_amount-student')(<InputNumber min={0} />)}
-                    <SpanMarginLeft size="30px">คน</SpanMarginLeft>
+                    <SpanMarginLeft>คน</SpanMarginLeft>
                 </FormItem>
-                <FormItem label="อาจารย์" {...CountLayout}>
+                <FormItem label="2. อาจารย์" {...CountLayout}>
                     {getFieldDecorator('attendee_amount-lecturer')(<InputNumber min={0} />)}
-                    <SpanMarginLeft size="30px">คน</SpanMarginLeft>
+                    <SpanMarginLeft>คน</SpanMarginLeft>
                 </FormItem>
-                <FormItem label="เจ้าหน้าที่" {...CountLayout}>
+                <FormItem label="3. เจ้าหน้าที่" {...CountLayout}>
                     {getFieldDecorator('attendee_amount-personnel')(<InputNumber min={0} />)}
-                    <SpanMarginLeft size="30px">คน</SpanMarginLeft>
+                    <SpanMarginLeft>คน</SpanMarginLeft>
                 </FormItem>
-                <FormItem label="บุคคลในชุมชน/นักเรียน" {...CountLayout}>
+                <FormItem label="4. บุคคลในชุมชน/นักเรียน" {...CountLayout}>
                     {getFieldDecorator('attendee_amount-outsider')(<InputNumber min={0} />)}
-                    <SpanMarginLeft size="30px">คน</SpanMarginLeft>
+                    <SpanMarginLeft>คน</SpanMarginLeft>
                 </FormItem>
             </Form>
         )
