@@ -63,3 +63,9 @@ body {
 .ant-table-wrapper{
     overflow: hidden;
 }
+
+.ant-input-group #border{
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    padding: 30px 10px 0px 10px;
+}
