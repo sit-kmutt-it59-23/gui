@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Steps, Button, message } from 'antd'
+import { Steps, Button, message, Col } from 'antd'
 import { Infer1, Infer2, Infer3 } from './sections/form'
 
 const { Step } = Steps
@@ -52,10 +52,10 @@ class ProjectProposalForm extends Component {
                     ))}
                 </Steps>
                 <div className="steps-content">{steps[current].content}</div>
-                <div className="steps-action text-right" >
+                <Col className="steps-action" md={{span:4, offset:18}}>
                     {current > 0 && (
                         <Button style={{ marginRight: 8 }} onClick={() => this.prev()}>
-                            Previous
+                            ก่อนหน้า
                         </Button>
                     )}
                     {current === steps.length - 1 && (
@@ -65,10 +65,10 @@ class ProjectProposalForm extends Component {
                     )}
                     {current < steps.length - 1 && (
                         <Button type="primary" onClick={() => this.next()}>
-                            Next
+                            หน้าถัดไป
                         </Button>
                     )}
-                </div>
+                </Col>
             </Fragment>
         )
     }

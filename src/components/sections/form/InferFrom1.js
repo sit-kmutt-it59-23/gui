@@ -13,24 +13,26 @@ class InferFrom extends Component {
     render() {
         const { getFieldDecorator } = this.props.form
         const NameLayout = {
+            labelAlign: 'left',
             labelCol: {
                 xs: { span: 24 },
                 sm: { span: 4, offset: 2 },
-                md: { span: 4, offset: 2 },
+                md: { span: 3, offset: 3 },
             },
             wrapperCol: {
                 xs: { span: 24 },
                 sm: { span: 16 },
-                md: { span: 14 },
+                md: { span: 13, offset: 1  },
 
             }
         }
 
         const NameEnLayout = {
+            labelAlign: 'left',
             labelCol: {
                 xs: { span: 24 },
                 sm: { span: 8, offset: 2 },
-                md: { span: 6, offset: 1 },
+                md: { span: 4, offset: 3 },
             },
             wrapperCol: {
                 xs: { span: 24 },
