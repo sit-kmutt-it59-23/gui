@@ -117,7 +117,7 @@ class NavbarCustom extends Component {
                     <LinkMenu to="#">
                         <ProfileImg alt="Profile Pictrue" src="https://pbs.twimg.com/profile_images/1000002686677209088/D1d8M7jA_400x400.jpg" />
                         <ProfileName className="hidden-xs">
-                            59130500062
+                            วรรณกานต์ สุวรรณดี
                             <hr />
                             ชมรมนาฏยโขนละคร
                         </ProfileName>
