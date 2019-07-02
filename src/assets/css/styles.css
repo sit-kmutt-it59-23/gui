@@ -14,7 +14,19 @@ body {
     text-align: right;
 }
 
+.border-form{
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    padding: 25px 10px 0px 10px;
+}
+
 /* ------- override ant design ------- */
+
+/* ------- Menu -------- */
+
+.ant-menu{
+    color: #464545;
+}
 
 .ant-menu-item-group-title{
     color: #464545;
@@ -22,29 +34,11 @@ body {
     font-weight: bold;
 }
 
-.ant-menu{
-    color: #464545;
-}
+/* ------- Step -------- */
+
 
 .ant-steps-item #tracking-tail{
   height:80px ;
-}
-
-.ant-table{
-    overflow-x: auto;
-}
-
-.ant-table .ant-table-thead th{
-    background-color: #E88044;
-    color: #ffffff;
-}
-
-.ant-table-thead > tr > th.ant-table-column-has-actions.ant-table-column-has-sorters:hover {
-    background: #e88044;
-}
-
-.ant-table-thead > tr > th.ant-table-column-sort {
-    background: #e88044;
 }
 
 .ant-menu-submenu-title .anticon, .ant-menu-item .anticon {
@@ -64,8 +58,44 @@ body {
     overflow: hidden;
 }
 
-.border-form{
-    border: 1px solid #dedede;
-    border-radius: 5px;
-    padding: 25px 10px 0px 10px;
+/* ------- Table -------- */
+
+.ant-table-scroll table .ant-table-fixed-columns-in-body{
+    visibility: initial;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ant-table .ant-table-thead th{
+    background-color: #E88044;
+    color: #ffffff;
+}
+
+.ant-table-thead > tr > th.ant-table-column-has-actions.ant-table-column-has-sorters:hover {
+    background: #e88044;
+}
+
+.ant-table-thead > tr > th.ant-table-column-sort {
+    background: #e88044;
+}
+
+.form-table .ant-table .ant-table-thead th{
+    color:#000;
+    background-color: #ffffff;
+    border-left: 1px solid #e8e8e8;
+}
+
+.form-table .ant-table .ant-table-thead th:last-child{
+    color:#000;
+    background-color: #ffffff;
+    border-left:none;
+}
+
+.form-table .ant-table-tbody > tr > td{
+    border-left: 1px solid #e8e8e8;
+}
+
+.form-table .ant-table-tbody > tr > td:last-child{
+    border-left: none;
 }
