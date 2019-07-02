@@ -61,8 +61,8 @@ const data = [
 class ContentTab extends Component {
     render() {
         return (
-            <Row>
-                <Col xs={{ span: 20, offset: 2 }}  md={{ span: 6, offset: 1 }}>
+            <Row style={{ marginTop: 20 }}>
+                <Col xs={{ span: 18, offset: 3 }} sm={{ span: 9, offset: 6 }} md={{ span: 6, offset: 1 }}>
                     <Steps direction="vertical" current={1} status="process">
                         <Step title="ชมรมนาฏยโขนละคร"
                             description={
@@ -111,8 +111,12 @@ class ContentTab extends Component {
                         />
                     </Steps>
                 </Col>
-                <Col xs={{ span: 22, offset: 1 }} md={{ span: 15, offset: 1 }} >
-                    <Table columns={columns} dataSource={data} size="middle"/>
+                <Col xs={{ span: 22, offset: 1 }} sm={{ span: 23 , offset: 1 }} md={{ span: 15, offset: 1 }} >
+                    <Table 
+                        columns={ columns } 
+                        dataSource={ data } 
+                        scroll={{ x: 700 }}
+                    />
                 </Col>
             </Row>
         )
