@@ -16,7 +16,7 @@ class ListProjectClub extends Component {
             error: null
         }
     }
-    
+
     componentDidMount() {
         this.getData()
     }
@@ -92,18 +92,27 @@ class ListProjectClub extends Component {
                 key: 'action',
                 render: (val, item) => (
                     <Dropdown overlay={actionMenu(item.id)}>
-                       <Link to="#"> 
+                        <Link to="#">
                             เมนู <Icon type="right" />
-                       </Link>
+                        </Link>
                     </Dropdown>
                 ),
-                align: 'center'
+                align: 'center',
+                fixed: 'right'
             }
         ]
 
         return (
             <Fragment>
-                <Table dataSource={this.state.data} columns={columns} rowKey={item => item.id} locale={tableLocale} loading={this.state.isLoading} />
+                <Table
+                    dataSource={this.state.data}
+                    columns={columns}
+                    rowKey={item => item.id}
+                    locale={tableLocale}
+                    loading={this.state.isLoading}
+                    scroll={{ x: 700 }}
+                    size="middle"
+                />
             </Fragment>
         )
     }
