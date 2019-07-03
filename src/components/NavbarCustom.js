@@ -15,7 +15,7 @@ const Nav = styled.div`
     padding: 10px 16px !important;
     width: 100%;
     background-color: #ffffff;
-    z-index:1;
+    z-index:100;
     box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 

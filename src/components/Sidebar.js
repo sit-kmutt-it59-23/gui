@@ -26,7 +26,13 @@ class Sidebar extends Component {
 
     render() {
         return (
-            <Sider width={248} trigger={null} collapsible collapsed={this.props.sidebar} >
+            <Sider 
+                width={248} 
+                trigger={null} 
+                collapsible 
+                collapsed={this.props.sidebar} 
+                style={{zIndex:50}}
+            >
                 <Menu mode="inline"
                     style={{ height: '100%', borderRight: 0, paddingTop: '10px' }}
                     defaultOpenKeys={this.props.submenukeys}

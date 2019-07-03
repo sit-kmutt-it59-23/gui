@@ -103,7 +103,7 @@ class ListProjectClub extends Component {
         ]
 
         return (
-            <Fragment>
+            <div style={{ padding: 20}}>
                 <Table
                     dataSource={this.state.data}
                     columns={columns}
@@ -111,9 +111,8 @@ class ListProjectClub extends Component {
                     locale={tableLocale}
                     loading={this.state.isLoading}
                     scroll={{ x: 700 }}
-                    size="middle"
                 />
-            </Fragment>
+            </div>
         )
     }
 }

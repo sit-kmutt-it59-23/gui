@@ -3,7 +3,6 @@ import { Empty, Spin, Tabs } from 'antd'
 
 import ContentTab from './sections/tracking/ContentTab'
 import axiosInstance from 'scripts/Api';
-import Item from 'antd/lib/list/Item';
 
 const { TabPane } = Tabs
 
@@ -66,9 +65,11 @@ class ProjectTacking extends Component {
         }
         
         return (
-            <Spin size="large" spinning={loading} tip="กำลังโหลด...">
-                {content}
-            </Spin>
+            <div style={{ padding: 20}}>
+                <Spin size="large" spinning={loading} tip="กำลังโหลด..." >
+                    {content}
+                </Spin>
+            </div>
         )
     }
 }

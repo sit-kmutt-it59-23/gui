@@ -23,8 +23,7 @@ class DefaultLayout extends Component {
                             <Content
                                 style={{
                                     background: '#fff',
-                                    padding: 24,
-                                    margin: 0,
+                                    paddingBottom: 20,
                                     minHeight: 280,
                                 }}
                             >
