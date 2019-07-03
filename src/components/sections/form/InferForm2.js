@@ -153,7 +153,7 @@ class InferFrom extends Component {
         const numberLayout = {
             labelCol: {
                 sm: { span: 8 },
-                md: { span: 9 },
+                md: { span: 8 },
             }
         }
 
