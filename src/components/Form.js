@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { Steps, Button, message, Col, Icon, Layout } from 'antd'
+import { Steps, Button, message, Col, Icon } from 'antd'
+
+import styled from 'styled-components'
 import { Infer1, Infer2, Infer3 } from './sections/form'
 import Header from './sections/HeaderCustom.js'
-import styled from 'styled-components'
 
 const { Step } = Steps
 
@@ -66,9 +67,9 @@ class ProjectProposalForm extends Component {
                     description="ชมรมนาฏยโขนละคร ปีการศึกษา 2562"
                     fixed={true}
                 >
-                    <Button>บันทึก</Button>
-                    <Button style={{ marginLeft: 10 }}>บันทึก</Button>
-                    <Button style={{ marginLeft: 10 }}>บันทึก</Button>
+                    <Button>PREVIEW</Button>
+                    <Button style={{ marginLeft: 10 }}>SAVE FORM</Button>
+                    <Button style={{ marginLeft: 10 }}>SEND FORM</Button>
                 </Header>
                 <Steps current={current} style={{ padding: '30px 80px' }}>
                     {steps.map(item => (
