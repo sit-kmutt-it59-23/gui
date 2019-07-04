@@ -111,6 +111,7 @@ class ListProjectClub extends Component {
                     locale={tableLocale}
                     loading={this.state.isLoading}
                     scroll={{ x: 700 }}
+                    size="middle"
                 />
             </div>
         )
