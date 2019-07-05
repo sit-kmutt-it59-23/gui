@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Steps, Button, message, Col, Icon } from 'antd'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 import styled from 'styled-components'
 import { Infer1, Infer2, Infer3 } from './sections/form'
@@ -10,19 +12,19 @@ const { Step } = Steps
 const steps = [
     {
         title: 'ส่วนที่ 1',
-        description: '',
+        description: 'กำลังกรอกแบบฟอร์ม',
         status: '',
         content: <Infer1 />,
     },
     {
         title: 'ส่วนที่ 2',
-        description: '',
+        description: 'รอกรอกแบบฟอร์ม',
         status: '',
         content: <Infer2 />,
     },
     {
         title: 'ส่วนที่ 3',
-        description: '',
+        description: 'รอกรอกแบบฟอร์ม',
         status: '',
         content: <Infer3 />,
     },
@@ -41,6 +43,25 @@ const ButtonPrev = styled(Button)`
     }
 `
 
+const StepsCustom = styled(Steps)`
+    height: 80px;
+    align-items: center;
+    background-color: #F8F9FA;
+`
+
+const ButtonCustom = styled(Button)`
+    color: ${props => props.color};
+    background-color: ${props => props.backgroudColor };
+    border:none;
+    &:hover,&:active,&:visited,&:link{
+        background-color: ${props => props.backgroudColor };
+        color: ${props => props.color};
+    }
+     &:focus{
+        background-color:${props => props.backgroudColor};
+        color: ${props => props.color};
+    }
+`
 class ProjectProposalForm extends Component {
     constructor(props) {
         super(props)
@@ -63,19 +84,40 @@ class ProjectProposalForm extends Component {
         return (
             <Fragment>
                 <Header
-                    topic="แบบฟอร์มเสนอโครงการประกวดนาฏกรรมนานาชาติ"
+                    topic="แบบฟอร์มเสนอโครงการประกวดนาฏกรรมนานาชาติ ชิงถ้วยฟอร์มเสนอโครงการประกวดนาฏกรรมนานาชาติ"
                     description="ชมรมนาฏยโขนละคร ปีการศึกษา 2562"
+                    childrenHeight={80}
                     fixed={true}
+                    hideChildenInSize="hidden-xs hidden-sm hidden-md"
+                    headerRight={
+                        <div>
+                            <Button style={{ marginBottom: 5 }}>
+                                <Icon type="eye" />
+                                <span className="hidden-md">
+                                    PREVIEW
+                                </span>
+                            </Button>
+                            <ButtonCustom style={{ margin: '0 10px 5px 10px' }} color="#fff" backgroudColor="#63A2D8">
+                                <Icon type="save" />
+                                <span className="hidden-md">
+                                    SAVE FORM
+                                </span>
+                            </ButtonCustom>
+                            <ButtonCustom color="#fff" backgroudColor="#74D99F">
+                                <FontAwesomeIcon icon={faPaperPlane} style={{ marginRight: 8 }} />
+                                <span className="hidden-md">
+                                    SAVE FORM
+                                </span>
+                            </ButtonCustom>
+                        </div>
+                    }
                 >
-                    <Button>PREVIEW</Button>
-                    <Button style={{ marginLeft: 10 }}>SAVE FORM</Button>
-                    <Button style={{ marginLeft: 10 }}>SEND FORM</Button>
+                    <StepsCustom current={current} style={{ padding: '0 15px' }} className="hidden-xs hidden-sm hidden-md">
+                        {steps.map(item => (
+                            <Step key={item.title} title={item.title} description={item.description} status={item.status} />
+                        ))}
+                    </StepsCustom>
                 </Header>
-                <Steps current={current} style={{ padding: '30px 80px' }}>
-                    {steps.map(item => (
-                        <Step key={item.title} title={item.title} description={item.description} status={item.status} />
-                    ))}
-                </Steps>
                 <div className="steps-content">{steps[current].content}</div>
                 <Col className="steps-action text-right" xs={{ span: 24 }} sm={{ span: 10, offset: 12 }} md={{ span: 8, offset: 12 }}>
                     {current > 0 && (
