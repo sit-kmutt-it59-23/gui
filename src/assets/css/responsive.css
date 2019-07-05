@@ -1,10 +1,11 @@
 .visible-xs,
 .visible-sm,
 .visible-md,
-.visible-lg {
+.visible-lg,
+.visible-xl {
     display: none !important;
 }
-@media (max-width: 48em) {
+@media (max-width: 30em) {
     .visible-xs      { display: block !important; }
     .row.visible-xs  { display: flex !important;
                     display: -webkit-flex !important;
@@ -15,12 +16,26 @@
     tr.visible-xs    { display: table-row !important; }
     th.visible-xs,
     td.visible-xs    { display: table-cell !important; }
+
+    .font-size-header #topic{
+        font-size: 13px;
+    }
+    .font-size-header #description{
+        font-size: 11px;
+    }
+    .header-padding{
+        padding: 0 20px;
+    }
+    
+    
+
     /* ------- override ant design size xs------- */
+
     .ant-layout-sider-collapsed{
         display: none;
     }
 }
-@media (min-width: 48em) and (max-width: 62em) {
+@media (min-width: 30em) and (max-width: 36em) {
     .visible-sm      { display: block !important; }
     .row.visible-sm  { display: flex !important;
                     display: -webkit-flex !important;
@@ -31,8 +46,24 @@
     tr.visible-sm    { display: table-row !important; }
     th.visible-sm,
     td.visible-sm    { display: table-cell !important; }
+
+    .font-size-header #topic{
+        font-size: 15px;
+    }
+    .font-size-header #description{
+        font-size: 12px;
+    }
+    .header-padding{
+        padding: 0 20px;
+    }
+
+     /* ------- override ant design size sm------- */
+
+     .ant-layout-sider-collapsed{
+        display: none;
+    }
 }
-@media (min-width: 62em) and (max-width: 75em) {
+@media (min-width: 36em) and (max-width: 48em) {
     .visible-md      { display: block !important; }
     .row.visible-md  { display: flex !important;
                     display: -webkit-flex !important;
@@ -43,8 +74,23 @@
     tr.visible-md    { display: table-row !important; }
     th.visible-md,
     td.visible-md    { display: table-cell !important; }
+
+    .font-size-header #topic{
+        font-size: 18px;
+    }
+    .font-size-header #description{
+        font-size: 14px;
+    }
+    .header-padding{
+        padding: 0 5px 0 30px;
+    }
+    .header-fixed{
+        padding-right:11vw;
+    }
+
 }
-@media (min-width: 75em) {
+
+@media (min-width: 48em) and (max-width: 62em) {
     .visible-lg      { display: block !important; }
     .row.visible-lg  { display: flex !important;
                     display: -webkit-flex !important;
@@ -55,8 +101,48 @@
     tr.visible-lg    { display: table-row !important; }
     th.visible-lg,
     td.visible-lg    { display: table-cell !important; }
+
+    .font-size-header #topic{
+        font-size: 18px;
+    }
+    .font-size-header #description{
+        font-size: 15px;
+    }
+    .header-padding{
+        padding: 0 10px 0 30px;
+    }
+    .header-fixed{
+        padding-right:60px;
+    }
 }
-@media (max-width: 48em)                       { .hidden-xs { display: none !important; } }
-@media (min-width: 48em) and (max-width: 62em) { .hidden-sm { display: none !important; } }
-@media (min-width: 62em) and (max-width: 75em) { .hidden-md { display: none !important; } }
-@media (min-width: 75em)                       { .hidden-lg { display: none !important; } }
+
+@media (min-width: 62em) {
+    .visible-xl      { display: block !important; }
+    .row.visible-xl  { display: flex !important;
+                    display: -webkit-flex !important;
+                    display: -ms-flexbox !important;
+                    display: -webkit-box !important;
+                    display: flex!important; }
+    table.visible-xl { display: table !important; }
+    tr.visible-xl    { display: table-row !important; }
+    th.visible-xl,
+    td.visible-xl    { display: table-cell !important; }
+    .font-size-header #topic{
+        font-size: 20px;
+    }
+    .font-size-header #description{
+        font-size: 16px;
+    }
+    .header-padding{
+        padding: 0 20px 0 30px;
+    }
+    .header-fixed{
+        padding-right:80px;
+    }
+}
+
+@media (max-width: 30em)                       { .hidden-xs { display: none !important; } }
+@media (min-width: 30em) and (max-width: 36em) { .hidden-sm { display: none !important; } }
+@media (min-width: 36em) and (max-width: 48em) { .hidden-md { display: none !important; } }
+@media (min-width: 48em) and (max-width: 62em) { .hidden-lg { display: none !important; } }
+@media (min-width: 62em)                       { .hidden-xl { display: none !important; } }
