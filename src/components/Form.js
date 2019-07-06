@@ -50,16 +50,16 @@ const StepsCustom = styled(Steps)`
 `
 
 const ButtonCustom = styled(Button)`
-    color: ${props => props.color};
-    background-color: ${props => props.backgroudColor };
+    color: ${props => props.color || '#fff'};
+    background-color: ${props => props.background || "#989898"};
     border:none;
     &:hover,&:active,&:visited,&:link{
-        background-color: ${props => props.backgroudColor };
-        color: ${props => props.color};
+        background-color: ${props => props.background|| "#989898"};
+        color: ${props => props.color || '#fff'};
     }
      &:focus{
-        background-color:${props => props.backgroudColor};
-        color: ${props => props.color};
+        background-color:${props => props.background};
+        color: ${props => props.color || '#fff'};
     }
 `
 class ProjectProposalForm extends Component {
@@ -97,13 +97,13 @@ class ProjectProposalForm extends Component {
                                     PREVIEW
                                 </span>
                             </Button>
-                            <ButtonCustom style={{ margin: '0 10px 5px 10px' }} color="#fff" backgroudColor="#63A2D8">
+                            <ButtonCustom style={{ margin: '0 10px 5px 10px' }} color="#fff" background="#63A2D8">
                                 <Icon type="save" />
                                 <span className="hidden-md">
                                     SAVE FORM
                                 </span>
                             </ButtonCustom>
-                            <ButtonCustom color="#fff" backgroudColor="#74D99F">
+                            <ButtonCustom color="#fff" background="#74D99F">
                                 <FontAwesomeIcon icon={faPaperPlane} />
                                 <span className="hidden-md" style={{ marginLeft: 8 }}>
                                     SAVE FORM
@@ -112,14 +112,14 @@ class ProjectProposalForm extends Component {
                         </div>
                     }
                 >
-                    <StepsCustom current={current} style={{ padding: '0 15px' }} className="hidden-xs hidden-sm hidden-md">
+                    <StepsCustom current={current} style={{ padding: '0 15px' }}>
                         {steps.map(item => (
                             <Step key={item.title} title={item.title} description={item.description} status={item.status} />
                         ))}
                     </StepsCustom>
                 </Header>
-                <div className="steps-content">{steps[current].content}</div>
-                <Col className="steps-action text-right" xs={{ span: 24 }} sm={{ span: 10, offset: 12 }} md={{ span: 8, offset: 12 }}>
+                <div className="steps-content" style={{ padding: '20px 10px' }}>{steps[current].content}</div>
+                <Col className="steps-action text-right" xs={{ span: 23 }} sm={{ span: 22 }} md={{ span: 20 }}>
                     {current > 0 && (
                         <ButtonPrev type="primary" style={{ marginRight: 8 }} onClick={() => this.prev()}>
                             <Icon type="left" />

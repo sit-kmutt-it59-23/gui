@@ -13,12 +13,11 @@ const PositionFelx = styled.div`
 const HeaderStyle = styled.header`
    background-color: #fff;
    width: 100%;
-   z-index:1;  
+   z-index:2;  
 `
 
 const ChildrenStyle = styled.div`
-    padding: 10px 80px 10px 80px;
-    background-color: rgba(0,0,0,0);
+    padding: 10px 80px 0 80px;
 `
 
 class HeaderCustom extends Component {
@@ -50,7 +49,6 @@ class HeaderCustom extends Component {
     }
     render() {
         let { topic, description, fixed, headerRight, children, childrenHeight, hideChildenInSize } = this.props
-        let height = fixed ? 90+(childrenHeight + 20) : 90
         let className
         if (fixed) {
             className = this.state.fixed ? "header-fixed" : ""
@@ -72,14 +70,19 @@ class HeaderCustom extends Component {
                         </div>
                     </PositionFelx>
                     <Divider style={{ margin: 0 }} />
-                    <ChildrenStyle>
+                    <ChildrenStyle className={hideChildenInSize}>
                         {children}
                     </ChildrenStyle>
                 </HeaderStyle>
                 {this.state.fixed && fixed ?
-                    <div style={{ height: height, width: '100%', }} className={hideChildenInSize} />
+                    <div style={{ height: 90, width: '100%', }}/>
                     : null
                 }
+                {this.state.fixed && fixed ?
+                    <div style={{ height: childrenHeight+10, width: '100%', }} className={hideChildenInSize}/>
+                    : null
+                }
+        
             </Fragment>
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, InputNumber, Col } from 'antd'
+import { Form, Input, InputNumber, Col, Row } from 'antd'
 import styled from 'styled-components'
 
 const FormItem = Form.Item
@@ -46,7 +46,7 @@ class InferFrom extends Component {
             labelAlign: 'left',
             labelCol: {
                 sm: { span: 20, offset: 2 },
-                md: { span: 21, offset: 3 },
+                md: { span: 18, offset: 3 },
             }
         }
 
@@ -54,12 +54,12 @@ class InferFrom extends Component {
             labelAlign: 'left',
             labelCol: {
                 xs: { span: 24, offset: 0 },
-                sm: { span: 12, offset: 2 },
+                sm: { span: 13, offset: 2 },
                 md: { span: 10, offset: 4 },
             },
             wrapperCol: {
                 xs: { span: 18, offset: 6 },
-                sm: { span: 10, offset: 0 },
+                sm: { span: 9, offset: 0 },
                 md: { span: 10, offset: 0 },
 
             },
@@ -71,7 +71,7 @@ class InferFrom extends Component {
             labelCol: {
                 xs: { span: 24, offset: 0 },
                 sm: { span: 20, offset: 2 },
-                md: { span: 12, offset: 4 },
+                md: { span: 14, offset: 4 },
             },
             wrapperCol: {
                 xs: { span: 24, offset: 0 },
@@ -83,12 +83,10 @@ class InferFrom extends Component {
 
         const listTextField = {
             labelCol: {
-                xs: { span: 2, offset: 0 },
-                sm: { span: 1, offset: 2 },
-                md: { span: 1, offset: 2 },
+                sm: { span: 2, offset: 1 },
+                md: { span: 3, offset: 0 },
             },
             wrapperCol: {
-                xs: { span: 10 },
                 sm: { span: 19 },
                 md: { span: 18 },
             },
@@ -142,7 +140,10 @@ class InferFrom extends Component {
                         <SpanMarginLeft>ชั่วโมง</SpanMarginLeft>
                     </FormItem>
                 </FormItem>
-                <FormItem label="การเทียบค่ากิจกรรมตามคุณลักษณะที่พึงประสงค์ของมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (KMUTT Student QF)" {...topicLayout}>
+
+                <FormItem
+                    label="การเทียบค่ากิจกรรมตามคุณลักษณะที่พึงประสงค์ของมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (KMUTT Student QF)"
+                    {...topicLayout}>
                     <FormItem label="1. ความรู้ (Knowledge)" {...numberLayout}>
                         {getFieldDecorator('qf_amount-knowledge')(<InputNumber min={0} max={100} />)}
                         <SpanMarginLeft>%</SpanMarginLeft>
@@ -188,41 +189,45 @@ class InferFrom extends Component {
                     </FormItem>
                 </FormItem>
                 <FormItem label="วัตถุประสงค์ (ไม่เกิน 3 ข้อ)" {...topicLayout}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }}>
-                        <div className="border-form">
-                            <FormItem label="1." {...listTextField}>
-                                {getFieldDecorator('objective_1')(<Input />)}
-                            </FormItem>
-                            <FormItem label="2." {...listTextField}>
-                                {getFieldDecorator('objective_2')(<Input />)}
-                            </FormItem>
-                            <FormItem label="3." {...listTextField}>
-                                {getFieldDecorator('objective_3')(<Input />)}
-                            </FormItem>
-                        </div>
-                    </Col>
+                    <Row>
+                        <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }}>
+                            <div className="border-form">
+                                <FormItem label="1." {...listTextField}>
+                                    {getFieldDecorator('objective_1')(<Input />)}
+                                </FormItem>
+                                <FormItem label="2." {...listTextField}>
+                                    {getFieldDecorator('objective_2')(<Input />)}
+                                </FormItem>
+                                <FormItem label="3." {...listTextField}>
+                                    {getFieldDecorator('objective_3')(<Input />)}
+                                </FormItem>
+                            </div>
+                        </Col>
+                    </Row>
                 </FormItem>
                 <FormItem label="ผู้เข้าร่วมโครงการ" {...topicLayout}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }}>
-                        <div className="border-form">
-                            <FormItem label="1. นักศึกษา" {...countLayout}>
-                                {getFieldDecorator('attendee_amount-student')(<InputNumber min={0} />)}
-                                <SpanMarginLeft>คน</SpanMarginLeft>
-                            </FormItem>
-                            <FormItem label="2. อาจารย์" {...countLayout}>
-                                {getFieldDecorator('attendee_amount-lecturer')(<InputNumber min={0} />)}
-                                <SpanMarginLeft>คน</SpanMarginLeft>
-                            </FormItem>
-                            <FormItem label="3. เจ้าหน้าที่" {...countLayout}>
-                                {getFieldDecorator('attendee_amount-personnel')(<InputNumber min={0} />)}
-                                <SpanMarginLeft>คน</SpanMarginLeft>
-                            </FormItem>
-                            <FormItem label="4. บุคคลในชุมชน/นักเรียน" {...countLayout}>
-                                {getFieldDecorator('attendee_amount-outsider')(<InputNumber min={0} />)}
-                                <SpanMarginLeft>คน</SpanMarginLeft>
-                            </FormItem>
-                        </div>
-                    </Col>
+                    <Row>
+                        <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }}>
+                            <div className="border-form">
+                                <FormItem label="1. นักศึกษา" {...countLayout}>
+                                    {getFieldDecorator('attendee_amount-student')(<InputNumber min={0} />)}
+                                    <SpanMarginLeft>คน</SpanMarginLeft>
+                                </FormItem>
+                                <FormItem label="2. อาจารย์" {...countLayout}>
+                                    {getFieldDecorator('attendee_amount-lecturer')(<InputNumber min={0} />)}
+                                    <SpanMarginLeft>คน</SpanMarginLeft>
+                                </FormItem>
+                                <FormItem label="3. เจ้าหน้าที่" {...countLayout}>
+                                    {getFieldDecorator('attendee_amount-personnel')(<InputNumber min={0} />)}
+                                    <SpanMarginLeft>คน</SpanMarginLeft>
+                                </FormItem>
+                                <FormItem label="4. บุคคลในชุมชน/นักเรียน" {...countLayout}>
+                                    {getFieldDecorator('attendee_amount-outsider')(<InputNumber min={0} />)}
+                                    <SpanMarginLeft>คน</SpanMarginLeft>
+                                </FormItem>
+                            </div>
+                        </Col>
+                    </Row>
                 </FormItem>
             </Form>
         )

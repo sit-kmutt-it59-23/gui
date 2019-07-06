@@ -111,11 +111,11 @@ class InferFrom extends Component {
         const rangeDateLayout = {
             labelAlign: 'left',
             labelCol: {
-                sm: { span: 8, offset: 2 },
+                sm: { span: 8, offset: 1 },
                 md: { span: 7, offset: 2 },
             },
             wrapperCol: {
-                sm: { span: 12, offset: 0 },
+                sm: { span: 13, offset: 1 },
                 md: { span: 13, offset: 0 },
             },
             colon: false
@@ -124,17 +124,17 @@ class InferFrom extends Component {
         const selectLayout = {
             labelCol: {
                 sm: { span: 8 },
-                md: { span: 8 },
+                md: { span: 7 },
             },
         }
 
         const textFieldLayout = {
             labelCol: {
                 sm: { span: 8 },
-                md: { span: 8 },
+                md: { span: 7 },
             },
             wrapperCol: {
-                sm: { span: 14 },
+                sm: { span: 15 },
                 md: { span: 13 },
             }
         }
@@ -142,10 +142,10 @@ class InferFrom extends Component {
         const dateLayout = {
             labelCol: {
                 sm: { span: 8 },
-                md: { span: 8 },
+                md: { span: 7 },
             },
             wrapperCol: {
-                sm: { span: 14 },
+                sm: { span: 15 },
                 md: { span: 13 },
             }
         }
@@ -153,17 +153,17 @@ class InferFrom extends Component {
         const numberLayout = {
             labelCol: {
                 sm: { span: 8 },
-                md: { span: 8 },
+                md: { span: 7 },
             }
         }
 
         const longTextFieldLayout = {
             labelCol: {
-                sm: { span: 12 },
-                md: { span: 10 },
+                sm: { span: 11 },
+                md: { span: 9 },
             },
             wrapperCol: {
-                sm: { span: 10 },
+                sm: { span: 12 },
                 md: { span: 11 },
             }
         }
@@ -205,12 +205,11 @@ class InferFrom extends Component {
                                 {getFieldDecorator('operation_topic')(<Input />)}
                             </FormItem>
                             <FormItem label="วันเริ่มต้น - วันสิ้นสุด" style={{ marginBottom: 13 }} {...dateLayout}>
-                                <FormItem style={{ display: 'inline-block', width: 'calc(50% - 12px)', marginBottom: 0 }} >
-                                    {getFieldDecorator('start_date')(<DatePicker />)}
+                                <FormItem style={{ display: 'inline-block', width: 'calc(50% - 12px)', marginBottom: 0, marginRight: 5 }} >
+                                    {getFieldDecorator('start_date')(<DatePicker placeholder="เลือกวันเริ่มต้น" />)}
                                 </FormItem>
-                                <span style={{ display: 'inline-block', width: '24px', textAlign: 'center' }}>-</span>
                                 <FormItem style={{ display: 'inline-block', width: 'calc(50% - 12px)', marginBottom: 0 }} >
-                                    {getFieldDecorator('end_date')(<DatePicker />)}
+                                    {getFieldDecorator('end_date')(<DatePicker placeholder="เลือกวันสิ้นสุด"  />)}
                                 </FormItem>
                             </FormItem>
                             <FormItem label="ระยะเวลา" {...numberLayout}>
@@ -220,7 +219,7 @@ class InferFrom extends Component {
                             <FormItem label="ผู้รับผิดชอบ" {...textFieldLayout}>
                                 {getFieldDecorator('responsible_person')(<Input placeholder="เฉพาะรหัสนักศึกษา" />)}
                             </FormItem>
-                            <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 22, md: 20 }}>
+                            <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 20 }}>
                                 {/* ทุกครั้งที่กดเพิ่มข้อมูลต้องเรียงตาม PDCA, วันที่, เวลา ตามลำดับนะ*/}
                                 <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070" }}>เพิ่มข้อมูล</Button>
                             </FormItem>
