@@ -104,8 +104,8 @@ class ProjectProposalForm extends Component {
                                 </span>
                             </ButtonCustom>
                             <ButtonCustom color="#fff" backgroudColor="#74D99F">
-                                <FontAwesomeIcon icon={faPaperPlane} style={{ marginRight: 8 }} />
-                                <span className="hidden-md">
+                                <FontAwesomeIcon icon={faPaperPlane} />
+                                <span className="hidden-md" style={{ marginLeft: 8 }}>
                                     SAVE FORM
                                 </span>
                             </ButtonCustom>

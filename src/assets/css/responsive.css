@@ -48,10 +48,10 @@
     td.visible-sm    { display: table-cell !important; }
 
     .font-size-header #topic{
-        font-size: 15px;
+        font-size: 16px;
     }
     .font-size-header #description{
-        font-size: 12px;
+        font-size: 13px;
     }
     .header-padding{
         padding: 0 20px;
