@@ -104,3 +104,10 @@ body {
 .form-table .ant-table-tbody > tr > td:last-child{
     border-left: none;
 }
+
+/* ------- Form -------- */
+
+.ant-form-item-label{
+    line-height: 2.5;
+    white-space: initial;
+}
