@@ -14,7 +14,7 @@ class InferFrom extends Component {
         super(props);
         this.state = {
             isLoading: true,
-            columns: [
+            columnWorking: [
                 {
                     title: 'PDCA',
                     dataIndex: 'pdca',
@@ -65,7 +65,7 @@ class InferFrom extends Component {
                         </Fragment>
                 }
             ],
-            data: [
+            dataWorking: [
                 {
                     pdca: 'P',
                     topic: 'จัดเตรียมงาน',
@@ -81,6 +81,48 @@ class InferFrom extends Component {
                     end: '4 มิถุนายน 2562',
                     time: '3 วัน',
                     person: 'วรรณกานต์ สุวรรณดี',
+                },
+            ],
+            columnMember: [
+                {
+                    title: 'รหัสนักศึกษา',
+                    dataIndex: 'studentId',
+                    key: 'studentId',
+                },
+                {
+                    title: 'ชื่อ-นามสกุล',
+                    dataIndex: 'name',
+                    key: 'name',
+                },
+                {
+                    title: 'ตำแหน่ง',
+                    dataIndex: 'role',
+                    key: 'role',
+                },
+                {
+                    title: 'Action',
+                    dataIndex: '',
+                    key: 'x',
+                    align: 'center',
+                    fixed: 'right',
+                    render: () =>
+                        <Fragment>
+                            <Link to="#">แก้ไข</Link>
+                            <span> / </span>
+                            <Link to="#">ลบ</Link>
+                        </Fragment>
+                }
+            ],
+            dataMember: [
+                {
+                    studentId: '59130500033',
+                    name: 'นางสาวพิมพ์ชนก ทิพย์ชมพู',
+                    role: 'รองประธานโครงการ'
+                },
+                {
+                    studentId: '59130500032',
+                    name: 'นางสาวกนกพร กระจ่างฟ้า',
+                    role: 'เหรัญญิก'
                 },
             ],
             error: null
@@ -209,7 +251,7 @@ class InferFrom extends Component {
                                     {getFieldDecorator('start_date')(<DatePicker placeholder="เลือกวันเริ่มต้น" />)}
                                 </FormItem>
                                 <FormItem style={{ display: 'inline-block', width: 'calc(50% - 12px)', marginBottom: 0 }} >
-                                    {getFieldDecorator('end_date')(<DatePicker placeholder="เลือกวันสิ้นสุด"  />)}
+                                    {getFieldDecorator('end_date')(<DatePicker placeholder="เลือกวันสิ้นสุด" />)}
                                 </FormItem>
                             </FormItem>
                             <FormItem label="ระยะเวลา" {...numberLayout}>
@@ -232,8 +274,8 @@ class InferFrom extends Component {
                             className="form-table"
                             size="small"
                             scroll={{ x: 1100 }}
-                            dataSource={this.state.data}
-                            columns={this.state.columns}
+                            dataSource={this.state.dataWorking}
+                            columns={this.state.columnWorking}
                             footer={() =>
                                 <div className="text-right">
                                     <Button disabled>ดูกราฟ</Button>
@@ -249,7 +291,7 @@ class InferFrom extends Component {
                                 {getFieldDecorator('location')(<Input />)}
                             </FormItem>
                             <FormItem label="หน่วยงานที่จัด" {...textFieldLayout}>
-                                {getFieldDecorator('นrganization')(<Input />)}
+                                {getFieldDecorator('organization')(<Input />)}
                             </FormItem>
                             <FormItem label="อาจารย์ที่ปรึกษาหน่วยงาน" {...textFieldLayout}>
                                 {getFieldDecorator('advisors')(<Input />)}
@@ -261,6 +303,32 @@ class InferFrom extends Component {
                                 {getFieldDecorator('tel_student')(<Input />)}
                             </FormItem>
                         </div>
+                    </Col>
+                </Row>
+                <FormItem label="คณะกรรมการจัดโครงการ" {...topicLayout}>
+                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
+                        <div className="border-form" >
+                            <FormItem label="รหัสนักศึกษา" {...textFieldLayout}>
+                                {getFieldDecorator('student_id')(<Input />)}
+                            </FormItem>
+                            <FormItem label="ตำแหน่ง" {...textFieldLayout}>
+                                {getFieldDecorator('role')(<Input />)}
+                            </FormItem>
+                            <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 20 }}>
+                                <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
+                            </FormItem>
+                        </div>
+                    </Col>
+                </FormItem>
+                <Row>
+                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
+                        <Table
+                            className="form-table"
+                            size="small"
+                            scroll={{ x: 700 }}
+                            dataSource={this.state.dataMember}
+                            columns={this.state.columnMember}
+                        />
                     </Col>
                 </Row>
             </Form >
