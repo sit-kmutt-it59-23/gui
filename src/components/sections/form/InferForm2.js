@@ -246,13 +246,11 @@ class InferFrom extends Component {
                             <FormItem label="หัวข้อการดำเนินงาน" {...textFieldLayout}>
                                 {getFieldDecorator('operation_topic')(<Input />)}
                             </FormItem>
-                            <FormItem label="วันเริ่มต้น - วันสิ้นสุด" style={{ marginBottom: 13 }} {...dateLayout}>
-                                <FormItem style={{ display: 'inline-block', width: 'calc(50% - 12px)', marginBottom: 0, marginRight: 5 }} >
-                                    {getFieldDecorator('start_date')(<DatePicker placeholder="เลือกวันเริ่มต้น" />)}
-                                </FormItem>
-                                <FormItem style={{ display: 'inline-block', width: 'calc(50% - 12px)', marginBottom: 0 }} >
-                                    {getFieldDecorator('end_date')(<DatePicker placeholder="เลือกวันสิ้นสุด" />)}
-                                </FormItem>
+                            <FormItem label="วันเริ่มต้น" {...dateLayout}>
+                                {getFieldDecorator('start_date')(<DatePicker />)}
+                            </FormItem>
+                            <FormItem label="วันสิ้นสุด" {...dateLayout}>
+                                {getFieldDecorator('end_date')(<DatePicker />)}
                             </FormItem>
                             <FormItem label="ระยะเวลา" {...numberLayout}>
                                 {getFieldDecorator('procedure_time')(<InputNumber />)}
