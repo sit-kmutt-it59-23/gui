@@ -86,7 +86,6 @@ class ProjectProposalForm extends Component {
                 <Header
                     topic="แบบฟอร์มเสนอโครงการประกวดนาฏกรรมนานาชาติ ชิงถ้วยฟอร์มเสนอโครงการประกวดนาฏกรรมนานาชาติ"
                     description="ชมรมนาฏยโขนละคร ปีการศึกษา 2562"
-                    childrenHeight={80}
                     fixed={true}
                     hideChildenInSize="hidden-xs hidden-sm hidden-md"
                     headerRight={
