@@ -142,14 +142,6 @@ class InferFrom extends Component {
             }
         }
 
-        const topicLayout = {
-            labelAlign: 'left',
-            labelCol: {
-                sm: { span: 20, offset: 2 },
-                md: { span: 21, offset: 3 },
-            }
-        }
-
         const rangeDateLayout = {
             labelAlign: 'left',
             labelCol: {
@@ -218,7 +210,10 @@ class InferFrom extends Component {
                 <FormItem label="ลักษณะกิจกรรมที่จัดขึ้นสอดคล้องกับหลักเกียรติและศักดิ์ของนักศึกษา(Code of Honor) ดังนี้(อธิบาย):" {...textAreaLayout}>
                     {getFieldDecorator('code_of_honor')(<TextArea rows={5} />)}
                 </FormItem>
-                <FormItem label="ระยะเวลาดำเนินงาน" {...topicLayout}>
+                <Row style={{ marginBottom: 24 }} >
+                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} style={{ marginBottom: 5 }}>
+                        <strong>ระยะเวลาดำเนินงาน:</strong>
+                    </Col>
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <div className="border-form">
                             <FormItem label="ระยะเวลาเตรียมงาน" {...rangeDateLayout}>
@@ -229,8 +224,11 @@ class InferFrom extends Component {
                             </FormItem>
                         </div>
                     </Col>
-                </FormItem>
-                <FormItem label="ขั้นตอนการดำเนินงาน" {...topicLayout}>
+                </Row>
+                <Row style={{ marginBottom: 24 }} >
+                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} style={{ marginBottom: 5 }}>
+                        <strong>ขั้นตอนการดำเนินงาน:</strong>
+                    </Col>
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <div className="border-form">
                             <FormItem label="ขั้นตอน" {...selectLayout}>
@@ -265,8 +263,8 @@ class InferFrom extends Component {
                             </FormItem>
                         </div>
                     </Col>
-                </FormItem>
-                <Row>
+                </Row>
+                <Row style={{ marginBottom: 20 }}>
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <Table
                             className="form-table"
@@ -282,7 +280,7 @@ class InferFrom extends Component {
                         />
                     </Col>
                 </Row>
-                <Row style={{ marginBottom: 20 }}>
+                <Row style={{ marginBottom: 24 }}>
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <div className="border-form">
                             <FormItem label="สถานที่ปฏิบัติงาน" {...textFieldLayout}>
@@ -303,7 +301,10 @@ class InferFrom extends Component {
                         </div>
                     </Col>
                 </Row>
-                <FormItem label="คณะกรรมการจัดโครงการ" {...topicLayout}>
+                <Row style={{ marginBottom: 24 }} >
+                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} style={{ marginBottom: 5 }}>
+                        <strong>คณะกรรมการจัดโครงการ:</strong>
+                    </Col>
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <div className="border-form" >
                             <FormItem label="รหัสนักศึกษา" {...textFieldLayout}>
@@ -317,7 +318,7 @@ class InferFrom extends Component {
                             </FormItem>
                         </div>
                     </Col>
-                </FormItem>
+                </Row>
                 <Row>
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <Table
@@ -330,7 +331,6 @@ class InferFrom extends Component {
                     </Col>
                 </Row>
             </Form >
-
         )
     }
 }
