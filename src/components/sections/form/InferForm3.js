@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { Form, Col, Row, Button, Input, Checkbox, 
-        Table, Select, InputNumber, Upload, Icon, TimePicker, DatePicker, message  } from 'antd'
+import {
+    Form, Col, Row, Button, Input, Checkbox,
+    Table, Select, InputNumber, Upload, Icon,
+    TimePicker, DatePicker, message } from 'antd'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import 'moment/locale/th'
@@ -26,17 +28,17 @@ const props = {
     multiple: true,
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     onChange(info) {
-      const { status } = info.file;
-      if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
+        const { status } = info.file;
+        if (status !== 'uploading') {
+            console.log(info.file, info.fileList);
+        }
+        if (status === 'done') {
+            message.success(`${info.file.name} file uploaded successfully.`);
+        } else if (status === 'error') {
+            message.error(`${info.file.name} file upload failed.`);
+        }
     },
-  }
+}
 
 class InferFrom extends Component {
     constructor(props) {
@@ -153,7 +155,7 @@ class InferFrom extends Component {
                 md: { span: 4 },
             },
             wrapperCol: {
-                sm: { span: 8 },
+                sm: { span: 12 },
                 md: { span: 20 },
             }
         }
@@ -249,10 +251,10 @@ class InferFrom extends Component {
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <div className="border-form">
                             <FormItem label="ปัญหา/อุปสรรค:" {...textFieldLayout}>
-                                {getFieldDecorator('expected_results')(<Input />)}
+                                {getFieldDecorator('issue')(<Input />)}
                             </FormItem>
                             <FormItem label="แนวทางการแก้ไข:" {...textFieldLayout}>
-                                {getFieldDecorator('kpi')(<Input />)}
+                                {getFieldDecorator('solution')(<Input />)}
                             </FormItem>
                             <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 20 }}>
                                 <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
@@ -283,10 +285,10 @@ class InferFrom extends Component {
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <div className="border-form">
                             <FormItem label="ได้รับงบประมาณจาก" {...textFieldLayout}>
-                                {getFieldDecorator('expected_results')(<Input />)}
+                                {getFieldDecorator('budget_external_for')(<Input />)}
                             </FormItem>
                             <FormItem label="หมวด" {...selectLayout}>
-                                {getFieldDecorator('procedure')(
+                                {getFieldDecorator('budget_external_type')(
                                     <Select placeholder="เลือก" style={{ width: '200px' }} >
                                         <Option value="ค่าวัสดุ">ค่าวัสดุ</Option>
                                         <Option value="ค่าใช้สอย">ค่าใช้สอย</Option>
@@ -297,15 +299,15 @@ class InferFrom extends Component {
                                 )}
                             </FormItem>
                             <FormItem label="รายละเอียด:" {...textFieldLayout}>
-                                {getFieldDecorator('kpi')(<Input />)}
+                                {getFieldDecorator('budget_external_description')(<Input />)}
                             </FormItem>
                             <FormItem label="เป็นเงิน" {...numberLayout}>
-                                {getFieldDecorator('procedure_time')(<InputNumber />)}
+                                {getFieldDecorator('budget_external_total')(<InputNumber />)}
                                 <span style={{ marginLeft: 10 }}>บาท</span>
                             </FormItem>
                             <FormItem wrapperCol={{
                                 xs: 24,
-                                sm: 23,
+                                sm: { span: 10, offset: 8 },
                                 md: { span: 10, offset: 7 }
                             }}>
                                 <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
@@ -331,18 +333,18 @@ class InferFrom extends Component {
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <div className="border-form">
                             <FormItem label="ได้รับผลิตภัณฑ์จาก" {...textFieldLayout}>
-                                {getFieldDecorator('expected_results')(<Input />)}
+                                {getFieldDecorator('product_external_for')(<Input />)}
                             </FormItem>
                             <FormItem label="ชื่อผลิตภัณฑ์" {...textFieldLayout}>
-                                {getFieldDecorator('kpi')(<Input />)}
+                                {getFieldDecorator('product_external_name')(<Input />)}
                             </FormItem>
                             <FormItem label="มูลค่า" {...numberLayout}>
-                                {getFieldDecorator('procedure_time')(<InputNumber />)}
+                                {getFieldDecorator('product_external_price')(<InputNumber />)}
                                 <span style={{ marginLeft: 10 }}>บาท</span>
                             </FormItem>
                             <FormItem wrapperCol={{
                                 xs: 24,
-                                sm: 23,
+                                sm: { span: 10, offset: 8 },
                                 md: { span: 18, offset: 7 }
                             }}>
                                 <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
@@ -371,8 +373,8 @@ class InferFrom extends Component {
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <div className="border-form">
                             <FormItem label="หมวด" {...selectLayout2}>
-                                {getFieldDecorator('procedure')(
-                                    <Select placeholder="เลือก" style={{ width: '300px' }} >
+                                {getFieldDecorator('budget_internal_type')(
+                                    <Select placeholder="เลือก" style={{ width: '250px' }} >
                                         <Option value="ค่าวัสดุ">ค่าวัสดุ</Option>
                                         <Option value="ค่าใช้สอย">ค่าใช้สอย</Option>
                                         <Option value="ค่าตอบแทน">ค่าตอบแทน</Option>
@@ -382,32 +384,31 @@ class InferFrom extends Component {
                                 )}
                             </FormItem>
                             <FormItem label="ชื่อผลิตภัณฑ์" {...textFieldLayout2}>
-                                {getFieldDecorator('kpi')(<Input />)}
+                                {getFieldDecorator('budget_internal_name')(<Input />)}
                             </FormItem>
                             <FormItem label="ราคาต่อหน่วย"
                                 help="ตัวอย่าง (ราคาหน่วยละ 20 บาท X จำนวน 10 คน X 3 มื้อ)"
                                 {...priceLayout}
                             >
-                                <Row gutter={8}>
-                                    <Col span={6}>
-                                        {getFieldDecorator('kpi')(<Input addonAfter="บาท" />)}
+                               <Row gutter={8}>
+                                    <Col xs={20} sm={20} md={6}>
+                                        {getFieldDecorator('budget_internal_count_1')(<Input addonAfter="บาท" />)}
                                     </Col>
-                                    <Col span={8}>
-                                        {getFieldDecorator('kpi')(<Input addonBefore="จำนวน" addonAfter={selectAfter} />)}
-
+                                    <Col xs={20} sm={24} md={9}>
+                                        {getFieldDecorator('budget_internal_count_2')(<Input addonBefore="จำนวน" addonAfter={selectAfter} width={20} />)}
                                     </Col>
-                                    <Col span={8}>
-                                        {getFieldDecorator('kpi')(<Input addonBefore="จำนวน" addonAfter="บาท" />)}
+                                    <Col xs={20} sm={24} md={8}>
+                                        {getFieldDecorator('budget_internal_count_3')(<Input addonBefore="จำนวน" addonAfter="บาท" />)}
                                     </Col>
                                 </Row>
                             </FormItem>
                             <FormItem label="เป็นเงิน" {...numberLayout2}>
-                                {getFieldDecorator('procedure_time')(<InputNumber />)}
+                                {getFieldDecorator('budget_internal_total')(<InputNumber />)}
                                 <span style={{ marginLeft: 10 }}>บาท</span>
                             </FormItem>
                             <FormItem wrapperCol={{
                                 xs: 24,
-                                sm: 23,
+                                sm: { span: 10, offset: 8 },
                                 md: { span: 20, offset: 4 }
                             }}>
                                 <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
@@ -433,8 +434,8 @@ class InferFrom extends Component {
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <div className="border-form">
                             <FormItem label="หมวด" {...selectLayout2}>
-                                {getFieldDecorator('procedure')(
-                                    <Select placeholder="เลือก" style={{ width: '300px' }} >
+                                {getFieldDecorator('budget_organize_type')(
+                                    <Select placeholder="เลือก" style={{ width: '250px' }} >
                                         <Option value="ค่าวัสดุ">ค่าวัสดุ</Option>
                                         <Option value="ค่าใช้สอย">ค่าใช้สอย</Option>
                                         <Option value="ค่าตอบแทน">ค่าตอบแทน</Option>
@@ -444,32 +445,31 @@ class InferFrom extends Component {
                                 )}
                             </FormItem>
                             <FormItem label="รายละเอียด:" {...textFieldLayout2}>
-                                {getFieldDecorator('kpi')(<Input />)}
+                                {getFieldDecorator('budget_organize_description')(<Input />)}
                             </FormItem>
                             <FormItem label="ราคาต่อหน่วย"
                                 help="ตัวอย่าง (ราคาหน่วยละ 20 บาท X จำนวน 10 คน X 3 มื้อ)"
                                 {...priceLayout}
                             >
                                 <Row gutter={8}>
-                                    <Col span={6}>
-                                        {getFieldDecorator('kpi')(<Input addonAfter="บาท" />)}
+                                    <Col xs={20} sm={20} md={6}>
+                                        {getFieldDecorator('budget_organize_count_1')(<Input addonAfter="บาท" />)}
                                     </Col>
-                                    <Col span={8}>
-                                        {getFieldDecorator('kpi')(<Input addonBefore="จำนวน" addonAfter={selectAfter} />)}
-
+                                    <Col xs={20} sm={24} md={9}>
+                                        {getFieldDecorator('budget_organize_count_2')(<Input addonBefore="จำนวน" addonAfter={selectAfter} width={20} />)}
                                     </Col>
-                                    <Col span={8}>
-                                        {getFieldDecorator('kpi')(<Input addonBefore="จำนวน" addonAfter="บาท" />)}
+                                    <Col xs={20} sm={24} md={8}>
+                                        {getFieldDecorator('budget_organize_count_3')(<Input addonBefore="จำนวน" addonAfter="บาท" />)}
                                     </Col>
                                 </Row>
                             </FormItem>
                             <FormItem label="เป็นเงิน" {...numberLayout2}>
-                                {getFieldDecorator('procedure_time')(<InputNumber />)}
+                                {getFieldDecorator('budget_organize_total')(<InputNumber />)}
                                 <span style={{ marginLeft: 10 }}>บาท</span>
                             </FormItem>
                             <FormItem wrapperCol={{
                                 xs: 24,
-                                sm: 23,
+                                sm: { span: 10, offset: 8 },
                                 md: { span: 20, offset: 4 }
                             }}>
                                 <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
@@ -495,17 +495,17 @@ class InferFrom extends Component {
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
                         <div className="border-form">
                             <FormItem label="วันที่" {...timeLayout}>
-                                {getFieldDecorator('kpi')(<DatePicker format="ll" />)}
+                                {getFieldDecorator('schedule_date')(<DatePicker format="ll" />)}
                             </FormItem>
                             <FormItem label="เวลาเริ่ม - เวลาสิ้นสุด" {...timeLayout}>
-                                {getFieldDecorator('kpi')(<TimePicker format="HH:mm" style={{ marginRight: 10 }} />)}
-                                {getFieldDecorator('kpi')(<TimePicker format="HH:mm" />)}
+                                {getFieldDecorator('schedule_time_start')(<TimePicker format="HH:mm" style={{ marginRight: 10 }} />)}
+                                {getFieldDecorator('schedule_time_end')(<TimePicker format="HH:mm" />)}
                             </FormItem>
                             <FormItem label="กิจกรรม" {...textFieldLayout}>
-                                {getFieldDecorator('kpi')(<Input />)}
+                                {getFieldDecorator('schedule_event')(<Input />)}
                             </FormItem>
                             <FormItem label="วัตถุประสงค์" {...textFieldLayout}>
-                                {getFieldDecorator('kpi')(<Input />)}
+                                {getFieldDecorator('schedule_objective')(<Input />)}
                             </FormItem>
                         </div>
                     </Col>
@@ -527,8 +527,8 @@ class InferFrom extends Component {
                     </Col>
                     <Col sm={{ span: 20, offset: 2 }} md={{ span: 13, offset: 5 }} >
                         <FormItem>
-                            {getFieldDecorator('dragger')(
-                                <Dragger {...props}> 
+                            {getFieldDecorator('upload')(
+                                <Dragger {...props}>
                                     <p className="ant-upload-drag-icon">
                                         <Icon type="inbox" />
                                     </p>
