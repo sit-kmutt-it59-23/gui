@@ -89,23 +89,23 @@ class ProjectProposalForm extends Component {
                     fixed={true}
                     hideChildenInSize="hidden-xs hidden-sm hidden-md"
                     headerRight={
-                        <div>
+                        <div className="text-right">
                             <Button style={{ marginBottom: 5 }}>
                                 <Icon type="eye" />
                                 <span className="hidden-md">
                                     PREVIEW
                                 </span>
                             </Button>
-                            <ButtonCustom style={{ margin: '0 10px 5px 10px' }} color="#fff" background="#63A2D8">
+                            <ButtonCustom style={{ margin: '0 0 5px 10px' }} color="#fff" background="#63A2D8">
                                 <Icon type="save" />
                                 <span className="hidden-md">
                                     SAVE FORM
                                 </span>
                             </ButtonCustom>
-                            <ButtonCustom color="#fff" background="#74D99F">
+                            <ButtonCustom color="#fff" background="#74D99F" style={{ marginLeft: 10 }}> 
                                 <FontAwesomeIcon icon={faPaperPlane} />
                                 <span className="hidden-md" style={{ marginLeft: 8 }}>
-                                    SAVE FORM
+                                    SENT FORM
                                 </span>
                             </ButtonCustom>
                         </div>
