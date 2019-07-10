@@ -97,6 +97,8 @@ class NavbarCustom extends Component {
     }
 
     render() {
+        let name = "ภรณ์วรัตน์ สุวิชาชนันทร์"
+        let clubName = "ชมรมนาฏยโขนละคร"
         return (
             <Nav>
                 <FlexCenterItem>
@@ -117,9 +119,9 @@ class NavbarCustom extends Component {
                     <LinkMenu to="#">
                         <ProfileImg alt="Profile Pictrue" src="https://pbs.twimg.com/profile_images/1000002686677209088/D1d8M7jA_400x400.jpg" />
                         <ProfileName className="hidden-xs">
-                            วรรณกานต์ สุวรรณดี
+                            { name.length > 25 ? `${name.slice(0, 24)}...` : name}
                             <hr />
-                            ชมรมนาฏยโขนละคร
+                            { clubName.length > 25 ? `${clubName.slice(0, 24)}...` : clubName}
                         </ProfileName>
                         <Icon type="down" />
                     </LinkMenu>
