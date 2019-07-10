@@ -28,12 +28,6 @@ const Logo = styled.img`
     margin-right: 8px;
 `
 
-const ProfileImg = styled.img`
-    border-radius: 100%;
-    margin-right: 10px;
-    height:42px;
-    width:42px;
-`
 const LinkMenu = styled(Link)`
     display: flex;
     align-items: center;
