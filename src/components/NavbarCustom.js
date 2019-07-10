@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Dropdown, Icon } from 'antd'
+import { Menu, Dropdown, Icon, Avatar } from 'antd'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
@@ -47,6 +47,7 @@ const LinkMenu = styled(Link)`
 const ProfileName = styled.div`
     font-size:12px;
     margin-right:10px;
+    margin-left: 10px;
     hr{
         margin: 0;
         padding: 0;
@@ -117,13 +118,14 @@ class NavbarCustom extends Component {
                 </FlexCenterItem>
                 <Dropdown overlay={menu} trigger={['click']}>
                     <LinkMenu to="#">
-                        <ProfileImg alt="Profile Pictrue" src="https://pbs.twimg.com/profile_images/1000002686677209088/D1d8M7jA_400x400.jpg" />
+                        <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>{name.slice(0,1)}</Avatar>
+                        {/* Avatar เช็คว่ามีรูปไหม ถ้ามีก็เเสดงเป็นรูป  <Avatar src=" " /> */}
                         <ProfileName className="hidden-xs">
                             { name.length > 25 ? `${name.slice(0, 24)}...` : name}
                             <hr />
                             { clubName.length > 25 ? `${clubName.slice(0, 24)}...` : clubName}
                         </ProfileName>
-                        <Icon type="down" />
+                        <Icon type="down" style={{ marginLeft: 5 }} />
                     </LinkMenu>
                 </Dropdown>
             </Nav >
