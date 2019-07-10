@@ -121,3 +121,9 @@ body {
     line-height: 2.5;
     white-space: initial;
 }
+
+/* ------- Anchor -------- */
+
+.ant-anchor-link-title{
+    overflow: inherit;
+}
