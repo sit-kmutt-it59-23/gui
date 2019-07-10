@@ -80,6 +80,11 @@ body {
     background: #e88044;
 }
 
+.ant-table-thead > tr > th .ant-table-column-sorter .ant-table-column-sorter-inner .ant-table-column-sorter-up.on,
+.ant-table-thead > tr > th .ant-table-column-sorter .ant-table-column-sorter-inner .ant-table-column-sorter-down.on{
+    color: #ffffff;
+}
+
 .form-table .ant-table .ant-table-thead th{
     color:#000;
     background-color: #ffffff;
@@ -98,6 +103,16 @@ body {
 
 .form-table .ant-table-tbody > tr > td:last-child{
     border-left: none;
+}
+
+.ant-table-thead > tr > th.ant-table-column-has-actions.ant-table-column-has-filters
+.ant-table-filter-icon.ant-table-filter-open {
+    background-color: #e88044;
+}
+
+.ant-table-thead > tr > th.ant-table-column-has-actions.ant-table-column-has-filters:hover .anticon-filter:hover, 
+.ant-table-thead > tr > th.ant-table-column-has-actions.ant-table-column-has-filters:hover .ant-table-filter-icon:hover {
+    background-color: #e88044;
 }
 
 /* ------- Form -------- */

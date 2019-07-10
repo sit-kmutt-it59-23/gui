@@ -1,21 +1,84 @@
 import React, { Component, Fragment } from 'react'
-import { Link } from 'react-router-dom'
-import { Dropdown, Empty, Icon, Menu, Table } from 'antd'
+import {  Empty, Icon, Table, Input, Button } from 'antd'
+import Highlighter from 'react-highlight-words'
 import moment from 'moment'
 import 'moment/locale/th'
 import axiosInstance from 'scripts/Api'
 
-const { SubMenu } = Menu
+import Header from './sections/HeaderCustom.js'
 
 class ListProjectClub extends Component {
     constructor(props) {
-        super(props);
+        super(props)
+
         this.state = {
+            searchText: '',
             isLoading: true,
             data: [],
             error: null
         }
     }
+
+    getColumnSearchProps = dataIndex => ({
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+            <div style={{ padding: 8 }}>
+                <Input
+                    ref={node => {
+                        this.searchInput = node;
+                    }}
+                    placeholder={`ค้นหาจากชื่อโครงการ`}
+                    value={selectedKeys[0]}
+                    onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+                    onPressEnter={() => this.handleSearch(selectedKeys, confirm)}
+                    style={{ width: 188, marginBottom: 8, display: 'block' }}
+                />
+                <Button
+                    type="primary"
+                    onClick={() => this.handleSearch(selectedKeys, confirm)}
+                    icon="search"
+                    size="small"
+                    style={{ width: 90, marginRight: 8 }}
+                >
+                    ค้นหา
+            </Button>
+                <Button onClick={() => this.handleReset(clearFilters)} size="small" style={{ width: 90 }}>
+                    ล้าง
+            </Button>
+            </div>
+        ),
+        filterIcon: filtered => (
+            <Icon type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
+        ),
+        onFilter: (value, record) =>
+            record[dataIndex]
+                .toString()
+                .toLowerCase()
+                .includes(value.toLowerCase()),
+        onFilterDropdownVisibleChange: visible => {
+            if (visible) {
+                setTimeout(() => this.searchInput.select())
+            }
+        },
+        render: text => (
+            <Highlighter
+                highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+                searchWords={[this.state.searchText]}
+                autoEscape
+                textToHighlight={text.toString()}
+            />
+        ),
+    })
+
+    handleSearch = (selectedKeys, confirm) => {
+        confirm()
+        this.setState({ searchText: selectedKeys[0] })
+    }
+
+    handleReset = clearFilters => {
+        clearFilters()
+        this.setState({ searchText: '' })
+    }
+
 
     componentDidMount() {
         this.getData()
@@ -45,38 +108,13 @@ class ListProjectClub extends Component {
             }
         }
 
-        const actionMenu = (project_id) => (
-            <Menu>
-                <SubMenu title="สร้าง">
-                    <Menu.Item><Link to={`/projects/${project_id}/docs/1/create`}>การเสนอโครงการ</Link></Menu.Item>
-                    <Menu.Item><Link to={`/projects/${project_id}/docs/2/create`}>การสรุปโครงการ</Link></Menu.Item>
-                </SubMenu>
-            </Menu>
-        )
-
         const columns = [
             {
                 title: 'ชื่อโครงการ',
                 dataIndex: 'name',
                 key: 'name',
-                sorter: (a, b) => a.name.localeCompare(b.name),
                 render: (val) => val,
-            },
-            {
-                title: 'งบประมาณที่ขอ',
-                dataIndex: 'budget_amount',
-                key: 'budget_amount',
-                sorter: (a, b) => a.budget_amount - b.budget_amount,
-                render: (val) => val.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
-                align: 'right'
-            },
-            {
-                title: 'วันที่ดำเนินโครงการ',
-                dataIndex: 'start_at',
-                key: 'start_at',
-                sorter: (a, b) => moment(a.start_at).unix() - moment(b.start_at).unix(),
-                render: (val) => moment(val).locale('th').format('ll'),
-                align: 'center'
+                ...this.getColumnSearchProps('name'),
             },
             {
                 title: 'วันที่สิ้นสุดโครงการ',
@@ -87,24 +125,39 @@ class ListProjectClub extends Component {
                 render: (val) => moment(val).locale('th').format('ll'),
                 align: 'center'
             },
+            {   
+                // จะเเสดงค่าต่อเมื่อกดส่งเเบบฟอร์มเเล้ว จะบันทึกค่าวันสุดท้ายของการเตรียมงาน จาก data{} เข้า DB
+                // วันสุดท้ายของการเตรียมงาน อยู่ที่หน้า InferForm2 ที่ preparation_period 
+                // ใช้ moment formatนี้ moment().endOf('day').fromNow()
+                // ถ้ายังไม่มีการส่งฟอร์ม จะขึ้น -
+                title: 'ระยะเวลาคงเหลือ',
+                // dataIndex: '???',
+                // key: '???',
+                // sorter: (a, b) => moment(a.???).unix() - moment(b.???).unix(),
+                // render: (val) => moment(val).locale('th').endOf('day').fromNow(),
+                align: 'center'
+            },
             {
-                title: "การดำเนินการ",
-                key: 'action',
-                render: (val, item) => (
-                    <Dropdown overlay={actionMenu(item.id)}>
-                        <Link to="#">
-                            เมนู <Icon type="right" />
-                        </Link>
-                    </Dropdown>
-                ),
-                align: 'center',
-                fixed: 'right'
-            }
+                // ถ้ายังไม่มีการกดเข้าไป จะขึ้นว่ายังไม่มีการแก้ไข
+                title: 'แก้ไขล่าสุด',
+                dataIndex: 'updated_at',
+                key: 'updated_at',
+                sorter: (a, b) => moment(a.update_at).unix() - moment(b.update_at).unix(),
+                render: (val) => moment(val).locale('th').startOf('day').fromNow(),
+                align: 'center'
+            },
+            {
+                // รอเอมาทำ ดูสถานนะจากดีไซน์เอา
+                title: 'สถานะ',
+                align: 'center'
+            },
         ]
 
         return (
-            <div style={{ padding: 20}}>
+            <Fragment>
+                 <Header topic="แบบฟอร์ม" description="ชมรมนาฏยโขนละคร ปีการศึกษา 2562"/>
                 <Table
+                    style={{ padding : 20 }}
                     dataSource={this.state.data}
                     columns={columns}
                     rowKey={item => item.id}
@@ -112,8 +165,13 @@ class ListProjectClub extends Component {
                     loading={this.state.isLoading}
                     scroll={{ x: 700 }}
                     size="middle"
+                    onRow={(item) => {
+                        return {
+                            onClick: event => { window.location.assign(`/projects/${item.id}/docs/1/create`) },
+                        }
+                    }}
                 />
-            </div>
+            </Fragment>
         )
     }
 }
