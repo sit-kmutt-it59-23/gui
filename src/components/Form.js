@@ -118,7 +118,7 @@ class ProjectProposalForm extends Component {
                     </StepsCustom>
                 </Header>
                 <div className="steps-content" style={{ padding: '20px 10px' }}>{steps[current].content}</div>
-                <Col className="steps-action text-right" xs={{ span: 23 }} sm={{ span: 17 }} md={{ span: 17 }}>
+                <Col className="steps-action text-right" xs={{ span: 23 }} sm={{ span: 22 }} md={{ span: 17 }}>
                     {current > 0 && (
                         <ButtonPrev type="primary" style={{ marginRight: 8 }} onClick={() => this.prev()}>
                             <Icon type="left" />

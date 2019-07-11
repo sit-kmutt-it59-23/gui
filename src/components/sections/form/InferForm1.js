@@ -98,7 +98,7 @@ class InferFrom extends Component {
 
         return (
             <Row>
-                <Col sm={18} md={20}>
+                <Col md={20}>
                     <Form>
                         <Row id="name_project">
                             <FormItem label="ชื่อโครงการ" {...nameLayout}>
@@ -225,7 +225,7 @@ class InferFrom extends Component {
                         </Row>
                     </Form>
                 </Col>
-                <Col sm={6} md={4} className="hidden-xs hidden-sm">
+                <Col md={4} className="hidden-xs hidden-sm hidden-md">
                     <Anchor affix={true} offsetTop={200} >
                         <Link href="#name_project" title="ชื่อโครงการ" />
                         <Link href="#activity_project_type" title="ประเภทโครงการกิจกรรม" />

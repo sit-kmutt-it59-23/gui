@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react'
 import {
     Form, Col, Row, Button, Input, Checkbox,
     Table, Select, InputNumber, Upload, Icon,
-    TimePicker, DatePicker, message } from 'antd'
+    TimePicker, DatePicker, message, Anchor
+} from 'antd'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import 'moment/locale/th'
@@ -100,7 +101,7 @@ class InferFrom extends Component {
             },
             wrapperCol: {
                 sm: { span: 15 },
-                md: { span: 13 },
+                md: { span: 15 },
             }
         }
 
@@ -111,7 +112,7 @@ class InferFrom extends Component {
             },
             wrapperCol: {
                 sm: { span: 15 },
-                md: { span: 13 },
+                md: { span: 18 },
             }
         }
 
@@ -173,374 +174,390 @@ class InferFrom extends Component {
 
 
         return (
-            <Form>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }} style={{ marginBottom: 5 }}>
-                        <strong>รูปแบบการประเมินผล:</strong>
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form" >
-                            <FormItem {...CheckLayout}>
-                                {getFieldDecorator('checkbox-evaluation')(
-                                    <CheckboxGroup>
-                                        <Row>
-                                            <Col span={24} style={{ marginBottom: 10 }}>
-                                                <Checkbox value="Observatation">การสังเกต (Observatation)</Checkbox>
-                                            </Col>
-                                            <Col span={24} style={{ marginBottom: 10 }}>
-                                                <Checkbox value="Interview">การสัมภาษณ์ (Interview)</Checkbox>
-                                            </Col>
-                                            <Col span={24} style={{ marginBottom: 10 }}>
-                                                <Checkbox value="Questoinaires">การใช้แบบสอบถาม (Questoinaires)</Checkbox>
-                                            </Col>
-                                            <Col span={24} style={{ marginBottom: 10 }}>
-                                                <Checkbox value="Test">การใช้แบบสอบถาม (Test)</Checkbox>
-                                            </Col>
-                                            <Col span={24}>
-                                                <Checkbox value="etc" style={{ display: 'inline-flex' }} >
-                                                    อื่นๆ โปรดระบุ
+            <Row>
+                <Col md={19}>
+                    <Form>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="evaluation_form">
+                                <strong>รูปแบบการประเมินผล:</strong>
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form" >
+                                    <FormItem {...CheckLayout}>
+                                        {getFieldDecorator('checkbox-evaluation')(
+                                            <CheckboxGroup>
+                                                <Row>
+                                                    <Col span={24} style={{ marginBottom: 10 }}>
+                                                        <Checkbox value="Observatation">การสังเกต (Observatation)</Checkbox>
+                                                    </Col>
+                                                    <Col span={24} style={{ marginBottom: 10 }}>
+                                                        <Checkbox value="Interview">การสัมภาษณ์ (Interview)</Checkbox>
+                                                    </Col>
+                                                    <Col span={24} style={{ marginBottom: 10 }}>
+                                                        <Checkbox value="Questoinaires">การใช้แบบสอบถาม (Questoinaires)</Checkbox>
+                                                    </Col>
+                                                    <Col span={24} style={{ marginBottom: 10 }}>
+                                                        <Checkbox value="Test">การใช้แบบสอบถาม (Test)</Checkbox>
+                                                    </Col>
+                                                    <Col span={24}>
+                                                        <Checkbox value="etc" style={{ display: 'inline-flex' }} >
+                                                            อื่นๆ โปรดระบุ
                                                 {getFieldDecorator('etc_data')(<Input />)}
-                                                </Checkbox>
+                                                        </Checkbox>
+                                                    </Col>
+                                                </Row>
+                                            </CheckboxGroup>,
+                                        )}
+                                    </FormItem>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} id="expected_results">
+                                <strong>ผลที่คาดว่าจะได้รับ</strong>
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
+                                (การกำหนดผลที่คาดว่าจะได้รับหลังจากการดำเนินกิจกรรมจะต้องสอดคล้องกับวัตถุประสงค์ของโครงการ และต้องมีการกำหนดตัวชี้วัดด้วย)
+                    </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form">
+                                    <FormItem label="ผลที่คาดว่าจะได้รับ" {...textFieldLayout}>
+                                        {getFieldDecorator('expected_results')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="ตัวชี้วัด KPI" {...textFieldLayout}>
+                                        {getFieldDecorator('kpi')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="ค่าเป้าหมาย" {...textFieldLayout}>
+                                        {getFieldDecorator('target_value')(<Input />)}
+                                    </FormItem>
+                                    <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 22 }}>
+                                        <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
+                                    </FormItem>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <Table
+                                    className="form-table"
+                                    size="small"
+                                    scroll={{ x: 700 }}
+                                    dataSource={this.state.dataWorking}
+                                    columns={this.state.columnWorking}
+                                />
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="past_performance">
+                                <strong>ผลการดำเนินงานที่ผ่านมาและการนำผลการประเมินโครงการ/กิจกรรมมาปรับปรุงในการจัดโครงการครั้งนี้ (กรณีเป็นโครงการต่อเนื่อง)</strong>
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form">
+                                    <FormItem label="ปัญหา/อุปสรรค:" {...textFieldLayout}>
+                                        {getFieldDecorator('issue')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="แนวทางการแก้ไข:" {...textFieldLayout}>
+                                        {getFieldDecorator('solution')(<Input />)}
+                                    </FormItem>
+                                    <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 22 }}>
+                                        <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
+                                    </FormItem>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <Table
+                                    className="form-table"
+                                    size="small"
+                                    scroll={{ x: 700 }}
+                                    dataSource={this.state.dataWorking}
+                                    columns={this.state.columnWorking}
+                                />
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }}>
+                                <strong>รายละเอียดงบประมาณ:</strong>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="external_budget">
+                                <strong>1. งบประมาณที่ได้รับการสนับสนุนจากแหล่งทุนภายนอก (ถ้ามี)</strong>
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form">
+                                    <FormItem label="ได้รับงบประมาณจาก" {...textFieldLayout}>
+                                        {getFieldDecorator('budget_external_for')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="หมวด" {...selectLayout}>
+                                        {getFieldDecorator('budget_external_type')(
+                                            <Select placeholder="เลือก" style={{ width: '200px' }} >
+                                                <Option value="ค่าวัสดุ">ค่าวัสดุ</Option>
+                                                <Option value="ค่าใช้สอย">ค่าใช้สอย</Option>
+                                                <Option value="ค่าตอบแทน">ค่าตอบแทน</Option>
+                                                <Option value="ค่ายานพาหนะ">ค่ายานพาหนะ</Option>
+                                                <Option value="ค่าเชื้อเพลิง">ค่าเชื้อเพลิง</Option>
+                                            </Select>
+                                        )}
+                                    </FormItem>
+                                    <FormItem label="รายละเอียด:" {...textFieldLayout}>
+                                        {getFieldDecorator('budget_external_description')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="เป็นเงิน" {...numberLayout}>
+                                        {getFieldDecorator('budget_external_total')(<InputNumber />)}
+                                        <span style={{ marginLeft: 10 }}>บาท</span>
+                                    </FormItem>
+                                    <FormItem wrapperCol={{
+                                        xs: 24,
+                                        sm: { span: 10, offset: 8 },
+                                        md: { span: 10, offset: 7 }
+                                    }}>
+                                        <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
+                                    </FormItem>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <Table
+                                    className="form-table"
+                                    size="small"
+                                    scroll={{ x: 700 }}
+                                    dataSource={this.state.dataWorking}
+                                    columns={this.state.columnWorking}
+                                />
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="case_product_support">
+                                กรณี การขอรับการสนับสนุนเป็นทรัพยากร สินค้า หรือผลิตภัณฑ์:
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form">
+                                    <FormItem label="ได้รับผลิตภัณฑ์จาก" {...textFieldLayout}>
+                                        {getFieldDecorator('product_external_for')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="ชื่อผลิตภัณฑ์" {...textFieldLayout}>
+                                        {getFieldDecorator('product_external_name')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="มูลค่า" {...numberLayout}>
+                                        {getFieldDecorator('product_external_price')(<InputNumber />)}
+                                        <span style={{ marginLeft: 10 }}>บาท</span>
+                                    </FormItem>
+                                    <FormItem wrapperCol={{
+                                        xs: 24,
+                                        sm: { span: 10, offset: 8 },
+                                        md: { span: 18, offset: 7 }
+                                    }}>
+                                        <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
+                                    </FormItem>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <Table
+                                    className="form-table"
+                                    size="small"
+                                    scroll={{ x: 700 }}
+                                    dataSource={this.state.dataWorking}
+                                    columns={this.state.columnWorking}
+                                />
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
+                                <strong>2. งบประมาณที่ขอรับการสนับสนุนจากมหาวิทยาลัย</strong>
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="budget_organization">
+                                งบประมาณที่ขอรับการสนับสนุนผ่านองค์การบริหารนักศึกษา:
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form">
+                                    <FormItem label="หมวด" {...selectLayout2}>
+                                        {getFieldDecorator('budget_internal_type')(
+                                            <Select placeholder="เลือก" style={{ width: '250px' }} >
+                                                <Option value="ค่าวัสดุ">ค่าวัสดุ</Option>
+                                                <Option value="ค่าใช้สอย">ค่าใช้สอย</Option>
+                                                <Option value="ค่าตอบแทน">ค่าตอบแทน</Option>
+                                                <Option value="ค่ายานพาหนะ">ค่ายานพาหนะ</Option>
+                                                <Option value="ค่าเชื้อเพลิง">ค่าเชื้อเพลิง</Option>
+                                            </Select>
+                                        )}
+                                    </FormItem>
+                                    <FormItem label="ชื่อผลิตภัณฑ์" {...textFieldLayout2}>
+                                        {getFieldDecorator('budget_internal_name')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="ราคาต่อหน่วย"
+                                        help="ตัวอย่าง (ราคาหน่วยละ 20 บาท X จำนวน 10 คน X 3 มื้อ)"
+                                        {...priceLayout}
+                                    >
+                                        <Row gutter={8}>
+                                            <Col xs={20} sm={20} md={6}>
+                                                {getFieldDecorator('budget_internal_count_1')(<Input addonAfter="บาท" />)}
+                                            </Col>
+                                            <Col xs={20} sm={24} md={9}>
+                                                {getFieldDecorator('budget_internal_count_2')(<Input addonBefore="จำนวน" addonAfter={selectAfter} width={20} />)}
+                                            </Col>
+                                            <Col xs={20} sm={24} md={8}>
+                                                {getFieldDecorator('budget_internal_count_3')(<Input addonBefore="จำนวน" addonAfter="บาท" />)}
                                             </Col>
                                         </Row>
-                                    </CheckboxGroup>,
-                                )}
-                            </FormItem>
-                        </div>
+                                    </FormItem>
+                                    <FormItem label="เป็นเงิน" {...numberLayout2}>
+                                        {getFieldDecorator('budget_internal_total')(<InputNumber />)}
+                                        <span style={{ marginLeft: 10 }}>บาท</span>
+                                    </FormItem>
+                                    <FormItem wrapperCol={{
+                                        xs: 24,
+                                        sm: { span: 10, offset: 8 },
+                                        md: { span: 20, offset: 4 }
+                                    }}>
+                                        <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
+                                    </FormItem>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <Table
+                                    className="form-table"
+                                    size="small"
+                                    scroll={{ x: 700 }}
+                                    dataSource={this.state.dataWorking}
+                                    columns={this.state.columnWorking}
+                                />
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }} id="budget_faculty">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
+                                งบประมาณที่ขอรับการสนับสนุนผ่านคณะ/หน่วยงาน:
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form">
+                                    <FormItem label="หมวด" {...selectLayout2}>
+                                        {getFieldDecorator('budget_organize_type')(
+                                            <Select placeholder="เลือก" style={{ width: '250px' }} >
+                                                <Option value="ค่าวัสดุ">ค่าวัสดุ</Option>
+                                                <Option value="ค่าใช้สอย">ค่าใช้สอย</Option>
+                                                <Option value="ค่าตอบแทน">ค่าตอบแทน</Option>
+                                                <Option value="ค่ายานพาหนะ">ค่ายานพาหนะ</Option>
+                                                <Option value="ค่าเชื้อเพลิง">ค่าเชื้อเพลิง</Option>
+                                            </Select>
+                                        )}
+                                    </FormItem>
+                                    <FormItem label="รายละเอียด:" {...textFieldLayout2}>
+                                        {getFieldDecorator('budget_organize_description')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="ราคาต่อหน่วย"
+                                        help="ตัวอย่าง (ราคาหน่วยละ 20 บาท X จำนวน 10 คน X 3 มื้อ)"
+                                        {...priceLayout}
+                                    >
+                                        <Row gutter={8}>
+                                            <Col xs={20} sm={20} md={6}>
+                                                {getFieldDecorator('budget_organize_count_1')(<Input addonAfter="บาท" />)}
+                                            </Col>
+                                            <Col xs={20} sm={24} md={9}>
+                                                {getFieldDecorator('budget_organize_count_2')(<Input addonBefore="จำนวน" addonAfter={selectAfter} width={20} />)}
+                                            </Col>
+                                            <Col xs={20} sm={24} md={8}>
+                                                {getFieldDecorator('budget_organize_count_3')(<Input addonBefore="จำนวน" addonAfter="บาท" />)}
+                                            </Col>
+                                        </Row>
+                                    </FormItem>
+                                    <FormItem label="เป็นเงิน" {...numberLayout2}>
+                                        {getFieldDecorator('budget_organize_total')(<InputNumber />)}
+                                        <span style={{ marginLeft: 10 }}>บาท</span>
+                                    </FormItem>
+                                    <FormItem wrapperCol={{
+                                        xs: 24,
+                                        sm: { span: 10, offset: 8 },
+                                        md: { span: 20, offset: 4 }
+                                    }}>
+                                        <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
+                                    </FormItem>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <Table
+                                    className="form-table"
+                                    size="small"
+                                    scroll={{ x: 700 }}
+                                    dataSource={this.state.dataWorking}
+                                    columns={this.state.columnWorking}
+                                />
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }} id="schedule">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
+                                <strong>กำหนดการ:</strong>
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form">
+                                    <FormItem label="วันที่" {...timeLayout}>
+                                        {getFieldDecorator('schedule_date')(<DatePicker format="ll" />)}
+                                    </FormItem>
+                                    <FormItem label="เวลาเริ่ม - เวลาสิ้นสุด" {...timeLayout}>
+                                        {getFieldDecorator('schedule_time_start')(<TimePicker format="HH:mm" style={{ marginRight: 10 }} />)}
+                                        {getFieldDecorator('schedule_time_end')(<TimePicker format="HH:mm" />)}
+                                    </FormItem>
+                                    <FormItem label="กิจกรรม" {...textFieldLayout}>
+                                        {getFieldDecorator('schedule_event')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="วัตถุประสงค์" {...textFieldLayout}>
+                                        {getFieldDecorator('schedule_objective')(<Input />)}
+                                    </FormItem>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <Table
+                                    className="form-table"
+                                    size="small"
+                                    scroll={{ x: 700 }}
+                                    dataSource={this.state.dataWorking}
+                                    columns={this.state.columnWorking}
+                                />
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }} id="upload">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 20 }}>
+                                <strong>เอกสารเพิ่มเติม</strong> (เช่น ประวัติวิทยากร, แผนการเรียนการสอน หรือ อื่น ๆ) ถ้ามี:
                     </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }}>
-                        <strong>ผลที่คาดว่าจะได้รับ</strong>
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }} style={{ marginBottom: 5 }}>
-                        (การกำหนดผลที่คาดว่าจะได้รับหลังจากการดำเนินกิจกรรมจะต้องสอดคล้องกับวัตถุประสงค์ของโครงการ และต้องมีการกำหนดตัวชี้วัดด้วย)
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form">
-                            <FormItem label="ผลที่คาดว่าจะได้รับ" {...textFieldLayout}>
-                                {getFieldDecorator('expected_results')(<Input />)}
-                            </FormItem>
-                            <FormItem label="ตัวชี้วัด KPI" {...textFieldLayout}>
-                                {getFieldDecorator('kpi')(<Input />)}
-                            </FormItem>
-                            <FormItem label="ค่าเป้าหมาย" {...textFieldLayout}>
-                                {getFieldDecorator('target_value')(<Input />)}
-                            </FormItem>
-                            <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 20 }}>
-                                <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <Table
-                            className="form-table"
-                            size="small"
-                            scroll={{ x: 700 }}
-                            dataSource={this.state.dataWorking}
-                            columns={this.state.columnWorking}
-                        />
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }} style={{ marginBottom: 5 }}>
-                        <strong>ผลการดำเนินงานที่ผ่านมาและการนำผลการประเมินโครงการ/กิจกรรมมาปรับปรุงในการจัดโครงการครั้งนี้ (กรณีเป็นโครงการต่อเนื่อง)</strong>
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form">
-                            <FormItem label="ปัญหา/อุปสรรค:" {...textFieldLayout}>
-                                {getFieldDecorator('issue')(<Input />)}
-                            </FormItem>
-                            <FormItem label="แนวทางการแก้ไข:" {...textFieldLayout}>
-                                {getFieldDecorator('solution')(<Input />)}
-                            </FormItem>
-                            <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 20 }}>
-                                <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <Table
-                            className="form-table"
-                            size="small"
-                            scroll={{ x: 700 }}
-                            dataSource={this.state.dataWorking}
-                            columns={this.state.columnWorking}
-                        />
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }}>
-                        <strong>รายละเอียดงบประมาณ:</strong>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }} style={{ marginBottom: 5 }}>
-                        <strong>1. งบประมาณที่ได้รับการสนับสนุนจากแหล่งทุนภายนอก (ถ้ามี)</strong>
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form">
-                            <FormItem label="ได้รับงบประมาณจาก" {...textFieldLayout}>
-                                {getFieldDecorator('budget_external_for')(<Input />)}
-                            </FormItem>
-                            <FormItem label="หมวด" {...selectLayout}>
-                                {getFieldDecorator('budget_external_type')(
-                                    <Select placeholder="เลือก" style={{ width: '200px' }} >
-                                        <Option value="ค่าวัสดุ">ค่าวัสดุ</Option>
-                                        <Option value="ค่าใช้สอย">ค่าใช้สอย</Option>
-                                        <Option value="ค่าตอบแทน">ค่าตอบแทน</Option>
-                                        <Option value="ค่ายานพาหนะ">ค่ายานพาหนะ</Option>
-                                        <Option value="ค่าเชื้อเพลิง">ค่าเชื้อเพลิง</Option>
-                                    </Select>
-                                )}
-                            </FormItem>
-                            <FormItem label="รายละเอียด:" {...textFieldLayout}>
-                                {getFieldDecorator('budget_external_description')(<Input />)}
-                            </FormItem>
-                            <FormItem label="เป็นเงิน" {...numberLayout}>
-                                {getFieldDecorator('budget_external_total')(<InputNumber />)}
-                                <span style={{ marginLeft: 10 }}>บาท</span>
-                            </FormItem>
-                            <FormItem wrapperCol={{
-                                xs: 24,
-                                sm: { span: 10, offset: 8 },
-                                md: { span: 10, offset: 7 }
-                            }}>
-                                <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <Table
-                            className="form-table"
-                            size="small"
-                            scroll={{ x: 700 }}
-                            dataSource={this.state.dataWorking}
-                            columns={this.state.columnWorking}
-                        />
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }} style={{ marginBottom: 5 }}>
-                        กรณี การขอรับการสนับสนุนเป็นทรัพยากร สินค้า หรือผลิตภัณฑ์:
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form">
-                            <FormItem label="ได้รับผลิตภัณฑ์จาก" {...textFieldLayout}>
-                                {getFieldDecorator('product_external_for')(<Input />)}
-                            </FormItem>
-                            <FormItem label="ชื่อผลิตภัณฑ์" {...textFieldLayout}>
-                                {getFieldDecorator('product_external_name')(<Input />)}
-                            </FormItem>
-                            <FormItem label="มูลค่า" {...numberLayout}>
-                                {getFieldDecorator('product_external_price')(<InputNumber />)}
-                                <span style={{ marginLeft: 10 }}>บาท</span>
-                            </FormItem>
-                            <FormItem wrapperCol={{
-                                xs: 24,
-                                sm: { span: 10, offset: 8 },
-                                md: { span: 18, offset: 7 }
-                            }}>
-                                <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <Table
-                            className="form-table"
-                            size="small"
-                            scroll={{ x: 700 }}
-                            dataSource={this.state.dataWorking}
-                            columns={this.state.columnWorking}
-                        />
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }} style={{ marginBottom: 5 }}>
-                        <strong>2. งบประมาณที่ขอรับการสนับสนุนจากมหาวิทยาลัย</strong>
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }} style={{ marginBottom: 5 }}>
-                        งบประมาณที่ขอรับการสนับสนุนผ่านองค์การบริหารนักศึกษา:
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form">
-                            <FormItem label="หมวด" {...selectLayout2}>
-                                {getFieldDecorator('budget_internal_type')(
-                                    <Select placeholder="เลือก" style={{ width: '250px' }} >
-                                        <Option value="ค่าวัสดุ">ค่าวัสดุ</Option>
-                                        <Option value="ค่าใช้สอย">ค่าใช้สอย</Option>
-                                        <Option value="ค่าตอบแทน">ค่าตอบแทน</Option>
-                                        <Option value="ค่ายานพาหนะ">ค่ายานพาหนะ</Option>
-                                        <Option value="ค่าเชื้อเพลิง">ค่าเชื้อเพลิง</Option>
-                                    </Select>
-                                )}
-                            </FormItem>
-                            <FormItem label="ชื่อผลิตภัณฑ์" {...textFieldLayout2}>
-                                {getFieldDecorator('budget_internal_name')(<Input />)}
-                            </FormItem>
-                            <FormItem label="ราคาต่อหน่วย"
-                                help="ตัวอย่าง (ราคาหน่วยละ 20 บาท X จำนวน 10 คน X 3 มื้อ)"
-                                {...priceLayout}
-                            >
-                               <Row gutter={8}>
-                                    <Col xs={20} sm={20} md={6}>
-                                        {getFieldDecorator('budget_internal_count_1')(<Input addonAfter="บาท" />)}
-                                    </Col>
-                                    <Col xs={20} sm={24} md={9}>
-                                        {getFieldDecorator('budget_internal_count_2')(<Input addonBefore="จำนวน" addonAfter={selectAfter} width={20} />)}
-                                    </Col>
-                                    <Col xs={20} sm={24} md={8}>
-                                        {getFieldDecorator('budget_internal_count_3')(<Input addonBefore="จำนวน" addonAfter="บาท" />)}
-                                    </Col>
-                                </Row>
-                            </FormItem>
-                            <FormItem label="เป็นเงิน" {...numberLayout2}>
-                                {getFieldDecorator('budget_internal_total')(<InputNumber />)}
-                                <span style={{ marginLeft: 10 }}>บาท</span>
-                            </FormItem>
-                            <FormItem wrapperCol={{
-                                xs: 24,
-                                sm: { span: 10, offset: 8 },
-                                md: { span: 20, offset: 4 }
-                            }}>
-                                <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <Table
-                            className="form-table"
-                            size="small"
-                            scroll={{ x: 700 }}
-                            dataSource={this.state.dataWorking}
-                            columns={this.state.columnWorking}
-                        />
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }} style={{ marginBottom: 5 }}>
-                        งบประมาณที่ขอรับการสนับสนุนผ่านคณะ/หน่วยงาน:
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form">
-                            <FormItem label="หมวด" {...selectLayout2}>
-                                {getFieldDecorator('budget_organize_type')(
-                                    <Select placeholder="เลือก" style={{ width: '250px' }} >
-                                        <Option value="ค่าวัสดุ">ค่าวัสดุ</Option>
-                                        <Option value="ค่าใช้สอย">ค่าใช้สอย</Option>
-                                        <Option value="ค่าตอบแทน">ค่าตอบแทน</Option>
-                                        <Option value="ค่ายานพาหนะ">ค่ายานพาหนะ</Option>
-                                        <Option value="ค่าเชื้อเพลิง">ค่าเชื้อเพลิง</Option>
-                                    </Select>
-                                )}
-                            </FormItem>
-                            <FormItem label="รายละเอียด:" {...textFieldLayout2}>
-                                {getFieldDecorator('budget_organize_description')(<Input />)}
-                            </FormItem>
-                            <FormItem label="ราคาต่อหน่วย"
-                                help="ตัวอย่าง (ราคาหน่วยละ 20 บาท X จำนวน 10 คน X 3 มื้อ)"
-                                {...priceLayout}
-                            >
-                                <Row gutter={8}>
-                                    <Col xs={20} sm={20} md={6}>
-                                        {getFieldDecorator('budget_organize_count_1')(<Input addonAfter="บาท" />)}
-                                    </Col>
-                                    <Col xs={20} sm={24} md={9}>
-                                        {getFieldDecorator('budget_organize_count_2')(<Input addonBefore="จำนวน" addonAfter={selectAfter} width={20} />)}
-                                    </Col>
-                                    <Col xs={20} sm={24} md={8}>
-                                        {getFieldDecorator('budget_organize_count_3')(<Input addonBefore="จำนวน" addonAfter="บาท" />)}
-                                    </Col>
-                                </Row>
-                            </FormItem>
-                            <FormItem label="เป็นเงิน" {...numberLayout2}>
-                                {getFieldDecorator('budget_organize_total')(<InputNumber />)}
-                                <span style={{ marginLeft: 10 }}>บาท</span>
-                            </FormItem>
-                            <FormItem wrapperCol={{
-                                xs: 24,
-                                sm: { span: 10, offset: 8 },
-                                md: { span: 20, offset: 4 }
-                            }}>
-                                <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <Table
-                            className="form-table"
-                            size="small"
-                            scroll={{ x: 700 }}
-                            dataSource={this.state.dataWorking}
-                            columns={this.state.columnWorking}
-                        />
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }} style={{ marginBottom: 5 }}>
-                        <strong>กำหนดการ:</strong>
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form">
-                            <FormItem label="วันที่" {...timeLayout}>
-                                {getFieldDecorator('schedule_date')(<DatePicker format="ll" />)}
-                            </FormItem>
-                            <FormItem label="เวลาเริ่ม - เวลาสิ้นสุด" {...timeLayout}>
-                                {getFieldDecorator('schedule_time_start')(<TimePicker format="HH:mm" style={{ marginRight: 10 }} />)}
-                                {getFieldDecorator('schedule_time_end')(<TimePicker format="HH:mm" />)}
-                            </FormItem>
-                            <FormItem label="กิจกรรม" {...textFieldLayout}>
-                                {getFieldDecorator('schedule_event')(<Input />)}
-                            </FormItem>
-                            <FormItem label="วัตถุประสงค์" {...textFieldLayout}>
-                                {getFieldDecorator('schedule_objective')(<Input />)}
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <Table
-                            className="form-table"
-                            size="small"
-                            scroll={{ x: 700 }}
-                            dataSource={this.state.dataWorking}
-                            columns={this.state.columnWorking}
-                        />
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 17 }} style={{ marginBottom: 20 }}>
-                        <strong>เอกสารเพิ่มเติม</strong> (เช่น ประวัติวิทยากร, แผนการเรียนการสอน หรือ อื่น ๆ) ถ้ามี:
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 13, offset: 5 }} >
-                        <FormItem>
-                            {getFieldDecorator('upload')(
-                                <Dragger {...props}>
-                                    <p className="ant-upload-drag-icon">
-                                        <Icon type="inbox" />
-                                    </p>
-                                    <p className="ant-upload-text">คลิก หรือ ลากไฟล์มาวางที่นี่</p>
-                                    <p className="ant-upload-hint">Click or drag file to this area to upload</p>
-                                </Dragger>,
-                            )}
-                        </FormItem>
-                    </Col>
-                </Row>
-            </Form >
-
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 13, offset: 5 }} >
+                                <FormItem>
+                                    {getFieldDecorator('upload')(
+                                        <Dragger {...props}>
+                                            <p className="ant-upload-drag-icon">
+                                                <Icon type="inbox" />
+                                            </p>
+                                            <p className="ant-upload-text">คลิก หรือ ลากไฟล์มาวางที่นี่</p>
+                                            <p className="ant-upload-hint">Click or drag file to this area to upload</p>
+                                        </Dragger>,
+                                    )}
+                                </FormItem>
+                            </Col>
+                        </Row>
+                    </Form >
+                </Col>
+                <Col md={5} className="hidden-xs hidden-sm hidden-md">
+                    <Anchor affix={true} offsetTop={200} >
+                        <Anchor.Link href="#evaluation_form" title="รูปแบบการประเมินผล" />
+                        <Anchor.Link href="#expected_results" title="ผลที่คาดว่าจะได้รับ" />
+                        <Anchor.Link href="#past_performance" title="ผลการดำเนินงานที่ผ่านมา" />
+                        <Anchor.Link href="#external_budget" title="งบประมาณจากภายนอก" />
+                        <Anchor.Link href="#case_product_support" title="กรณี ขอสนับสนุนผลิตภัณฑ์" />
+                        <Anchor.Link href="#budget_organization" title="งบประมาณผ่านองค์การ" />
+                        <Anchor.Link href="#budget_faculty" title="งบประมาณผ่านคณะ" />
+                        <Anchor.Link href="#schedule" title="กำหนดการ" />
+                        <Anchor.Link href="#upload" title="เอกสารแนบ" />
+                    </Anchor>
+                </Col>
+            </Row>
         )
     }
 }

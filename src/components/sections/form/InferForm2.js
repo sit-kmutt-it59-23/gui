@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { Form, Input, DatePicker, Col, Select, Button, InputNumber, Table, Row } from 'antd'
+import { Form, Input, DatePicker, Col, Select, Button, InputNumber, Table, Row, Anchor } from 'antd'
 import moment from 'moment'
 import 'moment/locale/th'
 
@@ -134,11 +134,11 @@ class InferFrom extends Component {
             labelAlign: 'left',
             labelCol: {
                 sm: { span: 20, offset: 2 },
-                md: { span: 21, offset: 3 },
+                md: { span: 18, offset: 3 },
             },
             wrapperCol: {
                 sm: { span: 20, offset: 2 },
-                md: { span: 17, offset: 3 },
+                md: { span: 18, offset: 3 },
             }
         }
 
@@ -169,7 +169,7 @@ class InferFrom extends Component {
             },
             wrapperCol: {
                 sm: { span: 15 },
-                md: { span: 13 },
+                md: { span: 14 },
             }
         }
 
@@ -198,139 +198,176 @@ class InferFrom extends Component {
             },
             wrapperCol: {
                 sm: { span: 12 },
-                md: { span: 11 },
+                md: { span: 12 },
             }
         }
 
         return (
-            <Form>
-                <FormItem label="ลักษณะกิจกรรม(เขียนบรรยายรูปแบบการจัดการกิจกรรมพอสังเขป ให้เห็นภาพการจัดกิจกรรม)" {...textAreaLayout}>
-                    {getFieldDecorator('rational_criterion_1')(<TextArea rows={5} />)}
-                </FormItem>
-                <FormItem label="ลักษณะกิจกรรมที่จัดขึ้นสอดคล้องกับหลักเกียรติและศักดิ์ของนักศึกษา(Code of Honor) ดังนี้(อธิบาย):" {...textAreaLayout}>
-                    {getFieldDecorator('code_of_honor')(<TextArea rows={5} />)}
-                </FormItem>
-                <Row style={{ marginBottom: 24 }} >
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} style={{ marginBottom: 5 }}>
-                        <strong>ระยะเวลาดำเนินงาน:</strong>
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form">
-                            <FormItem label="ระยะเวลาเตรียมงาน" {...rangeDateLayout}>
-                                {getFieldDecorator('preparation_period')(<RangePicker renderExtraFooter={() => 'extra footer'} />)}
-                            </FormItem>
-                            <FormItem label="ระยะเวลาปฏิบัติงาน" {...rangeDateLayout}>
-                                {getFieldDecorator('working_period')(<RangePicker renderExtraFooter={() => 'extra footer'} />)}
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }} >
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} style={{ marginBottom: 5 }}>
-                        <strong>ขั้นตอนการดำเนินงาน:</strong>
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form">
-                            <FormItem label="ขั้นตอน" {...selectLayout}>
-                                {getFieldDecorator('procedure')(
-                                    <Select placeholder="เลือก" style={{ width: '100px' }} >
-                                        <Option value="P">P</Option>
-                                        <Option value="D">D</Option>
-                                        <Option value="C">C</Option>
-                                        <Option value="A">A</Option>
-                                    </Select>
-                                )}
-                            </FormItem>
-                            <FormItem label="หัวข้อการดำเนินงาน" {...textFieldLayout}>
-                                {getFieldDecorator('operation_topic')(<Input />)}
-                            </FormItem>
-                            <FormItem label="วันเริ่มต้น" {...dateLayout}>
-                                {getFieldDecorator('start_date')(<DatePicker />)}
-                            </FormItem>
-                            <FormItem label="วันสิ้นสุด" {...dateLayout}>
-                                {getFieldDecorator('end_date')(<DatePicker />)}
-                            </FormItem>
-                            <FormItem label="ระยะเวลา" {...numberLayout}>
-                                {getFieldDecorator('procedure_time')(<InputNumber />)}
-                                <span style={{ marginLeft: 10 }}>วัน</span>
-                            </FormItem>
-                            <FormItem label="ผู้รับผิดชอบ" {...textFieldLayout}>
-                                {getFieldDecorator('responsible_person')(<Input placeholder="เฉพาะรหัสนักศึกษา" />)}
-                            </FormItem>
-                            <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 20 }}>
-                                {/* ทุกครั้งที่กดเพิ่มข้อมูลต้องเรียงตาม PDCA, วันที่, เวลา ตามลำดับนะ*/}
-                                <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070" }}>เพิ่มข้อมูล</Button>
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 20 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <Table
-                            className="form-table"
-                            size="small"
-                            scroll={{ x: 1100 }}
-                            dataSource={this.state.dataWorking}
-                            columns={this.state.columnWorking}
-                            footer={() =>
-                                <div className="text-right">
-                                    <Button disabled>ดูกราฟ</Button>
+            <Row>
+                <Col md={19}>
+                    <Form>
+                        <Row id="activity_description">
+                            <Col>
+                                <FormItem label="ลักษณะกิจกรรม(เขียนบรรยายรูปแบบการจัดการกิจกรรมพอสังเขป ให้เห็นภาพการจัดกิจกรรม)" {...textAreaLayout}>
+                                    {getFieldDecorator('rational_criterion_1')(<TextArea rows={5} />)}
+                                </FormItem>
+                            </Col>
+                        </Row>
+                        <Row id="code_of_hornor">
+                            <Col>
+                                <FormItem label="ลักษณะกิจกรรมที่จัดขึ้นสอดคล้องกับหลักเกียรติและศักดิ์ของนักศึกษา(Code of Honor) ดังนี้(อธิบาย):" {...textAreaLayout}>
+                                    {getFieldDecorator('code_of_honor')(<TextArea rows={5} />)}
+                                </FormItem>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }} id="operating_period">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} style={{ marginBottom: 5 }}>
+                                <strong>ระยะเวลาดำเนินงาน:</strong>
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form">
+                                    <FormItem label="ระยะเวลาเตรียมงาน" {...rangeDateLayout}>
+                                        {getFieldDecorator('preparation_period')(<RangePicker renderExtraFooter={() => 'extra footer'} />)}
+                                    </FormItem>
+                                    <FormItem label="ระยะเวลาปฏิบัติงาน" {...rangeDateLayout}>
+                                        {getFieldDecorator('working_period')(<RangePicker renderExtraFooter={() => 'extra footer'} />)}
+                                    </FormItem>
                                 </div>
-                            }
-                        />
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }}>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form">
-                            <FormItem label="สถานที่ปฏิบัติงาน" {...textFieldLayout}>
-                                {getFieldDecorator('location')(<Input />)}
-                            </FormItem>
-                            <FormItem label="หน่วยงานที่จัด" {...textFieldLayout}>
-                                {getFieldDecorator('organization')(<Input />)}
-                            </FormItem>
-                            <FormItem label="อาจารย์ที่ปรึกษาหน่วยงาน" {...textFieldLayout}>
-                                {getFieldDecorator('advisors')(<Input />)}
-                            </FormItem>
-                            <FormItem label="นักศึกษาผู้รับผิดชอบโครงการ" {...longTextFieldLayout}>
-                                {getFieldDecorator('responsible_student')(<Input placeholder="เฉพาะรหัสนักศึกษา" />)}
-                            </FormItem>
-                            <FormItem label="เบอร์โทรศัพท์นักศึกษาผู้รับผิดชอบ" {...longTextFieldLayout}>
-                                {getFieldDecorator('tel_student')(<Input />)}
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row style={{ marginBottom: 24 }} >
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} style={{ marginBottom: 5 }}>
-                        <strong>คณะกรรมการจัดโครงการ:</strong>
-                    </Col>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <div className="border-form" >
-                            <FormItem label="รหัสนักศึกษา" {...textFieldLayout}>
-                                {getFieldDecorator('student_id')(<Input />)}
-                            </FormItem>
-                            <FormItem label="ตำแหน่ง" {...textFieldLayout}>
-                                {getFieldDecorator('role')(<Input />)}
-                            </FormItem>
-                            <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 20 }}>
-                                <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
-                            </FormItem>
-                        </div>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} >
-                        <Table
-                            className="form-table"
-                            size="small"
-                            scroll={{ x: 700 }}
-                            dataSource={this.state.dataMember}
-                            columns={this.state.columnMember}
-                        />
-                    </Col>
-                </Row>
-            </Form >
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }} id="operating_procedures">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} style={{ marginBottom: 5 }}>
+                                <strong>ขั้นตอนการดำเนินงาน:</strong>
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form">
+                                    <FormItem label="ขั้นตอน" {...selectLayout}>
+                                        {getFieldDecorator('procedure')(
+                                            <Select placeholder="เลือก" style={{ width: '100px' }} >
+                                                <Option value="P">P</Option>
+                                                <Option value="D">D</Option>
+                                                <Option value="C">C</Option>
+                                                <Option value="A">A</Option>
+                                            </Select>
+                                        )}
+                                    </FormItem>
+                                    <FormItem label="หัวข้อการดำเนินงาน" {...textFieldLayout}>
+                                        {getFieldDecorator('operation_topic')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="วันเริ่มต้น" {...dateLayout}>
+                                        {getFieldDecorator('start_date')(<DatePicker />)}
+                                    </FormItem>
+                                    <FormItem label="วันสิ้นสุด" {...dateLayout}>
+                                        {getFieldDecorator('end_date')(<DatePicker />)}
+                                    </FormItem>
+                                    <FormItem label="ระยะเวลา" {...numberLayout}>
+                                        {getFieldDecorator('procedure_time')(<InputNumber />)}
+                                        <span style={{ marginLeft: 10 }}>วัน</span>
+                                    </FormItem>
+                                    <FormItem label="ผู้รับผิดชอบ" {...textFieldLayout}>
+                                        {getFieldDecorator('responsible_person')(<Input placeholder="เฉพาะรหัสนักศึกษา" />)}
+                                    </FormItem>
+                                    <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 21 }}>
+                                        {/* ทุกครั้งที่กดเพิ่มข้อมูลต้องเรียงตาม PDCA, วันที่, เวลา ตามลำดับนะ*/}
+                                        <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070" }}>เพิ่มข้อมูล</Button>
+                                    </FormItem>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 20 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <Table
+                                    className="form-table"
+                                    size="small"
+                                    scroll={{ x: 1100 }}
+                                    dataSource={this.state.dataWorking}
+                                    columns={this.state.columnWorking}
+                                    footer={() =>
+                                        <div className="text-right">
+                                            <Button disabled>ดูกราฟ</Button>
+                                        </div>
+                                    }
+                                />
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form">
+                                    <Col id="workplace">
+                                        <FormItem label="สถานที่ปฏิบัติงาน" {...textFieldLayout}>
+                                            {getFieldDecorator('location')(<Input />)}
+                                        </FormItem>
+                                    </Col>
+                                    <Col id="organization">
+                                        <FormItem label="หน่วยงานที่จัด" {...textFieldLayout}>
+                                            {getFieldDecorator('organization')(<Input />)}
+                                        </FormItem>
+                                    </Col>
+                                    <Col id="advisor">
+                                        <FormItem label="อาจารย์ที่ปรึกษาหน่วยงาน" {...textFieldLayout}>
+                                            {getFieldDecorator('advisors')(<Input />)}
+                                        </FormItem>
+                                    </Col>
+                                    <Col id="students_responsible">
+                                        <FormItem label="นักศึกษาผู้รับผิดชอบโครงการ" {...longTextFieldLayout}>
+                                            {getFieldDecorator('responsible_student')(<Input placeholder="เฉพาะรหัสนักศึกษา" />)}
+                                        </FormItem>
+                                    </Col>
+                                    <Col id="tel_students_responsible">
+                                        <FormItem label="เบอร์โทรศัพท์นักศึกษาผู้รับผิดชอบ" {...longTextFieldLayout}>
+                                            {getFieldDecorator('tel_student')(<Input />)}
+                                        </FormItem>
+                                    </Col>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row style={{ marginBottom: 24 }} id="project_committee">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} style={{ marginBottom: 5 }}>
+                                <strong>คณะกรรมการจัดโครงการ:</strong>
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <div className="border-form" >
+                                    <FormItem label="รหัสนักศึกษา" {...textFieldLayout}>
+                                        {getFieldDecorator('student_id')(<Input />)}
+                                    </FormItem>
+                                    <FormItem label="ตำแหน่ง" {...textFieldLayout}>
+                                        {getFieldDecorator('role')(<Input />)}
+                                    </FormItem>
+                                    <FormItem className="text-right" wrapperCol={{ xs: 24, sm: 23, md: 21 }}>
+                                        <Button type="primary" style={{ backgroundColor: "#216185", borderColor: "#707070", marginTop: 0 }}>เพิ่มข้อมูล</Button>
+                                    </FormItem>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                                <Table
+                                    className="form-table"
+                                    size="small"
+                                    scroll={{ x: 700 }}
+                                    dataSource={this.state.dataMember}
+                                    columns={this.state.columnMember}
+                                />
+                            </Col>
+                        </Row>
+                    </Form >
+
+                </Col>
+                <Col md={5} className="hidden-xs hidden-sm hidden-md">
+                    <Anchor affix={true} offsetTop={200} >
+                        <Anchor.Link href="#activity_description" title="ลักษณะกิจกรรม" />
+                        <Anchor.Link href="#code_of_hornor" title="Code of Hornor" />
+                        <Anchor.Link href="#operating_period" title="ระยะเวลาดำเนินงาน" />
+                        <Anchor.Link href="#operating_procedures" title="ขั้นตอนการดำเนินงาน" />
+                        <Anchor.Link href="#workplace" title="สถานที่ปฏิบัติงาน" />
+                        <Anchor.Link href="#organization" title="หน่วยงานที่จัด" />
+                        <Anchor.Link href="#advisor" title="อาจารย์ที่ปรึกษาหน่วยงาน" />
+                        <Anchor.Link href="#students_responsible" title="นักศึกษาผู้รับผิดชอบโครงการ" />
+                        <Anchor.Link href="#tel_students_responsible" title="เบอร์โทรศัพท์นักศึกษาผู้รับผิดชอบ" />
+                        <Anchor.Link href="#project_committee" title="คณะกรรมการจัดโครงการ" />
+                    </Anchor>
+                </Col>
+            </Row>
         )
     }
 }
