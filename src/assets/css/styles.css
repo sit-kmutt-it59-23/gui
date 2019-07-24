@@ -2,6 +2,24 @@ body {
     font-family: 'Sarabun', sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+  }
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c9c9c9; 
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b8b8b8; 
+}
+
 .text-center{
     text-align: center;
 }
@@ -20,6 +38,14 @@ body {
     padding: 25px 10px 0px 10px;
 }
 
+.icon-fold{
+    font-size: 18px;
+}
+
+.header-fixed{
+    position: fixed;
+}
+
 /* ------- override ant design ------- */
 
 /* ------- Menu -------- */
@@ -35,7 +61,6 @@ body {
 }
 
 /* ------- Step -------- */
-
 
 .ant-steps-item #tracking-tail{
   height:80px ;
@@ -115,6 +140,14 @@ body {
     background-color: #e88044;
 }
 
+.pointer .ant-table-row {
+    cursor: pointer;
+}
+
+.ant-table-thead > tr > th .ant-table-filter-icon {
+    color: #ffffff;
+}
+
 /* ------- Form -------- */
 
 .ant-form-item-label{
@@ -126,4 +159,18 @@ body {
 
 .ant-anchor-link-title{
     overflow: inherit;
+}
+
+.ant-anchor-wrapper{
+    overflow: inherit;
+}
+
+/* ------- Icon -------- */
+
+.anticon-menu-fold{
+    color: #e88044;
+}
+
+.anticon-menu-unfold:hover{
+    color: #e88044;
 }
