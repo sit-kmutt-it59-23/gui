@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react'
-import {  Empty, Icon, Table, Input, Button } from 'antd'
+import { withRouter } from 'react-router-dom'
+import { Empty, Icon, Table, Input, Button } from 'antd'
 import Highlighter from 'react-highlight-words'
 import moment from 'moment'
 import 'moment/locale/th'
-import axiosInstance from 'scripts/Api'
 
+import axiosInstance from 'scripts/Api'
 import Header from './sections/HeaderCustom.js'
 
 class ListProjectClub extends Component {
@@ -155,8 +156,9 @@ class ListProjectClub extends Component {
 
         return (
             <Fragment>
-                 <Header topic="แบบฟอร์ม" description="ชมรมนาฏยโขนละคร ปีการศึกษา 2562"/>
-                <Table
+                <Header topic="แบบฟอร์ม" description="ชมรมนาฏยโขนละคร ปีการศึกษา 2562"/>
+                <Table 
+                    className="pointer"
                     style={{ padding : 20 }}
                     dataSource={this.state.data}
                     columns={columns}
@@ -167,7 +169,7 @@ class ListProjectClub extends Component {
                     size="middle"
                     onRow={(item) => {
                         return {
-                            onClick: event => { window.location.assign(`/projects/${item.id}/docs/1/create`) },
+                            onClick: event => this.props.history.push(`/projects/${item.id}/docs/1/create`)
                         }
                     }}
                 />
@@ -176,4 +178,4 @@ class ListProjectClub extends Component {
     }
 }
 
-export default ListProjectClub
+export default withRouter(ListProjectClub)
