@@ -11,7 +11,7 @@ const { Option } = Select
 
 class InferFrom extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             isLoading: true,
             columnWorking: [
@@ -134,11 +134,13 @@ class InferFrom extends Component {
             labelAlign: 'left',
             labelCol: {
                 sm: { span: 20, offset: 2 },
-                md: { span: 18, offset: 3 },
+                md: { span: 20, offset: 2 },
+                lg: { span: 18, offset: 3 },
             },
             wrapperCol: {
                 sm: { span: 20, offset: 2 },
-                md: { span: 18, offset: 3 },
+                md: { span: 20, offset: 2 },
+                lg: { span: 18, offset: 3 },
             }
         }
 
@@ -204,7 +206,7 @@ class InferFrom extends Component {
 
         return (
             <Row>
-                <Col md={19}>
+                <Col md={19} lg={19}  >
                     <Form>
                         <Row id="activity_description">
                             <Col>
@@ -221,10 +223,10 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }} id="operating_period">
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} style={{ marginBottom: 5 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }} style={{ marginBottom: 5 }}>
                                 <strong>ระยะเวลาดำเนินงาน:</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }} >
                                 <div className="border-form">
                                     <FormItem label="ระยะเวลาเตรียมงาน" {...rangeDateLayout}>
                                         {getFieldDecorator('preparation_period')(<RangePicker renderExtraFooter={() => 'extra footer'} />)}
@@ -236,10 +238,10 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }} id="operating_procedures">
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} style={{ marginBottom: 5 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }} style={{ marginBottom: 5 }}>
                                 <strong>ขั้นตอนการดำเนินงาน:</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }}  >
                                 <div className="border-form">
                                     <FormItem label="ขั้นตอน" {...selectLayout}>
                                         {getFieldDecorator('procedure')(
@@ -275,7 +277,7 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 20 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }}  >
                                 <Table
                                     className="form-table"
                                     size="small"
@@ -291,7 +293,7 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }} >
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }}  >
                                 <div className="border-form">
                                     <Col id="workplace">
                                         <FormItem label="สถานที่ปฏิบัติงาน" {...textFieldLayout}>
@@ -322,10 +324,10 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }} id="project_committee">
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} style={{ marginBottom: 5 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }} style={{ marginBottom: 5 }}>
                                 <strong>คณะกรรมการจัดโครงการ:</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }}  >
                                 <div className="border-form" >
                                     <FormItem label="รหัสนักศึกษา" {...textFieldLayout}>
                                         {getFieldDecorator('student_id')(<Input />)}
@@ -340,7 +342,7 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }}  >
                                 <Table
                                     className="form-table"
                                     size="small"
@@ -353,8 +355,8 @@ class InferFrom extends Component {
                     </Form >
 
                 </Col>
-                <Col md={5} className="hidden-xs hidden-sm hidden-md">
-                    <Anchor affix={true} offsetTop={200} >
+                <Col md={5} lg={5} className="hidden-xs hidden-sm hidden-md">
+                    <Anchor affix={true} offsetTop={260} >
                         <Anchor.Link href="#activity_description" title="ลักษณะกิจกรรม" />
                         <Anchor.Link href="#code_of_hornor" title="Code of Hornor" />
                         <Anchor.Link href="#operating_period" title="ระยะเวลาดำเนินงาน" />

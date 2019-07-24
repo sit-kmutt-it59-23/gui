@@ -1,13 +1,12 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import {
     Form, Col, Row, Button, Input, Checkbox,
     Table, Select, InputNumber, Upload, Icon,
     TimePicker, DatePicker, message, Anchor
 } from 'antd'
-import { Link } from 'react-router-dom'
 import moment from 'moment'
 import 'moment/locale/th'
-
 
 const FormItem = Form.Item
 const CheckboxGroup = Checkbox.Group
@@ -43,7 +42,7 @@ const props = {
 
 class InferFrom extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             isLoading: true,
             columnMember: [
@@ -93,7 +92,6 @@ class InferFrom extends Component {
     }
     render() {
         const { getFieldDecorator } = this.props.form
-
         const textFieldLayout = {
             labelCol: {
                 sm: { span: 8 },
@@ -172,16 +170,15 @@ class InferFrom extends Component {
             }
         }
 
-
         return (
             <Row>
-                <Col md={19}>
+                <Col md={19} lg={19}>
                     <Form>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="evaluation_form">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="evaluation_form">
                                 <strong>รูปแบบการประเมินผล:</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }}  >
                                 <div className="border-form" >
                                     <FormItem {...CheckLayout}>
                                         {getFieldDecorator('checkbox-evaluation')(
@@ -213,13 +210,13 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} id="expected_results">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} id="expected_results">
                                 <strong>ผลที่คาดว่าจะได้รับ</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
+                            <Col sm={{ span: 20, offset: 2 }}md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
                                 (การกำหนดผลที่คาดว่าจะได้รับหลังจากการดำเนินกิจกรรมจะต้องสอดคล้องกับวัตถุประสงค์ของโครงการ และต้องมีการกำหนดตัวชี้วัดด้วย)
-                    </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            </Col>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <div className="border-form">
                                     <FormItem label="ผลที่คาดว่าจะได้รับ" {...textFieldLayout}>
                                         {getFieldDecorator('expected_results')(<Input />)}
@@ -237,7 +234,7 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <Table
                                     className="form-table"
                                     size="small"
@@ -248,10 +245,10 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="past_performance">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="past_performance">
                                 <strong>ผลการดำเนินงานที่ผ่านมาและการนำผลการประเมินโครงการ/กิจกรรมมาปรับปรุงในการจัดโครงการครั้งนี้ (กรณีเป็นโครงการต่อเนื่อง)</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <div className="border-form">
                                     <FormItem label="ปัญหา/อุปสรรค:" {...textFieldLayout}>
                                         {getFieldDecorator('issue')(<Input />)}
@@ -266,7 +263,7 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <Table
                                     className="form-table"
                                     size="small"
@@ -277,15 +274,15 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }}>
                                 <strong>รายละเอียดงบประมาณ:</strong>
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="external_budget">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="external_budget">
                                 <strong>1. งบประมาณที่ได้รับการสนับสนุนจากแหล่งทุนภายนอก (ถ้ามี)</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <div className="border-form">
                                     <FormItem label="ได้รับงบประมาณจาก" {...textFieldLayout}>
                                         {getFieldDecorator('budget_external_for')(<Input />)}
@@ -319,7 +316,7 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <Table
                                     className="form-table"
                                     size="small"
@@ -330,10 +327,10 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="case_product_support">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="case_product_support">
                                 กรณี การขอรับการสนับสนุนเป็นทรัพยากร สินค้า หรือผลิตภัณฑ์:
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <div className="border-form">
                                     <FormItem label="ได้รับผลิตภัณฑ์จาก" {...textFieldLayout}>
                                         {getFieldDecorator('product_external_for')(<Input />)}
@@ -356,7 +353,7 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <Table
                                     className="form-table"
                                     size="small"
@@ -367,13 +364,13 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
                                 <strong>2. งบประมาณที่ขอรับการสนับสนุนจากมหาวิทยาลัย</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="budget_organization">
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }} id="budget_organization">
                                 งบประมาณที่ขอรับการสนับสนุนผ่านองค์การบริหารนักศึกษา:
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <div className="border-form">
                                     <FormItem label="หมวด" {...selectLayout2}>
                                         {getFieldDecorator('budget_internal_type')(
@@ -394,13 +391,13 @@ class InferFrom extends Component {
                                         {...priceLayout}
                                     >
                                         <Row gutter={8}>
-                                            <Col xs={20} sm={20} md={6}>
+                                            <Col xs={20} sm={20} md={8} lg={6}>
                                                 {getFieldDecorator('budget_internal_count_1')(<Input addonAfter="บาท" />)}
                                             </Col>
-                                            <Col xs={20} sm={24} md={9}>
+                                            <Col xs={20} sm={24} md={12} lg={9}>
                                                 {getFieldDecorator('budget_internal_count_2')(<Input addonBefore="จำนวน" addonAfter={selectAfter} width={20} />)}
                                             </Col>
-                                            <Col xs={20} sm={24} md={8}>
+                                            <Col xs={20} sm={24} md={12} lg={8}>
                                                 {getFieldDecorator('budget_internal_count_3')(<Input addonBefore="จำนวน" addonAfter="บาท" />)}
                                             </Col>
                                         </Row>
@@ -420,7 +417,7 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }}>
                                 <Table
                                     className="form-table"
                                     size="small"
@@ -431,10 +428,10 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }} id="budget_faculty">
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
                                 งบประมาณที่ขอรับการสนับสนุนผ่านคณะ/หน่วยงาน:
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <div className="border-form">
                                     <FormItem label="หมวด" {...selectLayout2}>
                                         {getFieldDecorator('budget_organize_type')(
@@ -455,13 +452,13 @@ class InferFrom extends Component {
                                         {...priceLayout}
                                     >
                                         <Row gutter={8}>
-                                            <Col xs={20} sm={20} md={6}>
+                                            <Col xs={20} sm={20} md={8} lg={6}>
                                                 {getFieldDecorator('budget_organize_count_1')(<Input addonAfter="บาท" />)}
                                             </Col>
-                                            <Col xs={20} sm={24} md={9}>
+                                            <Col xs={20} sm={24} md={12} lg={9}>
                                                 {getFieldDecorator('budget_organize_count_2')(<Input addonBefore="จำนวน" addonAfter={selectAfter} width={20} />)}
                                             </Col>
-                                            <Col xs={20} sm={24} md={8}>
+                                            <Col xs={20} sm={24} md={12} lg={8}>
                                                 {getFieldDecorator('budget_organize_count_3')(<Input addonBefore="จำนวน" addonAfter="บาท" />)}
                                             </Col>
                                         </Row>
@@ -481,7 +478,7 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <Table
                                     className="form-table"
                                     size="small"
@@ -492,10 +489,10 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }} id="schedule">
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 5 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }}style={{ marginBottom: 5 }}>
                                 <strong>กำหนดการ:</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <div className="border-form">
                                     <FormItem label="วันที่" {...timeLayout}>
                                         {getFieldDecorator('schedule_date')(<DatePicker format="ll" />)}
@@ -514,7 +511,7 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }}>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} >
                                 <Table
                                     className="form-table"
                                     size="small"
@@ -525,10 +522,10 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row style={{ marginBottom: 24 }} id="upload">
-                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 3, span: 18 }} style={{ marginBottom: 20 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ offset: 2, span: 20 }} lg={{ offset: 3, span: 18 }} style={{ marginBottom: 20 }}>
                                 <strong>เอกสารเพิ่มเติม</strong> (เช่น ประวัติวิทยากร, แผนการเรียนการสอน หรือ อื่น ๆ) ถ้ามี:
                     </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 13, offset: 5 }} >
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 16, offset: 4 }} lg={{ span: 13, offset: 5 }}>
                                 <FormItem>
                                     {getFieldDecorator('upload')(
                                         <Dragger {...props}>
@@ -544,14 +541,14 @@ class InferFrom extends Component {
                         </Row>
                     </Form >
                 </Col>
-                <Col md={5} className="hidden-xs hidden-sm hidden-md">
-                    <Anchor affix={true} offsetTop={200} >
+                <Col md={5} lg={5} className="hidden-xs hidden-sm hidden-md">
+                    <Anchor affix={true} offsetTop={260} >
                         <Anchor.Link href="#evaluation_form" title="รูปแบบการประเมินผล" />
                         <Anchor.Link href="#expected_results" title="ผลที่คาดว่าจะได้รับ" />
                         <Anchor.Link href="#past_performance" title="ผลการดำเนินงานที่ผ่านมา" />
                         <Anchor.Link href="#external_budget" title="งบประมาณจากภายนอก" />
                         <Anchor.Link href="#case_product_support" title="กรณี ขอสนับสนุนผลิตภัณฑ์" />
-                        <Anchor.Link href="#budget_organization" title="งบประมาณผ่านองค์การ" />
+                        <Anchor.Link href="#budget_organization" title="งบประมาณผ่านองค์การนักศึกษา" />
                         <Anchor.Link href="#budget_faculty" title="งบประมาณผ่านคณะ" />
                         <Anchor.Link href="#schedule" title="กำหนดการ" />
                         <Anchor.Link href="#upload" title="เอกสารแนบ" />

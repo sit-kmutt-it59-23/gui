@@ -18,13 +18,14 @@ class InferFrom extends Component {
             labelCol: {
                 xs: { span: 24 },
                 sm: { span: 4, offset: 2 },
-                md: { span: 3, offset: 3 },
+                md: { span: 3, offset: 2 },
+                lg: { span: 4, offset: 3 },
             },
             wrapperCol: {
                 xs: { span: 24 },
                 sm: { span: 16 },
-                md: { span: 13, offset: 1 },
-
+                md: { span: 16, offset: 1 },
+                lg: { span: 13, offset: 1 },
             }
         }
 
@@ -33,12 +34,14 @@ class InferFrom extends Component {
             labelCol: {
                 xs: { span: 24 },
                 sm: { span: 8, offset: 2 },
-                md: { span: 4, offset: 3 },
+                md: { span: 6, offset: 2 },
+                lg: { span: 5, offset: 3 },
             },
             wrapperCol: {
                 xs: { span: 24 },
                 sm: { span: 12 },
-                md: { span: 13 },
+                md: { span: 14 },
+                lg: { span: 13 },
 
             }
         }
@@ -48,13 +51,14 @@ class InferFrom extends Component {
             labelCol: {
                 xs: { span: 24, offset: 0 },
                 sm: { span: 13, offset: 2 },
-                md: { span: 10, offset: 4 },
+                md: { span: 13, offset: 3 },
+                lg: { span: 11, offset: 4 },
             },
             wrapperCol: {
                 xs: { span: 18, offset: 6 },
                 sm: { span: 9, offset: 0 },
-                md: { span: 10, offset: 0 },
-
+                md: { span: 8, offset: 0 },
+                lg: { span: 9, offset: 0 },
             },
             colon: false
         }
@@ -63,11 +67,13 @@ class InferFrom extends Component {
             labelAlign: 'left',
             labelCol: {
                 sm: { span: 20, offset: 2 },
-                md: { span: 21, offset: 3 },
+                md: { span: 22, offset: 2 },
+                lg: { span: 21, offset: 3 },
             },
             wrapperCol: {
                 sm: { span: 20, offset: 2 },
-                md: { span: 17, offset: 3 },
+                md: { span: 20, offset: 2 },
+                lg: { span: 18, offset: 3 },
             }
         }
 
@@ -75,10 +81,12 @@ class InferFrom extends Component {
             labelCol: {
                 sm: { span: 2, offset: 1 },
                 md: { span: 3, offset: 0 },
+                lg: { span: 3, offset: 0 },
             },
             wrapperCol: {
                 sm: { span: 19 },
-                md: { span: 18 },
+                md: { span: 21 },
+                lg: { span: 19 },
             },
             colon: false
         }
@@ -98,7 +106,7 @@ class InferFrom extends Component {
 
         return (
             <Row>
-                <Col md={20}>
+                <Col md={19} lg={19}>
                     <Form>
                         <Row id="name_project">
                             <FormItem label="ชื่อโครงการ" {...nameLayout}>
@@ -109,7 +117,7 @@ class InferFrom extends Component {
                             </FormItem>
                         </Row>
                         <Row id="activity_project_type">
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} style={{ marginBottom: 10 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }}style={{ marginBottom: 10 }}>
                                 <strong>ประเภทโครงการกิจกรรม ได้ดังนี้:</strong>
                             </Col>
                             <FormItem label="1. ด้านพัฒนาทักษะทางวิชาการและวิชาชีพ" {...numberLayout}>
@@ -138,7 +146,7 @@ class InferFrom extends Component {
                             </FormItem>
                         </Row>
                         <Row id="qf">
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} style={{ marginBottom: 10 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }} style={{ marginBottom: 10 }}>
                                 <strong>การเทียบค่ากิจกรรมตามคุณลักษณะที่พึงประสงค์ของมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (KMUTT Student QF):</strong>
                             </Col>
                             <FormItem label="1. ความรู้ (Knowledge)" {...numberLayout}>
@@ -183,10 +191,10 @@ class InferFrom extends Component {
                             </FormItem>
                         </Row>
                         <Row id="objective">
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} style={{ marginBottom: 20 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }} style={{ marginBottom: 20 }}>
                                 <strong>วัตถุประสงค์ (ไม่เกิน 3 ข้อ):</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }}>
                                 <FormItem label="1." {...listTextField}>
                                     {getFieldDecorator('objective_1')(<Input />)}
                                 </FormItem>
@@ -199,10 +207,10 @@ class InferFrom extends Component {
                             </Col>
                         </Row>
                         <Row id="member">
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }} style={{ marginBottom: 5 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }} style={{ marginBottom: 5 }}>
                                 <strong>ผู้เข้าร่วมโครงการ:</strong>
                             </Col>
-                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 17, offset: 3 }}>
+                            <Col sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 18, offset: 3 }}>
                                 <div className="border-form">
                                     <FormItem label="1. นักศึกษา" {...countLayout}>
                                         {getFieldDecorator('attendee_amount-student')(<InputNumber min={0} />)}
@@ -225,8 +233,8 @@ class InferFrom extends Component {
                         </Row>
                     </Form>
                 </Col>
-                <Col md={4} className="hidden-xs hidden-sm hidden-md">
-                    <Anchor affix={true} offsetTop={200} >
+                <Col md={5} lg={5} className="hidden-xs hidden-sm hidden-md">
+                    <Anchor affix={true} offsetTop={260} >
                         <Link href="#name_project" title="ชื่อโครงการ" />
                         <Link href="#activity_project_type" title="ประเภทโครงการกิจกรรม" />
                         <Link href="#qf" title="การเทียบค่ากิจกรรม QF" />
