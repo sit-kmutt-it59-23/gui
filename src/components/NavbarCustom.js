@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Dropdown, Icon, Avatar } from 'antd'
+import { Menu, Dropdown, Icon, Avatar, Affix } from 'antd'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
-import { sidebarToggle, changeSelectedKey } from '../redux/sidebar'
+import { sidebarToggle, changeSelectedKey, changeSubMenuKeys } from '../redux/sidebar'
 import LogoImg from 'assets/images/LogoNon-Content.png';
 
 const Nav = styled.div`
@@ -12,7 +12,8 @@ const Nav = styled.div`
     justify-content: space-between;
     align-items: center;
     user-select: none;
-    padding: 10px 16px !important;
+    height: 55px;
+    padding: 0 16px !important;
     width: 100%;
     background-color: #ffffff;
     z-index:100;
@@ -48,6 +49,7 @@ const ProfileName = styled.div`
         border:0.2px #464545 solid;
     }
 `
+
 const FlexCenterItem = styled.div`
     display: flex;
     align-items: center;
@@ -84,45 +86,49 @@ class NavbarCustom extends Component {
     toggle() {
         const { dispatch } = this.props
         dispatch(sidebarToggle())
+        if(!this.props.sidebar){
+            dispatch(changeSubMenuKeys([]))
+        }
     }
 
     changeSelectedKey() {
         const { dispatch } = this.props
-        dispatch(changeSelectedKey(""))
+        dispatch(changeSelectedKey([""]))
     }
 
     render() {
         let name = "ภรณ์วรัตน์ สุวิชาชนันทร์"
         let clubName = "ชมรมนาฏยโขนละคร"
         return (
-            <Nav>
-                <FlexCenterItem>
-                    <Icon
-                        className="trigger"
-                        type={this.props.sidebar ? 'menu-unfold' : 'menu-fold'}
-                        onClick={this.toggle}
-                        style={{ marginRight: '15px', fontSize: '18px' }}
-                    />
-                    <LinkStyleNone to="/" onClick={this.changeSelectedKey}>
-                        <Logo src={LogoImg} />
-                        <span>
-                            <strong>KMUTT Act<span style={{ color: '#E88044' }}>x</span>is</strong>
-                        </span>
-                    </LinkStyleNone>
-                </FlexCenterItem>
-                <Dropdown overlay={menu} trigger={['click']}>
-                    <LinkMenu to="#">
-                        <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>{name.slice(0,1)}</Avatar>
-                        {/* Avatar เช็คว่ามีรูปไหม ถ้ามีก็เเสดงเป็นรูป  <Avatar src=" " /> */}
-                        <ProfileName className="hidden-xs">
-                            { name.length > 25 ? `${name.slice(0, 24)}...` : name}
-                            <hr />
-                            { clubName.length > 25 ? `${clubName.slice(0, 24)}...` : clubName}
-                        </ProfileName>
-                        <Icon type="down" style={{ marginLeft: 5 }} />
-                    </LinkMenu>
-                </Dropdown>
-            </Nav >
+            <Affix style={{ zIndex: 100 }}>
+                <Nav>
+                    <FlexCenterItem>
+                        <Icon
+                            className="trigger icon-fold"
+                            type={this.props.sidebar ? 'menu-unfold' : 'menu-fold'}
+                            onClick={this.toggle}
+                        />
+                        <LinkStyleNone to="/" onClick={this.changeSelectedKey}>
+                            <Logo src={LogoImg} />
+                            <span>
+                                <strong>KMUTT Act<span style={{ color: '#E88044' }}>x</span>is</strong>
+                            </span>
+                        </LinkStyleNone>
+                    </FlexCenterItem>
+                    <Dropdown overlay={menu} trigger={['click']}>
+                        <LinkMenu to="#">
+                            <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>{name.slice(0, 1)}</Avatar>
+                            {/* Avatar เช็คว่ามีรูปไหม ถ้ามีก็เเสดงเป็นรูป  <Avatar src=" " /> */}
+                            <ProfileName className="hidden-xs">
+                                {name.length > 25 ? `${name.slice(0, 24)}...` : name}
+                                <hr />
+                                {clubName.length > 25 ? `${clubName.slice(0, 24)}...` : clubName}
+                            </ProfileName>
+                            <Icon type="down" style={{ marginLeft: 5 }} />
+                        </LinkMenu>
+                    </Dropdown>
+                </Nav >
+            </Affix>
         )
     }
 }

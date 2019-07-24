@@ -21,26 +21,9 @@ const reducer = (state = initState, action) => {
         selectedkey: action.key
       }
     case SUBMENU_KEYS:
-        let result = []
-        let check = false
-        if(state.submenukeys.length === 0){
-          result.push(action.key)
-        }else{
-          state.submenukeys.forEach((key, idx, array) => {
-            if(key !== action.key){
-              result.push(key)
-              if (idx === array.length - 1){ 
-                check = true
-              }
-            }
-          })
-          if(check){
-            result.push(action.key)
-          }
-        }
       return {
         ...state,
-        submenukeys : result
+        submenukeys : action.key
       }
     default:
       return state

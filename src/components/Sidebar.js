@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Layout, Menu, Icon } from 'antd'
+import { Layout, Menu, Icon, Affix } from 'antd'
 import { connect } from 'react-redux'
 
 import { changeSelectedKey, changeSubMenuKeys } from '../redux/sidebar'
 
-const { Sider} = Layout
+const { Sider } = Layout
 const { SubMenu } = Menu
 
 class Sidebar extends Component {
@@ -13,92 +13,142 @@ class Sidebar extends Component {
         super(props)
         this.changeSelectedKey = this.changeSelectedKey.bind(this)
         this.openSubMenu = this.openSubMenu.bind(this)
-
-    }
-
-    changeSelectedKey(key) {
-        this.props.dispatch(changeSelectedKey(key))
     }
 
     openSubMenu(key) {
         this.props.dispatch(changeSubMenuKeys(key))
     }
+    changeSelectedKey(key) {
+        this.props.dispatch(changeSelectedKey(key))
+    }
 
     render() {
-        return (
-            <Sider 
-                width={248} 
-                trigger={null} 
-                collapsible 
-                collapsed={this.props.sidebar} 
-                style={{zIndex:50}}
-            >
-                <Menu mode="inline"
-                    style={{ height: '100%', borderRight: 0, paddingTop: '10px' }}
-                    defaultOpenKeys={this.props.submenukeys}
-                    defaultSelectedKeys={this.props.selectedkey}
-                >
-                    <SubMenu key="Documents" onTitleClick={() => this.openSubMenu("Documents")}
-                        title={
-                            <span >
-                                <Icon type="file-text" />
-                                <span><strong>เอกสารโครงการ</strong></span>
-                            </span>
-                        }
-                    >
-                        <Menu.ItemGroup title="แบบเสนอโครงการ">   
-                            <Menu.Item key="Documents_infer_all" onClick={() => this.changeSelectedKey(["Documents_infer_all"])}>
-                                แบบเสนอโครงการทั้งหมด
-                                <Link to="/projects" />
-                            </Menu.Item>
-                            <Menu.Item key="Documents_infer_1" onClick={() => this.changeSelectedKey(["Documents_infer_1"])}>
-                                โครงการทำบุญชมรม
-                                <Link to="#" />
-                            </Menu.Item>
-                            <Menu.Item key="Documents_infer_2" onClick={() => this.changeSelectedKey(["Documents_infer_2"])}> 
-                                โครงการนาฏยโขนละครอาสา
-                                <Link to="#" />
-                            </Menu.Item>
-                            <Menu.Item key="Documents_infer_3" onClick={() => this.changeSelectedKey(["Documents_infer_3"])}>
-                                โครงการสอนชาวต่างชาติ
-                                <Link to="#" />
-                            </Menu.Item>
-                        </Menu.ItemGroup>
-                        {/* ต้องรอให้กิจกรรมจบเเล้ว เเละกองกิจอนุญาตให้เริ่มเขียนสรุปโครงการ Menu.Item ถึงจะขึน */}
-                        <Menu.ItemGroup title="แบบสรุปโครงการ" >
-                            <Menu.Item key="Documents_offer_all" onClick={() => this.changeSelectedKey(["Documents_offer_all"])}>
-                                เเบบสรุปโครงการทั้งหมด
-                            </Menu.Item>
-                            <Menu.Item key="Documents_offer_1" onClick={() => this.changeSelectedKey(["Documents_offer_1"])}>
-                                โครงการทำบุญชมรม
-                                <Link to="#" />
-                            </Menu.Item>
-                        </Menu.ItemGroup>
-                    </SubMenu>
-                    <Menu.Item key="Tracking"  onClick={() => this.changeSelectedKey(["Tracking"])} >
-                        <Icon type="tag" />
-                        <span><strong>ติดตามโครงการ</strong></span>
-                        <Link to="/tracking" />
-                    </Menu.Item>
-                    <Menu.Item key="Budget" onClick={() => this.changeSelectedKey(["Budget"])}>
-                        <Icon type="dollar" />
-                        <span><strong>งบประมาณ</strong></span>
-                    </Menu.Item>
-                    <SubMenu key="etc"  onTitleClick={() => this.openSubMenu("etc")}
-                        title={
-                            <span>
-                                <Icon type="info-circle" />
-                                <span><strong>ข้อมูลเพิ่มเติม</strong></span>
-                            </span>
-                        }
-                    >
-                        <Menu.Item key="information_organize" onClick={() => this.changeSelectedKey(["information_organize"])}>
-                            ข้อมูลหน่วยงาน
-                            <Link to="#" />
-                        </Menu.Item>
-                    </SubMenu>
+        let subMenuDocuments = [
+            <Menu.Item key="Documents_infer_all" onClick={() => this.changeSelectedKey(["Documents_infer_all"])}>
+                แบบเสนอโครงการทั้งหมด
+                <Link to="/projects" />
+            </Menu.Item>,
+            // {/* //  ต้องรอให้กิจกรรมจบเเล้ว เเละกองกิจอนุญาตให้เริ่มเขียนสรุปโครงการ Menu.Item ถึงจะขึน */}
+            <Menu.Item key="Documents_offer_all" onClick={() => this.changeSelectedKey(["Documents_offer_all"])}>
+                เเบบสรุปโครงการทั้งหมด
+                <Link to="#" />
+            </Menu.Item>,
+        ]
 
-                </Menu>
+        let subMenuTrackings = [
+            <Menu.Item key="Tracking_infer" onClick={() => this.changeSelectedKey(["Tracking_infer"])}>
+                แบบเสนอโครงการทั้งหมด
+                <Link to="/tracking" />
+            </Menu.Item>,
+            <Menu.Item key="Tracking_offer" onClick={() => this.changeSelectedKey(["Tracking_offer"])}>
+                เเบบสรุปโครงการทั้งหมด
+                <Link to="#" />
+            </Menu.Item>,
+        ]
+
+        let subMenuBudgets = [
+            <Menu.Item key="budget_club" onClick={() => this.changeSelectedKey(["budget_club"])}>
+                งบประมาณโดยรวม
+            <Link to="#" />
+            </Menu.Item>,
+            <Menu.Item key="budget_project" onClick={() => this.changeSelectedKey(["budget_project"])}>
+                งบประมาณแต่ละโครงการ
+                <Link to="#" />
+            </Menu.Item>
+        ]
+
+        let subMenuInformations = [
+            <Menu.Item key="information_organize" onClick={() => this.changeSelectedKey(["information_organize"])}>
+                ข้อมูลหน่วยงาน
+                <Link to="#" />
+            </Menu.Item>,
+            <Menu.Item key="old_documents" onClick={() => this.changeSelectedKey(["old_documents"])}>
+                เอกสารย้อนหลัง
+                <Link to="#" />
+            </Menu.Item>
+        ]
+        
+        return (
+            <Sider
+                width={248}
+                trigger={null}
+                collapsed={this.props.sidebar}
+                collapsible
+                style={{ zIndex: 50, minHeight: "100vh" }}
+            >
+                <Affix offsetTop={55} style={{ width: 248 }}>
+                    <Menu mode="inline"
+                        style={{ height: '100vh', borderRight: 0, paddingTop: '10px', overflowY: "auto", paddingBottom: 100 }}
+                        defaultOpenKeys={this.props.submenukeys}
+                        defaultSelectedKeys={this.props.selectedkey}
+                        onOpenChange={(openKey) => this.openSubMenu(openKey)}
+                    >
+                        <SubMenu key="Documents"
+                            title={
+                                <div>
+                                    <Icon type="file-text" />
+                                    <span><strong>กรอกแบบฟอร์มโครงการ</strong></span>
+                                </div>
+                            }
+                        >
+                            {this.props.sidebar ?
+                                <Menu.ItemGroup title="กรอกแบบฟอร์มโครงการ" >
+                                    {subMenuDocuments}
+                                </Menu.ItemGroup>
+                                :
+                                subMenuDocuments
+                            }
+                        </SubMenu>
+                        <SubMenu key="Tracking"
+                            title={
+                                <div>
+                                    <Icon type="tag" />
+                                    <span><strong>ติดตามโครงการ</strong></span>
+                                </div>
+                            }
+                        >
+                            {this.props.sidebar ?
+                                <Menu.ItemGroup title="ติดตามโครงการ" >
+                                    {subMenuTrackings}
+                                </Menu.ItemGroup>
+                                :
+                                subMenuTrackings
+                            }
+                        </SubMenu>
+                        <SubMenu key="Budget"
+                            title={
+                                <div>
+                                    <Icon type="dollar" />
+                                    <span><strong>งบประมาณ</strong></span>
+                                </div>
+                            }
+                        >
+                            {this.props.sidebar ?
+                                <Menu.ItemGroup title="งบประมาณ" >
+                                    {subMenuBudgets}
+                                </Menu.ItemGroup>
+                                :
+                                subMenuBudgets
+                            }
+                        </SubMenu>
+                        <SubMenu key="etc"
+                            title={
+                                <div>
+                                    <Icon type="info-circle" />
+                                    <span><strong>ข้อมูลเพิ่มเติม</strong></span>
+                                </div>
+                            }
+                        >
+                            {this.props.sidebar ?
+                                <Menu.ItemGroup title="ข้อมูลเพิ่มเติม" >
+                                    {subMenuInformations}
+                                </Menu.ItemGroup>
+                                :
+                                subMenuInformations
+                            }
+                        </SubMenu>
+                    </Menu>
+                </Affix>
             </Sider>
         )
     }
