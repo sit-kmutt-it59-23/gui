@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Divider, Affix } from 'antd'
+import React, { Component, Fragment } from 'react'
+import { Divider } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -13,7 +13,7 @@ const PositionFelx = styled.div`
 const HeaderStyle = styled.header`
    background-color: #fff;
    width: 100%;
-   z-index:2;  
+   z-index:25;  
 `
 
 const ChildrenStyle = styled.div`
@@ -22,13 +22,12 @@ const ChildrenStyle = styled.div`
 
 class HeaderCustom extends Component {
     render() {
-        let { topic, description, fixed, headerRight, children, hideChildenInSize } = this.props
-
+        let { topic, description, fixed, headerRight, children, childrenHeight, hideChildenInSize } = this.props
         return (
-            <Fragment>
+              <Fragment>
                 {fixed ?
-                    <Affix>
-                        <HeaderStyle>
+                    <Fragment>
+                        <HeaderStyle className="header-fixed" >
                             <PositionFelx className="header-padding">
                                 <div className="text-left font-size-header">
                                     <div style={{ color: "#464545" }} id="topic">
@@ -38,7 +37,7 @@ class HeaderCustom extends Component {
                                         {description}
                                     </div>
                                 </div>
-                                <div className="hidden-xs hidden-sm">
+                                <div>
                                     {headerRight}
                                 </div>
                             </PositionFelx>
@@ -47,7 +46,9 @@ class HeaderCustom extends Component {
                                 {children}
                             </ChildrenStyle>
                         </HeaderStyle>
-                    </Affix>
+                        <div style={{ height: 90 , width: '100%', }} />
+                        <div style={{ height: childrenHeight , width: '100%', }} className={hideChildenInSize} />
+                    </Fragment>
                 :
                     <HeaderStyle>
                         <PositionFelx className="header-padding">
@@ -59,7 +60,7 @@ class HeaderCustom extends Component {
                                     {description}
                                 </div>
                             </div>
-                            <div className="hidden-xs hidden-sm">
+                            <div>
                                 {headerRight}
                             </div>
                         </PositionFelx>
@@ -80,6 +81,7 @@ HeaderCustom.propTypes = {
     fixed: PropTypes.bool,
     headerRight: PropTypes.element,
     children: PropTypes.element,
+    childrenHeight: PropTypes.number,
     hideChildenInSize: PropTypes.string
 }
 
